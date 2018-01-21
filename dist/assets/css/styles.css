@@ -1,0 +1,31 @@
+/*
+input {
+  margin-bottom: 5px;
+}
+*/
+
+body {
+  padding-top: 40px;
+}
+
+.jga-widget .jga-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: grey;
+  padding: 7px;
+  border-bottom-left-radius: 10px;
+  opacity: 0.5;
+}
+
+.jga-widget .jga-content {
+  width: 100%;
+}
+
+.list-group-item.active,
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+  z-index: 2;
+  color: #fff;
+  background-color: red;
+  border-color: red;
+}
