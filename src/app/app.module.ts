@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {Routing} from './app.routing';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {TestService} from './services/test.service.client';
@@ -26,6 +25,8 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+
+import { Routing } from './app.routing';
 
 @NgModule({
   // Declare components here
