@@ -4,13 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
-import {TestService} from './services/test.service.client';
-import { TodoComponent } from './todo/todo.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoEditComponent } from './todo-list/todo-edit.component';
-import {TodoService} from './services/todo.service.client';
 import { WebsiteListComponent } from './components/website/website-list/website-list.component';
-import {WebsiteService} from './services/website.service.client';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -26,15 +20,19 @@ import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-he
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 
+// client side services
+import { UserService } from './services/user.service.client';
+import { WebsiteService } from './services/website.service.client';
+import { PageService } from './services/page.service.client';
+import { WidgetService } from './services/widget.service.client';
+
+
 import { Routing } from './app.routing';
 
 @NgModule({
   // Declare components here
   declarations: [
     AppComponent,
-    TodoComponent,
-    TodoListComponent,
-    TodoEditComponent,
     WebsiteListComponent,
     LoginComponent,
     ProfileComponent,
@@ -58,7 +56,7 @@ import { Routing } from './app.routing';
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, TodoService, WebsiteService ],
+  providers: [UserService,WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
