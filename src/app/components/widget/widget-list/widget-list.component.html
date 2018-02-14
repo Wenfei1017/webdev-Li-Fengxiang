@@ -25,10 +25,24 @@
 </nav>
 
 <div *ngFor="let widget of widgets">
-  {{widget.widgetType}}
+
+  <div [ngSwitch]="widget.widgetType">
+
+    <div *ngSwitchCase="'Header'">
+      <app-widget-header></app-widget-header>
+    </div>
+
+    <div *ngSwitchCase="'YouTube'">
+      <app-widget-youtube></app-widget-youtube>
+    </div>
+
+    <div *ngSwitchCase="'Image'">
+      <app-widget-image></app-widget-image>
+    </div>
+
+  </div>
+
 </div>
-
-
 
 <div class="container cl-container-padding">
   <div>
