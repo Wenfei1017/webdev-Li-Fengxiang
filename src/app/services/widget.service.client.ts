@@ -48,7 +48,7 @@ export  class WidgetService {
   }
 
   findWidgetsByPageId(pageId: String) {
-    return this.widgets.find(function (widget) {
+    return this.widgets.filter(function (widget) {
       return widget.pageId === pageId;
     });
   }

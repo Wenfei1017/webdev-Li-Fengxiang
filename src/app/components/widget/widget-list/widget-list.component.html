@@ -2,27 +2,6 @@
   widget-list works!
 </p>
 
-<div *ngFor="let widget of widgets">
-
-  <div [ngSwitch]="widget.type">
-
-    <div *ngSwitchCase="'Header'">
-      ...
-    </div>
-
-    <div *ngSwitchCase="'YouTube'">
-      ...
-    </div>
-
-    <div *ngSwitchCase="'Image'">
-
-    </div>
-
-  </div>
-
-</div>
-
-
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid row">
@@ -44,6 +23,12 @@
     </a>
   </div>
 </nav>
+
+<div *ngFor="let widget of widgets">
+  {{widget.widgetType}}
+</div>
+
+
 
 <div class="container cl-container-padding">
   <div>
