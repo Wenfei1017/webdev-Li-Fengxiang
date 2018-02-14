@@ -56,7 +56,7 @@ import { Routing } from './app.routing';
     Routing
   ],
   // Client Side services here
-  providers: [UserService,WebsiteService, PageService, WidgetService],
+  providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

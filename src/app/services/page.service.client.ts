@@ -46,11 +46,12 @@ export class PageService {
     });
   }
 
-  updatePage(pageId: String, page: Page) {
-    for (const i in this.pages) {
-      if (this.pages[i]._id === pageId) {
-        this.pages[i].name = page.name;
+  updatePage(page: Page) {
+    for (let i = 0; i < this.pages.length; i++) {
+      if (this.pages[i]._id === page._id) {
         this.pages[i].title = page.title;
+        this.pages[i].name = page.name;
+        return this.pages[i];
       }
     }
   }

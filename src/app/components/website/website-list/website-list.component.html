@@ -1,5 +1,5 @@
 <p>
-  website-list works!
+  website-list
 </p>
 
 <nav class="navbar navbar-fixed-top cl-blue-navbar">
@@ -17,6 +17,15 @@
     </a>
   </div>
 </nav>
+
+{{websites.length}}
+
+<ul>
+  <li *ngFor = "let website of websites">
+    {{website.name}}
+  </li>
+</ul>
+
 
 <div class="container">
   <ul class="list-group cl-list-group-borderless">
