@@ -13,6 +13,7 @@ export class Widget {
     this.pageId = pageId;
     this.size = size;
     this.url = url;
+    this.text = text;
     this.width = width;
   }
 }

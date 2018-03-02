@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Widget} from '../../../models/widget.model.client';
-import {WidgetService} from '../../../services/widget.service.client';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgSwitch } from '@angular/common';
+
+import { WidgetService } from '../../../services/widget.service.client';
+import { Widget } from '../../../models/widget.model.client';
 
 @Component({
   selector: 'app-widget-edit',
@@ -10,20 +12,29 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class WidgetEditComponent implements OnInit {
 
+  userId: String;
+  websiteId: String;
+  pageId: String;
+  widgetId: String;
   widget: Widget;
 
   constructor(
     private widgetService: WidgetService,
-    private route: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
-  updatePage(widget: Widget) {
-    console.log(Widget);
-    this.widgetService.updateWidget(widget._id, widget);
-  }
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.widget = this.widgetService.findWidgetById(params['widgetId']);
-    });
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        this.userId = params['uid'];
+        this.websiteId = params['uid'];
+        this.pageId = params['pid'];
+        this.widgetId = params['wgid'];
+      }
+    );
+
+    this.widget = this.widgetService.findWidgetById(this.widgetId);
   }
 
 }

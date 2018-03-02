@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Widget} from '../../../models/widget.model.client';
-import {WidgetService} from '../../../services/widget.service.client';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import { WidgetService } from '../../../services/widget.service.client';
+import { Widget } from '../../../models/widget.model.client';
 
 @Component({
   selector: 'app-widget-list',
@@ -10,19 +12,37 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class WidgetListComponent implements OnInit {
 
+  userId: String;
+  websiteId: String;
   pageId: String;
-  widgets: Widget[] = [];
+  widgets: Widget[];
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private widgetService: WidgetService,
+    private activatedRoute: ActivatedRoute,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.pageId = params['pageId'];
+        this.userId = params['uid'];
+        this.websiteId = params['wid'];
+        this.pageId = params['pid'];
       }
     );
 
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+
+    console.log("tests");
+    console.log(this.widgets);
+
+  }
+
+  photoURL(url) {
+    const embedUrl = url.replace("youtu.be", "youtube.com/embed");
+    console.log(embedUrl);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
 }

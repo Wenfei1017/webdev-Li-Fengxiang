@@ -20,24 +20,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) {}
 
-  /*login(username: String, password: String) {
-    //alert('username: ' + username);
-   // if (username === 'alice' && password == "qqq") {
-      const user: User = this.userService.findUserByCredential(username, password);
-      if (user) {
-        this.router.navigate(['/profile', user._id ]);
-      }
-   // }
-  }*/
 
   login() {
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    alert(this.username);
 
+    console.log(this.username);
+    console.log(this.password);
     const user: User = this.userService.findUserByCredential(this.username, this.password);
     if (user) {
-      this.router.navigate(['/profile', user._id]);
+      this.router.navigate(['/user', user._id]);
+    } else {
+      this.errorFlag = true;
     }
   }
 

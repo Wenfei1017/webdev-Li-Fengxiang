@@ -57,6 +57,14 @@ export class WebsiteService {
     }
   }
 
+  findWebsiteById(websiteId: String) {
+    for (let x = 0; x < this.websites.length; x++) {
+      if (this.websites[x]._id === websiteId) {
+        return this.websites[x];
+      }
+    }
+  }
+
   deleteWebsite(websiteId: String) {
     for (const i in this.websites) {
       if (this.websites[i]._id === websiteId) {

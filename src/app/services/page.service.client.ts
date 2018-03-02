@@ -2,15 +2,16 @@
 
 import { Page } from '../models/page.model.client';
 import {Injectable} from '@angular/core';
+import {forEach} from '@angular/router/src/utils/collection';
 
 
 @Injectable()
 export class PageService {
 
   pages: Page[] = [
-    new Page('321', 'Post 1', '456', 'Lorem' ),
-    new Page('432', 'Post 2', '456', 'Lorem' ),
-    new Page('543', 'Post 3', '456', 'Lorem' ),
+    new Page('100', 'Post 1', '111', 'Lorem' ),
+    new Page('432', 'Post 2', '111', 'Lorem' ),
+    new Page('543', 'Post 3', '111', 'Lorem' ),
   ];
   createWebsite(websiteId: String, page: Page) {
 
@@ -63,5 +64,21 @@ export class PageService {
         this.pages.splice(j, 1);
       }
     }
+  }
+
+  createPage(websiteId: String, page: any) {
+    const set1 = new Set();
+
+    for (const i in this.pages) {
+      set1.add(this.pages[i]._id);
+    }
+
+    page._id = Math.random().toString();
+    while (set1.has(page._id)) {
+      page._id = Math.random().toString();
+    }
+
+    page.websiteId = websiteId;
+    this.pages.push(page);
   }
 }

@@ -19,11 +19,12 @@ export class PageListComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.webSiteId = params['webSiteId'];
+        this.webSiteId = params['wid'];
       }
     );
 
     this.pages = this.pageService.findPageByWebsiteId2(this.webSiteId);
+    console.log(this.pages);
   }
 
 }
