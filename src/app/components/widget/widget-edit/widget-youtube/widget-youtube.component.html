@@ -5,30 +5,26 @@
   <div class="navbar-brand font-weight-bold">
     Widget Edit
   </div>
-  <a class="btn navbar-brand pull-right" (click)="updateWidget(widget)">
-    <span class="glyphicon glyphicon-ok text-dark"></span>
-  </a>
+  <button class="btn navbar-brand pull-right" (click)="updateWidget(widget)">
+    Update
+  </button>
 </nav>
 <div class="container-fluid cl-body-padding">
   <form>
     <div class="form-group">
-      <label for="youtube-name">Name</label>
-      <input type="text" class="form-control" name="youtube-name" placeholder="Name">
+      <label >Text</label>
+      <input [(ngModel)]="widget.text" type="text" class="form-control" name="youtube-text" placeholder="Text">
     </div>
     <div class="form-group">
-      <label for="youtube-text">Text</label>
-      <input type="text" class="form-control" name="youtube-text" placeholder="Text">
-    </div>
-    <div class="form-group">
-      <label for="url">URL</label>
+      <label >URL</label>
       <input [(ngModel)]="widget.url" type="text" class="form-control" name="url" placeholder="YouTube URL">
     </div>
     <div class="form-group">
-      <label for="width">Width</label>
-      <input [(ngModel)]="width" type="text" class="form-control" name="width" placeholder="100%">
+      <label >Width</label>
+      <input [(ngModel)]="widget.width" type="text" class="form-control" name="width" placeholder="100%">
     </div>
   </form>
-  <a (click)="deleteWidget()" class="btn btn-block btn-danger">Delete</a>
+  <button (click)="deleteWidget()" class="btn btn-block btn-danger">Delete</button>
 </div>
 <nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
   <a class="navbar-brand pull-right" [routerLink]="['/profile']">

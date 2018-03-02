@@ -18,7 +18,7 @@ export class WidgetYoutubeComponent implements OnInit {
   websiteId: String;
   pageId: String;
   widgetId: String;
-
+  text : String
   constructor(
     private widgetService: WidgetService,
     private activatedRoute: ActivatedRoute,

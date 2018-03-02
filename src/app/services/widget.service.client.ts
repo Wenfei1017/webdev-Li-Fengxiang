@@ -30,6 +30,9 @@ export  class WidgetService {
       widget._id = Math.random().toString();
     }
     this.widgets.push(widget);
+    console.log("sfdasfasd");
+    console.log(this.widgets);
+
   }
 
   updateWidget(widgetId, widget) {

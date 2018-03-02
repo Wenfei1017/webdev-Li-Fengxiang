@@ -33,10 +33,6 @@ export class WidgetListComponent implements OnInit {
     );
 
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
-
-    console.log("tests");
-    console.log(this.widgets);
-
   }
 
   photoURL(url) {

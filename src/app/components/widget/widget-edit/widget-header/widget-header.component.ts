@@ -41,14 +41,16 @@ export class WidgetHeaderComponent implements OnInit {
 
   updateWidget(widget: Widget) {
     this.widgetService.updateWidget(widget._id, widget);
-    const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget";
+    let url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget";
     this.router.navigate([url]);
   }
 
   deleteWidget() {
     this.widgetService.deleteWidget(this.widgetId);
-    const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget";
+    let url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget";
     this.router.navigate([url]);
   }
+
+
 
 }
