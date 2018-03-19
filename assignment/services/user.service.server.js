@@ -26,6 +26,7 @@ module.exports = function (app) {
     });
     res.json(user);
   }
+
   function findAllUsers(req, res){
     res.json(users);
   }
@@ -62,4 +63,5 @@ module.exports = function (app) {
     }
     res.status(404).send("not found!");
   }
+
 }

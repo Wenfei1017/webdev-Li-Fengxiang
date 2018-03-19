@@ -1,8 +1,16 @@
 import { User } from '../models/user.model.client';
 import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
+import 'rxjs/Rx';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class UserService {
+
+  constructor(private http: Http) {}
+
+  baseUrl = environment.baseUrl;
+
   users: User[] = [
     new User('123', 'alice',     'alice',     'Alice',   'Wonder'),
     new User( '234',  'bob',       'bob',       'Bob',     'Marley'),
@@ -24,6 +32,13 @@ export class UserService {
     return this.users.find( function (user){
       return user.username === username && user.password === password;
     });
+  }
+
+  findUserByCredentials(username, password) {
+    return this.http.get(this.baseUrl + username + '&password=' + password)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findUserById(userId: String) {
@@ -53,9 +68,3 @@ export class UserService {
 
 }
 
-// [
-//   {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-//   {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-//   {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-//   {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-// ]

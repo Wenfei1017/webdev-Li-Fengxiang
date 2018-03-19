@@ -29,20 +29,19 @@ export class WebsiteEditComponent implements OnInit {
         this.developerId = params['uid'];
       }
     );
-    this.updatedWebsite = this.websiteService.findWebsiteById(this.websiteId);
+    this.websiteService.findWebsiteById(this.developerId, this.websiteId);
   }
 
   updateWebsite() {
     if (this.updatedWebsite.name.trim() !== '') {
-      this.updatedWebsite.developId = this.developerId;
-      this.websiteService.updateWebsite(this.updatedWebsite._id, this.updatedWebsite);
+      this.websiteService.updateWebsite(this.developerId, this.updatedWebsite);
       const url: any = '/user/' + this.developerId + '/website';
       this.router.navigate([url]);
     }
   }
 
   deleteWebsite() {
-    this.websiteService.deleteWebsite(this.websiteId);
+    this.websiteService.deleteWebsite(this.developerId, this.websiteId);
     const url: any = '/user/' + this.developerId + '/website';
     this.router.navigate([url]);
   }

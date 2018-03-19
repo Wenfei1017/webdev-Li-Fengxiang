@@ -27,12 +27,12 @@ export class WebsiteNewComponent implements OnInit {
       }
     );
 
-    this.websites = this.websiteService.findWebsitesByUser(this.userId);
+    this.websiteService.findWebsitesById(this.userId);
   }
 
   createWebsite() {
       this.newWebsite.developId = this.userId;
-      this.websiteService.createWebsite(this.userId, this.newWebsite);
+      this.websiteService.createWebsiteForUser(this.userId, this.newWebsite);
       console.log(this.userId);
       const url: any = '/user/' + this.userId + '/website';
       this.router.navigate([url]);

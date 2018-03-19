@@ -13,11 +13,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // Point static path to dist -- For building -- REMOVE
 app.use(express.static(path.join(__dirname, 'dist')));
-
-
 
 // CORS
 app.use(function(req, res, next) {
@@ -27,12 +24,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-
-
-const port = process.env.PORT || '3100';
+const port = process.env.PORT || '3200';
 app.set('port', port);
-
 
 // Create HTTP server
 const server = http.createServer(app);
@@ -47,6 +40,7 @@ app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-server.listen( port , () => console.log('Running'));
+server.listen( port , () => console.log('Node app is running on port', app.get('port')));
 
+require("./assignment/app.js")(app);
 

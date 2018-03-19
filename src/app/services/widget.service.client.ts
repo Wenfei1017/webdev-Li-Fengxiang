@@ -16,8 +16,6 @@ export  class WidgetService {
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
   ];
-
-
   createWidget(pageId, widget) {
     const set1 = new Set();
 

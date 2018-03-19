@@ -21,7 +21,6 @@ module.exports = function(app){
   }
 
   function findWebsiteById(req, res){
-    var user = req.params['userId'];
     var websiteId = req.params['websiteId'];
     res.json(getWebsiteById(websiteId));
   }
@@ -37,7 +36,6 @@ module.exports = function(app){
         return;
       }
     }
-
   }
 
   function createWebsite(req, res){
@@ -74,6 +72,12 @@ module.exports = function(app){
        }
      }
    }
+
 }
+
+
+
+
+
 
 

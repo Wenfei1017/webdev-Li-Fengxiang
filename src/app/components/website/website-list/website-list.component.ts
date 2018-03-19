@@ -24,9 +24,22 @@ export class WebsiteListComponent implements OnInit {
       }
     );
 
-    this.websites = this.websiteService.findWebsitesByUser2(this.userId);
+    this.websiteService.findWebsitesById(this.userId).subscribe(
+      (websites: Website[]) => {
+        console.log('here=====');
+        this.websites = websites;
+      }
+    );
   }
 
+
+  // this.userService.findUserByCredentials(username, this.password)
+  //   .subscribe((user: User) => {
+  //     if (user) {
+  //     console.log(user);
+  //     this.router.navigate(['/profile', user._id ]);
+  //   }
+  // });
 }
 
 
