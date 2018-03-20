@@ -31,8 +31,7 @@ module.exports = function(app){
     for(var i = 0; i < WEBSITES.length; i++) {
       if (WEBSITES[i]._id === websiteId) {
         WEBSITES.splice(i, 1);
-        var websites = getWebsitesForUserId(userId);
-        res.json(websites);
+        res.json(WEBSITES[i]);
         return;
       }
     }
@@ -45,7 +44,7 @@ module.exports = function(app){
     website.developerId = userId;
     WEBSITES.push(website);
     var websites = getWebsitesForUserId(userId);
-    res.json(websites);
+    res.json(website);
   }
 
   function findWebsiteForUser(req, res) {
@@ -74,8 +73,6 @@ module.exports = function(app){
    }
 
 }
-
-
 
 
 

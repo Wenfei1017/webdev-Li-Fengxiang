@@ -27,12 +27,16 @@ export class LoginComponent implements OnInit {
 
     console.log(this.username);
     console.log(this.password);
-    const user: User = this.userService.findUserByCredential(this.username, this.password);
-    if (user) {
-      this.router.navigate(['/user', user._id]);
-    } else {
-      this.errorFlag = true;
-    }
+    this.userService.findUserByCredential(this.username, this.password).subscribe(
+      (user: User) => {
+        console.log(user);
+        this.errorFlag = false;
+        this.router.navigate(['/user', user._id]);
+      },
+      (error: any) => {
+        this.errorFlag = true;
+      }
+    );
   }
 
   ngOnInit() {

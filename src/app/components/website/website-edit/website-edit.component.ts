@@ -29,21 +29,32 @@ export class WebsiteEditComponent implements OnInit {
         this.developerId = params['uid'];
       }
     );
-    this.websiteService.findWebsiteById(this.developerId, this.websiteId);
+
+    this.websiteService.findWebsiteById(this.developerId, this.websiteId).subscribe(
+      (website: Website) => {
+      this.updatedWebsite = website;
+    });
   }
 
   updateWebsite() {
     if (this.updatedWebsite.name.trim() !== '') {
-      this.websiteService.updateWebsite(this.developerId, this.updatedWebsite);
-      const url: any = '/user/' + this.developerId + '/website';
-      this.router.navigate([url]);
+      this.websiteService.updateWebsite(this.developerId, this.updatedWebsite).subscribe(
+        (website: Website) => {
+          this.updatedWebsite = website;
+          const url: any = '/user/' + this.developerId + '/website';
+          this.router.navigate([url]);
+        }
+      );
     }
   }
 
   deleteWebsite() {
-    this.websiteService.deleteWebsite(this.developerId, this.websiteId);
-    const url: any = '/user/' + this.developerId + '/website';
-    this.router.navigate([url]);
+    this.websiteService.deleteWebsite(this.developerId, this.websiteId).subscribe(
+      () => {
+        const url: any = '/user/' + this.developerId + '/website';
+        this.router.navigate([url]);
+      }
+    );
   }
 
 }

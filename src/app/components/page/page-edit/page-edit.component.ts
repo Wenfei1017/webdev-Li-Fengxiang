@@ -32,23 +32,32 @@ export class PageEditComponent implements OnInit {
         this.websiteId = params['wid'];
       }
     );
-    this.updatedPage = this.pageService.findPageById(this.pageId);
+    this.pageService.findPageById(this.pageId).subscribe(
+      (page: Page) => {
+        this.updatedPage = page;
+      }
+    );
   }
 
   updatePage(page) {
-    if (page.name.trim() !== '' && page.title.trim() !== '') {
-      this.pageService.updatePage(page);
-      const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page';
-      this.router.navigate([url]);
+    if (page.name.trim() !== '' && page.title !== '' && page.title.trim() !== '') {
+      this.pageService.updatePage(this.updatedPage).subscribe(
+        (page: Page) => {
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
+      );
     }
   }
 
   deletePage() {
-    this.pageService.deletePage(this.pageId);
-    const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page';
-    this.router.navigate([url]);
+    console.log(this.pageId);
+    this.pageService.deletePage(this.pageId).subscribe(
+      () => {
+        console.log("testDelete");
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      }
+    );
   }
-
 }
 
 

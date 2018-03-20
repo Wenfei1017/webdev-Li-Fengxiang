@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { PageService } from '../../../services/page.service.client';
 import { Page } from '../../../models/page.model.client';
+import {Website} from '../../../models/website.model.client';
 
 @Component({
   selector: 'app-page-new',
@@ -27,14 +28,17 @@ export class PageNewComponent implements OnInit {
         this.userId = params['uid'];
         this.websiteId = params['wid'];
       }
-    )
+    );
   }
 
   createPage(page) {
     if (page.name.trim() !== '' && page.title.trim() !== '') {
-      this.pageService.createPage(this.websiteId, page);
-      const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page"
-      this.router.navigate([url]);
+      this.pageService.createPage(this.websiteId, page).subscribe(
+        (page: Page) => {
+          const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page"
+          this.router.navigate([url]);
+        }
+      );
     }
   }
 

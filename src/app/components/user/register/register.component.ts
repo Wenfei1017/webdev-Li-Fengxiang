@@ -14,9 +14,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('f') registerForm: NgForm;
 
-  user: User = {_id: '', username: '', password: '', firstName: '', lastName: ''};
-  username: String;
-  password: String;
+  user: User;
   verifyPassword: String;
   errorFlag: boolean;
   errorMsg: String;
@@ -24,29 +22,25 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-
+    this.user = this.userService.initialUser();
   }
 
   register() {
     this.errorFlag = false;
-    this.errorFlag = false;
-    this.username = this.registerForm.value.username;
-    this.password = this.registerForm.value.password;
-    this.verifyPassword = this.registerForm.value.verifyPassword;
 
-    if (this.userService.findUserByUsername(this.username) != null) {
-      this.errorMsg = 'This username is already exist.';
-      this.errorFlag = true;
-    }
-    if (this.password !== this.verifyPassword) {
+    if (this.user.password !== this.verifyPassword) {
       this.errorMsg = 'Password and Verify Password do not match.';
       this.errorFlag = true;
-    }
-    if (!this.errorFlag) {
-      this.user.username = this.username;
-      this.user.password = this.password;
-      this.userService.createUser(this.user);
-      this.router.navigate(['/user', this.userService.findUserByUsername(this.username)._id]);
+    } else {
+      this.userService.createUser(this.user).subscribe(
+        (user: User) => {
+          this.user = user;
+          this.router.navigate(['/user', user._id]);
+        },(error: any) => {
+          this.errorFlag = true;
+          this.errorMsg = error._body;
+        }
+      );
     }
   }
 

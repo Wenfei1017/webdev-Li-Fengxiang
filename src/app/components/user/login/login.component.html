@@ -8,9 +8,6 @@
     <div class="form-group">
       <input type="text" name="username" placeholder="username" class="form-control" ngModel required #username="ngModel">
     </div>
-    <span class="help-block" *ngIf="!username.valid && username.touched">
-      Please enter username!
-    </span>
 
     <div class="form-group">
       <input type="password" name="password" placeholder="password" class="form-control" ngModel required #password="ngModel">

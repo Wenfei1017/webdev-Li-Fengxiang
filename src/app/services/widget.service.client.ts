@@ -1,6 +1,8 @@
-
-import {Injectable} from '@angular/core';
 import { Widget } from '../models/widget.model.client';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import 'rxjs/Rx';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export  class WidgetService {
@@ -16,68 +18,39 @@ export  class WidgetService {
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
   ];
-  createWidget(pageId, widget) {
-    const set1 = new Set();
-
-    for (const i in this.widgets) {
-      set1.add(this.widgets[i]._id);
-    }
-
-    widget._id = Math.random().toString();
-    while (set1.has(widget._id)) {
-      widget._id = Math.random().toString();
-    }
-    this.widgets.push(widget);
-    console.log("sfdasfasd");
-    console.log(this.widgets);
-
+  dumpWidget() {
+    return new Widget(undefined, undefined, undefined);
   }
 
-  updateWidget(widgetId, widget) {
-    for ( const i in this.widgets ) {
-      if ( this.widgets[i]._id === widgetId ) {
-        switch (widget.widgetType) {
-          case 'HEADER':
-            this.widgets[i].text = widget.text;
-            this.widgets[i].size = widget.size;
-            return true;
-
-          case 'IMAGE':
-            this.widgets[i].text = widget.text;
-            this.widgets[i].url = widget.url;
-            this.widgets[i].width = widget.width;
-            return true;
-
-          case 'YOUTUBE':
-            this.widgets[i].text = widget.text;
-            this.widgets[i].url = widget.url;
-            this.widgets[i].width = widget.width;
-            return true;
-        }
-
-      }
-    }
-    return false;
+  createWidget(pageId: String, widget: Widget) {
+    return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', widget)
+      .map((res: Response) => {
+        return res.json();
+      });
   }
 
   findWidgetsByPageId(pageId: String) {
-    return this.widgets.filter(function (widget) {
-      return widget.pageId === pageId;
-    });
+    return this.http.get(this.baseUrl + '/api/page/' + pageId + '/widget')
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+  findWidgetById(widgetId: String) {
+    return this.http.get(this.baseUrl + '/api/widget/' + widgetId)
+      .map((res: Response) => {
+        return res.json();
+      });
   }
 
-  findWidgetById(widgetId: String) {
-    return this.widgets.find(function (widget) {
-      return widget._id === widgetId;
-    });
+  updateWidget(widgetId: String, widget: Widget) {
+    return this.http.put(this.baseUrl + '/api/widget/' + widgetId, widget)
+      .map((res: Response) => {
+        return res.json();
+      });
   }
+
   deleteWidget(widgetId: String) {
-    for (const i in this.widgets) {
-      if (this.widgets[i]._id === widgetId) {
-        const j = +i;
-        this.widgets.splice(j, 1);
-      }
-    }
+    return this.http.delete(this.baseUrl + '/api/widget/' + widgetId);
   }
 }
 

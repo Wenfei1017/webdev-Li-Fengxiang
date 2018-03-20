@@ -11,7 +11,7 @@ module.exports = function (app) {
     var websiteId = req.params["websiteId"];
     var page = req.body;
     page._id = (new Date()).getTime() + "";
-    page.webSiteId = websiteId;
+    page.websiteId = websiteId;
     PAGES.push(page);
     var pages = getPagesForWebsiteId(websiteId);
     res.json(pages);
@@ -50,26 +50,22 @@ module.exports = function (app) {
 
   function deletePage(req, res) {
     var pageId = req.params['pageId'];
-    var websiteId = req.params["websiteId"];
     for(var i = 0; i < PAGES.length; i++) {
-      if (PAGES[i]._id === websiteId) {
+      if (PAGES[i]._id === pageId) {
         PAGES.splice(i, 1);
-        var pages = getPagesForWebsiteId(websiteId);
-        res.json(pages);
-        return;
+        res.json("success!");
+        break;
       }
     }
   }
 
   function getPagesForWebsiteId(websiteId) {
     var pages=[];
-
     for(var i = 0; i < PAGES.length; i++) {
-      if (PAGES[i].webSiteId === websiteId) {
-        websites.push(PAGES[i]);
+      if (PAGES[i].websiteId === websiteId) {
+        pages.push(PAGES[i]);
       }
     }
     return pages;
   }
-
 }

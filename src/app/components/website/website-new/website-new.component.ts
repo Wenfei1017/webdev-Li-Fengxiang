@@ -14,7 +14,6 @@ export class WebsiteNewComponent implements OnInit {
   userId: String;
   websites: any[] = [{ _id: "", name: "", developerId: "", description: "" }];
   newWebsite: Website = { _id: "", name: "", developId: "", description: "" };
-  // _id: String, name: String, developerId: String, description: String
 
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
@@ -27,15 +26,17 @@ export class WebsiteNewComponent implements OnInit {
       }
     );
 
+
     this.websiteService.findWebsitesById(this.userId);
   }
 
   createWebsite() {
-      this.newWebsite.developId = this.userId;
-      this.websiteService.createWebsiteForUser(this.userId, this.newWebsite);
-      console.log(this.userId);
-      const url: any = '/user/' + this.userId + '/website';
-      this.router.navigate([url]);
+    this.websiteService.createWebsiteForUser(this.userId, this.newWebsite).subscribe(
+      (website: Website) => {
+        const url: any = '/user/' + this.userId + '/website';
+        this.router.navigate([url]);
+      }
+    );
   }
 
 }

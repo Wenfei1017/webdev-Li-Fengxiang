@@ -3,33 +3,18 @@
     {{errorMsg}}
   </div>
   <h1>Register</h1>
-  <form (ngSubmit)="register()" #f="ngForm">
+  <form>
+    <label for="username">Username</label>
+    <input [(ngModel)]="user.username" type="text" class="form-control" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>
 
-    <div class="form-group">
-      <input type="text" name="username" placeholder="username" class="form-control" ngModel required #username="ngModel">
-    </div>
-    <span class="help-block" *ngIf="!username.valid && username.touched">
-      Please enter username!
-    </span>
+    <label for="password">Password</label>
+    <input [(ngModel)]="user.password" type="password" class="form-control" id="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
 
-    <div class="form-group">
-      <input type="password" name="password" placeholder="password" class="form-control" ngModel required #password="ngModel">
-    </div>
-    <span class="help-block" *ngIf="!password.valid && password.touched">
-      Please enter password!
-    </span>
-    <div class="form-group">
-      <input type="password" name="verifyPassword" placeholder="verify password" class="form-control" ngModel required #verifyPassword="ngModel">
-    </div>
-    <span class="help-block" *ngIf="!verifyPassword.valid && verifyPassword.touched">
-      Please enter verify password!
-    </span>
+    <label for="verifyPassword">Verify Password</label>
+    <input [(ngModel)]="verifyPassword" type="password" class="form-control" id="verifyPassword" placeholder="verify password" [ngModelOptions]="{standalone: true}"/>
 
-    <div class="form-group">
-      <button [disabled]="!f.valid" class="btn btn-primary btn-block">Register</button>
-    </div>
-    <div class="form-group">
-      <a [routerLink]="['/login']" class="btn btn-danger btn-block">Cancel</a>
-    </div>
+    <br/>
+    <button class="btn btn-primary btn-block" (click)="register()">Register</button>
+    <button class="btn btn-danger  btn-block" routerLink="/login">Cancel</button>
   </form>
 </div>
