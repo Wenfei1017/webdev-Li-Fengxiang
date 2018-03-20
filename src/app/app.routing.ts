@@ -12,6 +12,7 @@ import {WidgetListComponent} from './components/widget/widget-list/widget-list.c
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
 import {WebsiteEditComponent} from './components/website/website-edit/website-edit.component';
+
 // Import all other components here
 
 const APP_ROUTES: Routes = [

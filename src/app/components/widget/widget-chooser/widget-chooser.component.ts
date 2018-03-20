@@ -34,10 +34,13 @@ export class WidgetChooserComponent implements OnInit {
   createWidget(widgetType: String) {
     const newWidget: Widget = {
       _id: '', widgetType: widgetType, pageId: '100', size: '1', text: 'text', url: 'url', width: '100%'
-    }
-    this.widgetService.createWidget(this.pageId, newWidget);
-    const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + newWidget._id;
-    this.router.navigate([url]);
+    };
+    this.widgetService.createWidget(this.pageId, newWidget).subscribe(
+      () => {
+        const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + newWidget._id;
+        this.router.navigate([url]);
+      }
+    );
   }
 
 }

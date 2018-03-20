@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { WidgetService } from '../../../../services/widget.service.client';
 import { Widget } from '../../../../models/widget.model.client';
 
 @Component({
@@ -10,45 +9,59 @@ import { Widget } from '../../../../models/widget.model.client';
   styleUrls: ['./widget-youtube.component.css']
 })
 export class WidgetYoutubeComponent implements OnInit {
-  // properties
-  widget: Widget = {
-    _id: "", widgetType: "", pageId: "", size: "", text: "", url: "", width: ""
-  };
-  userId: String;
-  websiteId: String;
-  pageId: String;
+
+  widget: Widget;
   widgetId: String;
-  text : String
+  pageId: String;
+
   constructor(
-    private widgetService: WidgetService,
+    @Inject('WidgetService') private widgetService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.widgetId = params['wgid'];
-        this.pageId = params['pid'];
-        this.userId = params['uid'];
-        this.websiteId = params['wid'];
-      }
-    );
-
-    this.widget = this.widgetService.findWidgetById(this.widgetId);
-  }
-
-  updateWidget(widget: Widget) {
-    this.widgetService.updateWidget(widget._id, widget);
-    const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget";
-    this.router.navigate([url]);
+  updateOrCreateWidget() {
+    if (!this.widget._id) {
+      this.widgetService.createWidget(this.pageId, this.widget).subscribe(
+        (widget: Widget) => {
+          this.widget = widget;
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+          console.log(this.widget);
+        }
+      );
+    } else {
+      this.widgetService.updateWidget(this.widget._id, this.widget).subscribe(
+        () => {
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
+      );
+    }
   }
 
   deleteWidget() {
-    this.widgetService.deleteWidget(this.widgetId);
-    const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page/" + this.pageId + "/widget";
-    this.router.navigate([url]);
-  }nit() {
+    this.widgetService.deleteWidget(this.widget._id).subscribe(
+      () => {
+        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+      }
+    );
+  }
+
+  ngOnInit() {
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.widgetId = params['widgetId'];
+      this.pageId = params['pageId'];
+      if (this.widgetId === 'youtube') {
+        this.widget = this.widgetService.dumpWidget();
+        this.widget.widgetType = 'YOUTUBE';
+      } else {
+        this.widgetService.findWidgetById(this.widgetId).subscribe(
+          (widget: Widget) => {
+            this.widget = widget;
+            console.log(this.widget);
+          }
+        );
+      }
+    });
   }
 
 }

@@ -1,10 +1,10 @@
 var WIDGETS = [
-  { _id: "765", type: "IFRAME", size: 0, text: "This is a iframe", src: "http://cnn.com"},
-  { _id: "654", type: "PARAGRAPH", size: 0, text: "This is a paragraph", src: ""},
-  { _id: "123", type: "HEADING",  size: 1, text: "GIZMODO", src: ""},
-  { _id: "234", type: "HEADING", size: 2, text: "Lorem ipsum", src:""},
-  { _id: "345", type: "IMAGE", size: 3, text: "testing 3", src: ""},
-  { _id: "456", type: "IMAGE", size: 4, text: "testing 4", src: ""}
+  { _id: "100", type: "HEADING", pageId: '3', size: 0, text: "This is a HEADING", url: "http://cnn.com"},
+  { _id: "200", type: "IMAGE", pageId: '3' , size: 0, text: "This is a paragraph", url: 'http://lorempixel.com/400/200/'},
+  { _id: "300", type: "YOUTUBE", pageId: '3', size: 4, text: "testing 4", url: "https://www.youtube.com/embed/AM2Ivdi9c4E"},
+  { _id: "400", type: "HTML", pageId: '3' ,size: 3, text: '<p>I am a <i>HTML</i>, haha :)</p>'},
+  { _id: "500", type: "TEXT", pageId: '3' ,size: 4, text: 'Some Text',
+    formatted: true},
 ];
 
 module.exports = WIDGETS;

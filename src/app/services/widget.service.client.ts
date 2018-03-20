@@ -7,6 +7,9 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export  class WidgetService {
 
+  constructor(private http: Http) { }
+
+  baseUrl = environment.baseUrl;
   // constructor(_id:String, type:String, pageId:String, size= '1', text = 'text', url = 'url', width = '100%')
   widgets: Widget[] = [
     new Widget('123', 'HEADER', '100', '2', 'GIZMODO'),
@@ -18,7 +21,7 @@ export  class WidgetService {
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
   ];
-  dumpWidget() {
+  initialWidget() {
     return new Widget(undefined, undefined, undefined);
   }
 
