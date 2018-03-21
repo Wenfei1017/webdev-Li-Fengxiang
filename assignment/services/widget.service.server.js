@@ -13,6 +13,7 @@ module.exports = function (app) {
   var WIDGETS = require("./widget.mock.server.js");
 
   function uploadImage(req, res) {
+    console.log("uploadImage");
     var widgetId      = req.body.widgetId;
     var width         = req.body.width;
     var myFile        = req.file;
@@ -21,7 +22,7 @@ module.exports = function (app) {
     var pageId = req.body.pageId;
 
     if(myFile == null) {
-      res.redirect("http://localhost:4301/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+      res.redirect("http://localhost:4201/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
       return;
     }
 
@@ -35,15 +36,15 @@ module.exports = function (app) {
     if (!widgetId) {
       var tobeCreated = {_id: new Date().getTime().toString(), widgetType: 'IMAGE', pageId: pageId, size: size, text: 'text', width:'100%',
         url:'/uploads/' + filename, formatted: false};
-      widgets.push(tobeCreated);
+      WIDGETS.push(tobeCreated);
     } else {
-      var foundWidget = widgets.find(function (widget) {
+      var foundWidget = WIDGETS.find(function (widget) {
         return widget._id === widgetId;
       });
       foundWidget.url = "/uploads/" + filename;
     }
-
-    res.redirect("http://localhost:4301/profile/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+    console.log("test");
+    res.redirect("http://localhost:4201/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
   }
 
   function createWidget(req,res) {
@@ -65,11 +66,9 @@ module.exports = function (app) {
       }
     }
     return widgets;
-
   }
 
   function findAllWidgetsForPage(req, res) {
-    console.log("allWidgets");
     var pageId = req.params["pageId"];
     console.log(pageId);
     var widgets = getWidgetsForPageId(pageId);
@@ -79,8 +78,12 @@ module.exports = function (app) {
   function findWidgetById(req,res) {
     var widgetId = req.params["widgetId"];
     var widget = getWidgetById(widgetId);
-    console.log(widget);
-    res.json(widget);
+
+    if (!widget) {
+      res.status("401").json("notFound!!");
+    }else {
+      res.json(widget);
+    }
   }
 
   function getWidgetById(widgetId){

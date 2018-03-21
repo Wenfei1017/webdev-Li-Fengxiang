@@ -37,13 +37,11 @@ export class WidgetEditComponent implements OnInit {
         this.widget.widgetType = 'TEXT';
       } else if (this.widgetId === 'html') {
         this.widget.widgetType = 'HTML';
-
         // update
       } else {
         this.widgetService.findWidgetById(this.widgetId).subscribe(
           (widget: Widget) => {
             this.widget = widget;
-            console.log(this.widget);
           }
         );
       }

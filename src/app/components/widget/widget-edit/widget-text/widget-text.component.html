@@ -16,6 +16,7 @@
 </nav>
 
 <div class="container">
+
   <form>
     <div class="form-group">
       <label for="text-name">Name (actually there is no attribute for this according to assignment doc)</label>
@@ -36,11 +37,12 @@
     <div class="input-group">
       <input type="text" readonly value="Formatted" class="form-control"/>
       <span class="input-group-addon">
-        <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone: true}"/>
-      </span>
-    </div><br/>
+          <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone: true}"/>
+          </span>
+    </div>
   </form>
-  <a class="btn btn-danger btn-block" (click)="deleteWidget()">Delete</a>
+
+  <button (click)="deleteWidget()" class="btn btn-block btn-danger">Delete</button>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

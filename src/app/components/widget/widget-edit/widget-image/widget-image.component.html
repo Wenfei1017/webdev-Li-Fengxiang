@@ -9,28 +9,45 @@
     Update
   </button>
 </nav>
-<div class="container-fluid cl-body-padding">
+
+<div class="container">
   <form>
     <div class="form-group">
-      <label >URL</label>
-      <input [(ngModel)]="widget.url" type="text" class="form-control" name="url" placeholder="Image URL">
+      <label for="image-name">Name (actually there is no attribute for this according to assignment doc)</label>
+      <input type="text" class="form-control" id="image-name" placeholder="Name">
     </div>
     <div class="form-group">
-      <label >Width</label>
-      <input [(ngModel)]="widget.width" type="text" class="form-control" name="width" placeholder="100%">
+      <label for="image-text">Text</label>
+      <input [(ngModel)]="widget.text" type="text" class="form-control" id="image-text" placeholder="Text" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
-      <label >Upload</label>
-      <input type="file" class="form-control" name="exampleInputFile">
+      <label for="image-URL">URL</label>
+      <input [(ngModel)]="widget.url" type="text" class="form-control" id="image-URL" placeholder="URL" [ngModelOptions]="{standalone: true}">
     </div>
     <div class="form-group">
-      <button class="btn btn-block btn-primary">Upload Image</button>
+      <label for="image-width">Width</label>
+      <input [(ngModel)]="widget.width" type="text" class="form-control" id="image-width" placeholder="Width percentage" [ngModelOptions]="{standalone: true}">
     </div>
+  </form>
+
+  <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+    <label for="myFile">Upload Image</label>
+    <input  name="myFile" id="myFile"  type="file" class="form-control form-group"/>
+    <input  name="widgetId" value="{{widget._id}}" style="display: none"/>
+    <input  name="pageId" value="{{pageId}}" style="display: none"/>
+    <input  name="websiteId" value="{{websiteId}}" style="display: none"/>
+    <input  name="userId" value="{{userId}}" style="display: none"/>
+    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+    <br/>
   </form>
   <button (click)="deleteWidget()" class="btn btn-block btn-danger">Delete</button>
 </div>
+
 <nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
   <a class="navbar-brand pull-right" routerLink="/user/{{userId}}">
     <span class="glyphicon glyphicon-user text-primary"></span>
   </a>
 </nav>
+
+
+

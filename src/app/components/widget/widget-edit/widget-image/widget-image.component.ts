@@ -52,7 +52,7 @@ export class WidgetImageComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log("hereInit");
     this.baseUrl = environment.baseUrl;
     this.activatedRoute.params.subscribe((params: any) => {
       this.widgetId = params['wgid'];
@@ -66,7 +66,6 @@ export class WidgetImageComponent implements OnInit {
         this.widgetService.findWidgetById(this.widgetId).subscribe(
           (widget: Widget) => {
             this.widget = widget;
-            console.log(this.widget);
           }
         );
       }

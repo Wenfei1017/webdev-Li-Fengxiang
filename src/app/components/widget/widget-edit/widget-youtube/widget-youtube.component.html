@@ -10,6 +10,7 @@
   </button>
 </nav>
 <div class="container-fluid cl-body-padding">
+
   <form>
     <div class="form-group">
       <label >Text</label>
@@ -24,7 +25,9 @@
       <input [(ngModel)]="widget.width" type="text" class="form-control" name="width" placeholder="100%">
     </div>
   </form>
+
   <button (click)="deleteWidget()" class="btn btn-block btn-danger">Delete</button>
+
 </div>
 <nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
   <a class="navbar-brand pull-right" [routerLink]="['/profile']">

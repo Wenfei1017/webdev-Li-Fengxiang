@@ -10,6 +10,7 @@
 <div class="cl-body-padding">
 
   <div *ngFor="let widget of widgets">
+    <br/>
     <div *ngIf="widget.widgetType === 'HEADING'">
       <h1>{{widget.text}}</h1>
     </div>
@@ -55,9 +56,9 @@
         <div class="input-group">
           <input type="text" readonly value="Formatted" class="form-control"/>
           <span class="input-group-addon">
-        <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone: true}"/>
-      </span>
-        </div><br/>
+          <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone: true}"/>
+          </span>
+        </div>
       </form>
     </div>
 
