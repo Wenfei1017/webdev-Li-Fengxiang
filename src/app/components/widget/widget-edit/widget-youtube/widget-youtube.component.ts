@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Widget } from '../../../../models/widget.model.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-youtube',
@@ -15,12 +16,12 @@ export class WidgetYoutubeComponent implements OnInit {
   pageId: String;
 
   constructor(
-    @Inject('WidgetService') private widgetService,
+    private widgetService: WidgetService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
-  updateOrCreateWidget() {
+  updateWidget() {
     if (!this.widget._id) {
       this.widgetService.createWidget(this.pageId, this.widget).subscribe(
         (widget: Widget) => {
@@ -30,6 +31,7 @@ export class WidgetYoutubeComponent implements OnInit {
         }
       );
     } else {
+      console.log("test");
       this.widgetService.updateWidget(this.widget._id, this.widget).subscribe(
         () => {
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
@@ -48,10 +50,10 @@ export class WidgetYoutubeComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: any) => {
-      this.widgetId = params['widgetId'];
-      this.pageId = params['pageId'];
+      this.widgetId = params['wgid'];
+      this.pageId = params['pid'];
       if (this.widgetId === 'youtube') {
-        this.widget = this.widgetService.dumpWidget();
+        this.widget = this.widgetService.initialWidget();
         this.widget.widgetType = 'YOUTUBE';
       } else {
         this.widgetService.findWidgetById(this.widgetId).subscribe(

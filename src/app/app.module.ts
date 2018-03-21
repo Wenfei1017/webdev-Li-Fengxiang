@@ -22,6 +22,7 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
 
+import { SafePipe } from '../../assignment/pipes/safe-url/safe-url.pipe';
 
 // client side services
 import { UserService } from './services/user.service.client';
@@ -31,6 +32,9 @@ import { WidgetService } from './services/widget.service.client';
 
 
 import { Routing } from './app.routing';
+import { QuillEditorModule } from 'ngx-quill-editor';
+
+
 
 @NgModule({
   // Declare components here
@@ -45,6 +49,7 @@ import { Routing } from './app.routing';
     PageNewComponent,
     PageEditComponent,
     PageListComponent,
+    SafePipe,
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
@@ -58,10 +63,13 @@ import { Routing } from './app.routing';
     BrowserModule,
     HttpModule,
     FormsModule,
-    Routing
+    Routing,
+    QuillEditorModule,
   ],
   // Client Side services here
   providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

@@ -69,7 +69,9 @@ module.exports = function (app) {
   }
 
   function findAllWidgetsForPage(req, res) {
+    console.log("allWidgets");
     var pageId = req.params["pageId"];
+    console.log(pageId);
     var widgets = getWidgetsForPageId(pageId);
     res.json(widgets);
   }
@@ -77,6 +79,7 @@ module.exports = function (app) {
   function findWidgetById(req,res) {
     var widgetId = req.params["widgetId"];
     var widget = getWidgetById(widgetId);
+    console.log(widget);
     res.json(widget);
   }
 
@@ -101,11 +104,12 @@ module.exports = function (app) {
   }
 
   function deleteWidget(req,res) {
+    console.log("ppppp");
     var widgetId = req.params['widgetId'];
     for(var i = 0; i < WIDGETS.length; i++) {
-      if (WIDGETS[i]._id === websiteId) {
+      if (WIDGETS[i]._id === widgetId) {
         WIDGETS.splice(i, 1);
-        var widgets = getWidgetsForPageId(websiteId);
+        var widgets = getWidgetsForPageId(widgetId);
         res.json(widgets);
         return;
       }

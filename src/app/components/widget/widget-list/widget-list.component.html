@@ -8,48 +8,61 @@
 </nav>
 
 <div class="cl-body-padding">
-  <div *ngFor="let widget of widgets">
 
-    <div *ngIf="widget.widgetType === 'HEADER'">
-      <div class="pull-right">
-        <a [routerLink]="['/#']" class="pull-right">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </a>
-        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}">
-          <span class="glyphicon glyphicon-cog"></span>
-        </a>
-      </div>
+  <div *ngFor="let widget of widgets">
+    <div *ngIf="widget.widgetType === 'HEADING'">
       <h1>{{widget.text}}</h1>
     </div>
 
     <div *ngIf="widget.widgetType === 'IMAGE'">
-
       <div>
-        <a [routerLink]="['/#']" class="pull-right">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </a>
-        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}" class="pull-right">
-          <span class="glyphicon glyphicon-cog"></span>
-        </a>
-        <iframe width="{{widget.width}}" height="450" [src]="photoURL(widget.url)" frameborder="0" allowfullscreen>
-        </iframe>
+        <img class="img-responsive img-rounded cl-widget-images" src="{{widget.url}}">
       </div>
     </div>
-    <div class="embed-responsive embed-responsive-16by9" *ngIf="widget.widgetType === 'YOUTUBE'">
-      <div>
-        <iframe width="{{widget.width}}" height="360" [src]="photoURL(widget.url)" frameborder="0" allowfullscreen>
-        </iframe>
-        <a [routerLink]="['/#']" class="pull-right">
-          <span class="glyphicon glyphicon-menu-hamburger" style="background-color: white"></span>
-        </a>
-        <a routerLink="/user/{{userId}}/website/{{websiteId}}/page/{{pageId}}/widget/{{widget._id}}" class="pull-right">
-          <span class="glyphicon glyphicon-cog" style="background-color: white"></span>
-        </a>
+
+    <div *ngIf="widget.widgetType === 'YOUTUBE'">
+      {{widget.text}}}
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="640" height="360" [src]="widget.url | safe" frameborder="0" allowfullscreen></iframe>
       </div>
-      <br>
+    </div>
+
+    <div *ngIf="widget.widgetType === 'HTML'">
+      <div class="form-group">
+        <label for="html-editor">HTML</label>
+        <quill-editor [(ngModel)]="widget.text" [ngModelOptions]="{standalone: true}"></quill-editor>
+      </div>
+    </div>
+
+    <div *ngIf="widget.widgetType === 'TEXT'">
+      <form>
+        <div class="form-group">
+          <label for="text-name">Name (actually there is no attribute for this according to assignment doc)</label>
+          <input type="text" class="form-control" id="text-name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="text-text">Text</label>
+          <input [(ngModel)]="widget.text" type="text" class="form-control" id="text-text" placeholder="Text" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label >Rows (actually there is no attribute for this according to assignment doc)</label>
+          <input type="text" class="form-control" id="text-name" placeholder="Rows">
+        </div>
+        <div class="form-group">
+          <label for="text-placeholder">Rows (actually there is no attribute for this according to assignment doc)</label>
+          <input type="text" class="form-control" id="text-placeholder" placeholder="Placeholder">
+        </div>
+        <div class="input-group">
+          <input type="text" readonly value="Formatted" class="form-control"/>
+          <span class="input-group-addon">
+        <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone: true}"/>
+      </span>
+        </div><br/>
+      </form>
     </div>
 
   </div>
+
 </div>
 
 

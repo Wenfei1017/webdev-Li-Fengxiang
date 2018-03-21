@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgSwitch } from '@angular/common';
 
 import { Widget } from '../../../models/widget.model.client';
+import {WidgetService} from '../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-edit',
@@ -15,14 +16,14 @@ export class WidgetEditComponent implements OnInit {
   widget: Widget;
 
   constructor(
-    @Inject('WidgetService') private widgetService,
+    private widgetService: WidgetService,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) { }å
 
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: any) => {
-      this.widgetId = (params['widgetId']);
+      this.widgetId = (params['wgid']);
 
       // new
       this.widget = this.widgetService.initialWidget();

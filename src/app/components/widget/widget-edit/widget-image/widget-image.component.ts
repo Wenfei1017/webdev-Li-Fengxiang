@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../../../environments/environment';
 
 import { Widget } from '../../../../models/widget.model.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-image',
@@ -19,12 +20,12 @@ export class WidgetImageComponent implements OnInit {
   baseUrl: String;
 
   constructor(
-    @Inject('WidgetService') private widgetService,
+    private widgetService: WidgetService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
-  updateOrCreateWidget() {
+  updateWidget() {
     if (!this.widget._id) {
       this.widgetService.createWidget(this.pageId, this.widget).subscribe(
         (widget: Widget) => {
@@ -54,12 +55,12 @@ export class WidgetImageComponent implements OnInit {
 
     this.baseUrl = environment.baseUrl;
     this.activatedRoute.params.subscribe((params: any) => {
-      this.widgetId = params['widgetId'];
-      this.pageId = params['pageId'];
-      this.websiteId = params['websiteId'];
-      this.userId = params['userId'];
+      this.widgetId = params['wgid'];
+      this.pageId = params['pid'];
+      this.websiteId = params['wid'];
+      this.userId = params['uid'];
       if (this.widgetId === 'image') {
-        this.widget = this.widgetService.dumpWidget();
+        this.widget = this.widgetService.initialWidget();
         this.widget.widgetType = 'IMAGE';
       } else {
         this.widgetService.findWidgetById(this.widgetId).subscribe(

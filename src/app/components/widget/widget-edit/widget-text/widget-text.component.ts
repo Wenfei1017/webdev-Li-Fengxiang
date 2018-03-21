@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Widget } from '../../../../models/widget.model.client';
+import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
   selector: 'app-widget-text',
@@ -14,12 +15,12 @@ export class WidgetTextComponent implements OnInit {
   pageId: String;
 
   constructor(
-    @Inject('WidgetService') private widgetService,
+    private widgetService: WidgetService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
-  updateOrCreateWidget() {
+  updateWidget() {
     if (!this.widget._id) {
       this.widgetService.createWidget(this.pageId, this.widget).subscribe(
         (widget: Widget) => {
@@ -47,10 +48,10 @@ export class WidgetTextComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: any) => {
-      this.widgetId = params['widgetId'];
-      this.pageId = params['pageId'];
+      this.widgetId = params['w'];
+      this.pageId = params['pid'];
       if (this.widgetId === 'text') {
-        this.widget = this.widgetService.dumpWidget();
+        this.widget = this.widgetService.initialWidget();
         this.widget.widgetType = 'TEXT';
       } else {
         this.widgetService.findWidgetById(this.widgetId).subscribe(
