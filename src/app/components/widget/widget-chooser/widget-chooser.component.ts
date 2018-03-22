@@ -35,9 +35,18 @@ export class WidgetChooserComponent implements OnInit {
     const newWidget: Widget = {
       _id: '', widgetType: widgetType, pageId: '100', size: '1', text: 'text', url: 'url', width: '100%'
     };
+    if (widgetType === "Youtube") {
+      newWidget.url = "https://www.youtube.com/embed/AM2Ivdi9c4E";
+    }
+
+    if (widgetType === "Image") {
+      newWidget.url = "http://lorempixel.com/400/200/";
+    }
+
     this.widgetService.createWidget(this.pageId, newWidget).subscribe(
-      () => {
-        const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + newWidget._id;
+      (widget: Widget) => {
+
+        const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + widget._id;
         this.router.navigate([url]);
       }
     );

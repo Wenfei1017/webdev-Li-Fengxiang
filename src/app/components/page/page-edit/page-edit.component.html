@@ -7,7 +7,7 @@
   </div>
 
 </nav>
-<div class="container-fluid cl-body-padding">
+<div class="container">
   <form>
     <div class="form-group">
       <label >Name</label>
@@ -20,8 +20,11 @@
 
     <button (click)="updatePage()" class="btn btn-block btn-primary">Update</button>
     <button (click)="deletePage()" class="btn btn-block btn-danger">Delete</button>
+    <button routerLink="./widget" class="btn btn-block btn-danger">Widgets</button>
   </form>
 </div>
+
+<!--page/:pid/widget-->
 <nav class="navbar navbar-fixed-bottom navbar-light bg-secondary">
   <a class="navbar-brand pull-right" routerLink="/user/{{userId}}">
     <span class="glyphicon glyphicon-user text-primary"></span>

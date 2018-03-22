@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-fixed-top cl-blue-navbar">
+<nav class="container">
   <div class="container-fluid">
     <p class="navbar-text pull-left">
       <a href="../user/profile.html" class="navbar-link cl-text-white">
@@ -16,7 +16,7 @@
   </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container">
   <ul class="list-group cl-list-group-borderless">
     <li *ngFor = "let website of websites" class="list-group-item cl-list-item-borderless">
       <a routerLink="./{{website._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>

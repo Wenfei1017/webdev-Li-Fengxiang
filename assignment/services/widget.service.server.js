@@ -53,8 +53,7 @@ module.exports = function (app) {
     widget._id = (new Date()).getTime() + "";
     widget.pageId = pageId;
     WIDGETS.push(widget);
-    var widgets = getWidgetsForPageId(pageId);
-    res.json(widgets);
+    res.json(widget);
   }
 
   function getWidgetsForPageId(pageId) {

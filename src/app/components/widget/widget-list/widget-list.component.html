@@ -1,59 +1,80 @@
-<div class="cl-body-padding">
-
-  <div *ngFor="let widget of widgets">
-    <br/>
-    <div *ngIf="widget.widgetType === 'HEADING'">
-      <h1>{{widget.text}}</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+    <div class="navbar-text pull-left">
+      <a routerLink="../.." class="cl-text-black cl-icon-padding">
+        <span class="glyphicon glyphicon-chevron-left">
+        </span>
+      </a>
     </div>
+    <div class="navbar-text pull-right">
+      <a routerLink="./new" class="cl-icon-padding cl-text-black">
+        <span class="glyphicon glyphicon-plus">
+        </span>
+      </a>
+    </div>
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink=".">
+      Widgets
+    </a>
+  </div>
+</nav>
+<div class="container">
+  <ul class="list-group cl-list-group-borderless">
+    <li *ngFor = "let widget of widgets" class="list-group-item cl-list-item-borderless">
+      <br/>
+      <a routerLink="./{{widget._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
 
-    <div *ngIf="widget.widgetType === 'IMAGE'">
-      <div>
-        <img class="img-responsive img-rounded cl-widget-images" src="{{widget.url}}">
+      <div *ngIf="widget.widgetType === 'HEADING'">
+        <h1>{{widget.text}}</h1>
       </div>
-    </div>
 
-    <div *ngIf="widget.widgetType === 'YOUTUBE'">
-      {{widget.text}}}
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe width="640" height="360" [src]="widget.url | safe" frameborder="0" allowfullscreen></iframe>
+      <div *ngIf="widget.widgetType === 'IMAGE'">
+        <div>
+          <img class="img-responsive img-rounded cl-widget-images" src="{{widget.url}}">
+        </div>
       </div>
-    </div>
 
-    <div *ngIf="widget.widgetType === 'HTML'">
-      <div class="form-group">
-        <label for="html-editor">HTML</label>
-        <quill-editor [(ngModel)]="widget.text" [ngModelOptions]="{standalone: true}"></quill-editor>
+      <div *ngIf="widget.widgetType === 'YOUTUBE'">
+        {{widget.text}}
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe width="640" height="360" [src]="widget.url | safe" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
-    </div>
 
-    <div *ngIf="widget.widgetType === 'TEXT'">
-      <form>
+      <div *ngIf="widget.widgetType === 'HTML'">
         <div class="form-group">
-          <label for="text-name">Name (actually there is no attribute for this according to assignment doc)</label>
-          <input type="text" class="form-control" id="text-name" placeholder="Name">
+          <label for="html-editor">HTML</label>
+          <quill-editor [(ngModel)]="widget.text" [ngModelOptions]="{standalone: true}"></quill-editor>
         </div>
-        <div class="form-group">
-          <label for="text-text">Text</label>
-          <input [(ngModel)]="widget.text" type="text" class="form-control" id="text-text" placeholder="Text" [ngModelOptions]="{standalone: true}">
-        </div>
-        <div class="form-group">
-          <label >Rows (actually there is no attribute for this according to assignment doc)</label>
-          <input type="text" class="form-control" id="text-name" placeholder="Rows">
-        </div>
-        <div class="form-group">
-          <label for="text-placeholder">Rows (actually there is no attribute for this according to assignment doc)</label>
-          <input type="text" class="form-control" id="text-placeholder" placeholder="Placeholder">
-        </div>
-        <div class="input-group">
-          <input type="text" readonly value="Formatted" class="form-control"/>
-          <span class="input-group-addon">
+      </div>
+
+      <div *ngIf="widget.widgetType === 'TEXT'">
+        <form>
+          <div class="form-group">
+            <label for="text-name">Name (actually there is no attribute for this according to assignment doc)</label>
+            <input type="text" class="form-control" id="text-name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="text-text">Text</label>
+            <input [(ngModel)]="widget.text" type="text" class="form-control" id="text-text" placeholder="Text" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label >Rows (actually there is no attribute for this according to assignment doc)</label>
+            <input type="text" class="form-control" id="text-name" placeholder="Rows">
+          </div>
+          <div class="form-group">
+            <label for="text-placeholder">Rows (actually there is no attribute for this according to assignment doc)</label>
+            <input type="text" class="form-control" id="text-placeholder" placeholder="Placeholder">
+          </div>
+          <div class="input-group">
+            <input type="text" readonly value="Formatted" class="form-control"/>
+            <span class="input-group-addon">
           <input [(ngModel)]="widget.formatted" type="checkbox" [ngModelOptions]="{standalone: true}"/>
           </span>
-        </div>
-      </form>
-    </div>
-  </div>
-
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
 </div>
 
 

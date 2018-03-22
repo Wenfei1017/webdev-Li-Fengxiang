@@ -27,6 +27,8 @@ export class WidgetEditComponent implements OnInit {
 
       // new
       this.widget = this.widgetService.initialWidget();
+      console.log("pppppp!!");
+      console.log(this.widgetId);
       if (this.widgetId === 'heading') {
         this.widget.widgetType = 'HEADING';
       } else if (this.widgetId === 'image') {
@@ -39,8 +41,10 @@ export class WidgetEditComponent implements OnInit {
         this.widget.widgetType = 'HTML';
         // update
       } else {
+        console.log("sdfas");
         this.widgetService.findWidgetById(this.widgetId).subscribe(
           (widget: Widget) => {
+            console.log(this.widget);
             this.widget = widget;
           }
         );

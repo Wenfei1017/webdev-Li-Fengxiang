@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid row">
+<div class="container">
   <div class="navbar-text pull-left">
     <a routerLink="../.." class="cl-text-black cl-icon-padding">
       <span class="glyphicon glyphicon-chevron-left"></span>
@@ -16,7 +16,7 @@
 </div>
 </nav>
 
-<div class="container-fluid cl-container-padding">
+<div class="container">
   <ul class="list-group cl-list-group-borderless">
     <li *ngFor = "let page of pages" class="list-group-item cl-list-item-borderless">
       <a routerLink="./{{page._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
