@@ -1,29 +1,35 @@
 
 
 <router-outlet>
+
+
   <div class="container">
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+        Link <span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li role="menuitem"><a class="dropdown-item" href="/login">user   login</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/register">register</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123">Profile</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website">WebSiteList</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/new">WebsiteNewComponent</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111">WebsiteComponentWithId</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/edit">WebSiteEdit</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page">PageListComponent</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/new">PageNewComponent</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/100">PageEditComponent</a></li>
 
-    <ul><a routerLink="/login">        user   login               </a></ul>
-    <ul><a routerLink="/register">             register             </a></ul>
-    <ul> <a routerLink="/user/123">         Profile              </a></ul>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget">WidgetListComponent</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/new">WidgetChooserComponent</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/100">WidgetEditComponentWithId</a></li>
 
-    <ul><a routerLink="/user/123/website">          WebSiteList               </a></ul>
-    <ul><a routerLink="/user/123/website/new">          WebsiteNewComponent               </a></ul>
-    <ul><a routerLink="/user/123/website/111">          WebsiteComponentWithId              </a></ul>
-    <ul><a routerLink="/user/123/website/111/edit">          WebSiteEdit               </a></ul>
-
-    <ul><a routerLink="/user/123/website/111/page">          PageListComponent               </a></ul>
-    <ul><a routerLink="/user/123/website/111/page/new">          PageNewComponent               </a></ul>
-    <ul><a routerLink="/user/123/website/111/page/100">          PageEditComponent               </a></ul>
-
-    <ul><a routerLink="/user/123/website/111/page/3/widget">          WidgetListComponent               </a></ul>
-    <ul><a routerLink="/user/123/website/111/page/3/widget/new">          WidgetChooserComponent               </a></ul>
-    <ul><a routerLink="/user/123/website/111/page/3/widget/100">          WidgetEditComponentWithId              </a></ul>
-    <ul> <a routerLink="/user/123/website/111/page/3/widget/100">WidgetHeading </a></ul>
-    <ul> <a routerLink="/user/123/website/111/page/3/widget/200">WidgetImage </a></ul>
-    <ul> <a routerLink="/user/123/website/111/page/3/widget/300">WidgetYoutube </a></ul>
-    <ul> <a routerLink="/user/123/website/111/page/3/widget/400">WidgetHTML </a></ul>
-    <ul> <a routerLink="/user/123/website/111/page/3/widget/500">WidgetTEXT </a></ul>
-
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/100">WidgetHeading</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/200">WidgetImage</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/300">WidgetYoutube</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/400">WidgetHTML</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="/user/123/website/111/page/3/widget/500">WidgetTEXT</a></li>
+      </ul>
+    </div>
   </div>
 </router-outlet>

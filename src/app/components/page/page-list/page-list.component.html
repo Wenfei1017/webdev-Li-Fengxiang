@@ -1,29 +1,3 @@
-<p>
-  page-list works!
-</p>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid row">
-
-    <div class="navbar-text pull-left">
-      <a href="../website/website-list.html" class="cl-text-black cl-icon-padding">
-          <span class="glyphicon glyphicon-chevron-left">
-          </span>
-      </a>
-    </div>
-    <div class="navbar-text pull-right">
-      <a href="page-new.html" class="cl-icon-padding cl-text-black">
-          <span class="glyphicon glyphicon-plus">
-          </span>
-      </a>
-    </div>
-    <a class="navbar-brand cl-text-white cl-text-bold" href="#">
-      Pages
-    </a>
-  </div>
-</nav>
-
-
 <div *ngFor="let page of pages">
   Name: {{page.name}} <br>
   Title: {{page.title}}

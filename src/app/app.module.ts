@@ -33,7 +33,7 @@ import { WidgetService } from './services/widget.service.client';
 
 import { Routing } from './app.routing';
 import { QuillEditorModule } from 'ngx-quill-editor';
-
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -65,6 +65,8 @@ import { QuillEditorModule } from 'ngx-quill-editor';
     FormsModule,
     Routing,
     QuillEditorModule,
+    BsDropdownModule,
+    BsDropdownModule.forRoot(),
   ],
   // Client Side services here
   providers: [UserService, WebsiteService, PageService, WidgetService],
