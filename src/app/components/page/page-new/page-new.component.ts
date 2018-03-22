@@ -31,9 +31,9 @@ export class PageNewComponent implements OnInit {
     );
   }
 
-  createPage(page) {
-    if (page.name.trim() !== '' && page.title.trim() !== '') {
-      this.pageService.createPage(this.websiteId, page).subscribe(
+  createPage() {
+    if (this.newPage.name.trim() !== '' && this.newPage.title.trim() !== '') {
+      this.pageService.createPage(this.websiteId, this.newPage).subscribe(
         (page: Page) => {
           const url: any = "/user/" + this.userId + "/website/" + this.websiteId + "/page"
           this.router.navigate([url]);

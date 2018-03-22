@@ -5,7 +5,7 @@
   <div class="navbar-brand font-weight-bold">
     Edit Page
   </div>
-  <button (click)="updatePage(updatedPage)" class="btn btn-block btn-danger">Update</button>
+
 </nav>
 <div class="container-fluid cl-body-padding">
   <form>
@@ -17,6 +17,8 @@
       <label >Title</label>
       <input [(ngModel)]="updatedPage.title" type="text" class="form-control" name="title" placeholder="Page Title">
     </div>
+
+    <button (click)="updatePage()" class="btn btn-block btn-primary">Update</button>
     <button (click)="deletePage()" class="btn btn-block btn-danger">Delete</button>
   </form>
 </div>

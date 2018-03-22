@@ -38,13 +38,15 @@
     </div>
 
     </form>
-    <div >
+  <div >
       <button routerLink="/user/{userId}/website"  class="btn btn-primary btn-block">Websites</button>
     </div>
 </div>
 
-<nav class="navbar navbar-fixed-bottom navbar-light bg-primary">
-  <a class="navbar-brand pull-right" routerLink="/user/{{userId}}">
-    <i class="glyphicon glyphicon-user text-white"></i>
-  </a>
+<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
+  <div class="container-fluid">
+    <a routerLink="/profile/{{user._id}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
+      <span class="glyphicon glyphicon-user"></span>
+    </a>
+  </div>
 </nav>

@@ -1,13 +1,34 @@
-<div *ngFor="let page of pages">
-  Name: {{page.name}} <br>
-  Title: {{page.title}}
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container-fluid row">
+  <div class="navbar-text pull-left">
+    <a routerLink="../.." class="cl-text-black cl-icon-padding">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+  </div>
+  <a class="navbar-brand cl-text-white cl-text-bold" routerLink=".">
+    Pages
+  </a>
+  <div class="navbar-text pull-right">
+    <a routerLink="./new" class="cl-icon-padding cl-text-black">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
 </div>
+</nav>
 
+<div class="container-fluid cl-container-padding">
+  <ul class="list-group cl-list-group-borderless">
+    <li *ngFor = "let page of pages" class="list-group-item cl-list-item-borderless">
+      <a routerLink="./{{page._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+      <a routerLink="./{{page._id}}/widget">{{page.name}}</a>
+    </li>
+  </ul>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-      <a href="../user/profile.html" class="cl-icon-padding">
+      <a routerLink="../../.." class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </div>

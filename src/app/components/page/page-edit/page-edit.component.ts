@@ -39,8 +39,8 @@ export class PageEditComponent implements OnInit {
     );
   }
 
-  updatePage(page) {
-    if (page.name.trim() !== '' && page.title !== '' && page.title.trim() !== '') {
+  updatePage() {
+    if (this.updatedPage.name.trim() !== '' && this.updatedPage.title !== '' && this.updatedPage.title.trim() !== '') {
       this.pageService.updatePage(this.updatedPage).subscribe(
         (page: Page) => {
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
