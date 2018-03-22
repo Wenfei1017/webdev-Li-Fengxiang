@@ -20,6 +20,9 @@ export class ProfileComponent implements OnInit {
   errorFlag: boolean;
   errorMsg: String;
 
+  updateFlag: boolean;
+  updateMsg: String;
+
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
@@ -27,13 +30,14 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   updateUser() {
-    console.log(this.user);
     this.userService.updateUser(this.user).subscribe(
       (user: User) => {
         this.errorFlag = false;
         this.user = user;
         const url: any = '/user/' + this.userId;
         this.router.navigate([url]);
+        this.updateFlag = true;
+        this.updateMsg = "Update Success!!";
       }, (error: any) => {
         this.errorFlag = true;
         this.errorMsg = error._body;

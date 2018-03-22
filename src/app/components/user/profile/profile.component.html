@@ -1,7 +1,11 @@
 <div class="container cl-body-padding">
 
   <div *ngIf="errorFlag" class="alert alert-danger">
-    {{errorMsg}}
+  {{errorMsg}}
+  </div>
+
+  <div *ngIf="updateFlag" class="alert alert-info">
+    {{updateMsg}}
   </div>
 
     <form (ngSubmit)="updateUser()" #f="ngForm">
@@ -29,13 +33,16 @@
         <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete</button>
       </div>
 
-
     <div class="form-group">
       <a routerLink="/login" class="btn btn-danger btn-block">Logout</a>
     </div>
 
-  </form>
+    </form>
+    <div >
+      <button routerLink="/user/{userId}/website"  class="btn btn-primary btn-block">Websites</button>
+    </div>
 </div>
+
 <nav class="navbar navbar-fixed-bottom navbar-light bg-primary">
   <a class="navbar-brand pull-right" routerLink="/user/{{userId}}">
     <i class="glyphicon glyphicon-user text-white"></i>

@@ -40,6 +40,9 @@ module.exports = function (app) {
     var user = null;
 
     if (username && password){
+      // console.log(username);
+      // console.log(password);
+      // console.log(users);
       user = users.find(function (user) {
           return user.username === username && user.password === password;
       });
@@ -62,7 +65,7 @@ module.exports = function (app) {
       if (users[i]._id === userId) {
         users[i].firstName = user.firstName;
         users[i].lastName = user.lastName;
-
+        users[i].username = user.username;
         res.status(200).send(user);
         return;
       }
