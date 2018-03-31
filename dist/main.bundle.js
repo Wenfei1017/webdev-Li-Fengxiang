@@ -2283,7 +2283,8 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    baseUrl: 'http://localhost:3200'
+    // baseUrl : 'http://localhost:3200',
+    baseUrl: 'https://webdev-fengxiang-li.herokuapp.com/'
 };
 //# sourceMappingURL=environment.js.map
 
