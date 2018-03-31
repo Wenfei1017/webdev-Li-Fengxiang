@@ -2284,7 +2284,7 @@ var _a;
 var environment = {
     production: true,
     // baseUrl : 'http://localhost:3200',
-    baseUrl: 'https://webdev-fengxiang-li.herokuapp.com/'
+    baseUrl: 'https://webdev-fengxiang-li.herokuapp.com'
 };
 //# sourceMappingURL=environment.js.map
 
