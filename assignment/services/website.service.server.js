@@ -1,6 +1,4 @@
 module.exports = function(app, models){
-  var WEBSITES = require("./website.mock.server");
-
   app.get("/api/user/:userId/website", findWebsiteForUser);
   app.post("/api/user/:userId/website", createWebsite);
   app.delete("/api/user/:userId/website/:websiteId", deleteWebsite);

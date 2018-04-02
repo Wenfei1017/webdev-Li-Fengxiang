@@ -10,8 +10,6 @@ module.exports = function (app, models) {
   app.delete("/api/widget/:widgetId", deleteWidget);
   app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
-  var WIDGETS = require("./widget.mock.server.js");
-
   function uploadImage(req, res) {
     console.log("uploadImage");
     var widgetId      = req.body.widgetId;
