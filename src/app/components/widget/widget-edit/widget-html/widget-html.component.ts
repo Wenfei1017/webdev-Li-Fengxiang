@@ -36,6 +36,7 @@ export class WidgetHtmlComponent implements OnInit {
         }
       );
     }
+    this.widget = this.widgetService.initialWidget();
   }
 
   deleteWidget() {

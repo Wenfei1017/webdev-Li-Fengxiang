@@ -32,21 +32,24 @@ export class WidgetChooserComponent implements OnInit {
   }
 
   createWidget(widgetType: String) {
-    const newWidget: Widget = {
-      _id: '', widgetType: widgetType, pageId: '100', size: '1', text: 'text', url: 'url', width: '100%'
-    };
-    if (widgetType === "Youtube") {
+    var newWidget = this.widgetService.initialWidget();
+    if (widgetType === "YOUTUBE") {
       newWidget.url = "https://www.youtube.com/embed/AM2Ivdi9c4E";
     }
 
-    if (widgetType === "Image") {
+    if (widgetType === "IMAGE") {
       newWidget.url = "http://lorempixel.com/400/200/";
     }
+    newWidget.widgetType = widgetType;
+    console.log("newWidget!!");
 
     this.widgetService.createWidget(this.pageId, newWidget).subscribe(
       (widget: Widget) => {
 
         const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + widget._id;
+        console.log("jump url");
+        console.log(url);
+        console.log(widget);
         this.router.navigate([url]);
       }
     );

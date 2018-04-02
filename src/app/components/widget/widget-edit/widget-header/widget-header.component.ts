@@ -37,6 +37,7 @@ export class WidgetHeaderComponent implements OnInit {
         }
       );
     }
+    this.widget = this.widgetService.initialWidget();
   }
 
   deleteWidget() {

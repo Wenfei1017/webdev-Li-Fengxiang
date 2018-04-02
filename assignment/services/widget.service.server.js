@@ -3,6 +3,8 @@ module.exports = function (app, models) {
   var multer = require('multer'); // npm install multer --save
   var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
 
+  var widgetModel = require('../model/widget/widget.model.server');
+
   app.post("/api/page/:pageId/widget", createWidget);
   app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
   app.get("/api/widget/:widgetId", findWidgetById);
@@ -49,7 +51,7 @@ module.exports = function (app, models) {
     var pageId = req.params["pageId"];
     var widget = req.body;
 
-    models.widgetModel.createWidget(pageId, widget).then(
+    widgetModel.createWidget(pageId, widget).then(
       function (newWidget){
         res.status(200).json(newWidget);
       },
@@ -59,20 +61,9 @@ module.exports = function (app, models) {
     );
   }
 
-  // function getWidgetsForPageId(pageId) {
-  //   var widgets=[];
-  //
-  //   for(var i = 0; i < WIDGETS.length; i++) {
-  //     if (WIDGETS[i].pageId === pageId) {
-  //       widgets.push(WIDGETS[i]);
-  //     }
-  //   }
-  //   return widgets;
-  // }
-
   function findAllWidgetsForPage(req, res) {
     var pageId = req.params["pageId"];
-    models.widgetModel.findAllWidgetsForPage(pageId).then(
+    widgetModel.findAllWidgetsForPage(pageId).then(
       function (widgets){
         res.status(200).send(widgets);
       },
@@ -84,7 +75,9 @@ module.exports = function (app, models) {
 
   function findWidgetById(req,res) {
     var widgetId = req.params["widgetId"];
-    models.widgetModel.findWidgetById(widgetId).then(
+    console.log("findWidget");
+    console.log(widgetId);
+    widgetModel.findWidgetById(widgetId).then(
       function (widget) {
         if(widget){
           res.status(200).json(widget);
@@ -98,19 +91,11 @@ module.exports = function (app, models) {
     )
   }
 
-  // function getWidgetById(widgetId){
-  //   for(var i = 0; i < WIDGETS.length; i++) {
-  //     if (WIDGETS[i]._id === widgetId) {
-  //       return WIDGETS[i];
-  //     }
-  //   }
-  // }
-
   function updateWidget(req,res) {
     var widgetId = req.params['widgetId'];
     var newWidget = req.body;
 
-    models.widgetModel.updateWidget(widgetId, newWidget).then(
+    widgetModel.updateWidget(widgetId, newWidget).then(
       function (widget) {
         if(widget) {
           res.status(200).json(widget);
@@ -126,7 +111,7 @@ module.exports = function (app, models) {
 
   function deleteWidget(req,res) {
     var widgetId = req.params['widgetId'];
-    models.widgetModel.deleteWidget(widgetId).then(
+    widgetModel.deleteWidget(widgetId).then(
       function (status) {
         res.status(status);
       },

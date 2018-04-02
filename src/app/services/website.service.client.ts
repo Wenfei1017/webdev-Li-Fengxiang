@@ -21,6 +21,10 @@ export class WebsiteService {
     new Website('234', 'Amazon', '789', 'test' ),
   ];
 
+  initialWebsite() {
+    return new Website(undefined, undefined, undefined, undefined);
+  }
+
   findAllWebSites() {
     return this.websites;
   }
@@ -28,7 +32,6 @@ export class WebsiteService {
   updateWebsite(userId: String, newWebsite: Website) {
     const url =  this.baseUrl + '/api/user/' + userId + '/website/' + newWebsite._id;
     return this.http.put(url, newWebsite).map((response: Response) => {
-      console.log("hasReturn");
       return response.json();
     });
   }
@@ -42,8 +45,8 @@ export class WebsiteService {
 
   deleteWebsite(userId: String,  websiteId: String) {
     const url = this.baseUrl + '/api/user/' + userId + '/website/' + websiteId;
+    console.log(url);
     return this.http.delete(url).map((response: Response) => {
-      console.log("come back");
     });
   }
 

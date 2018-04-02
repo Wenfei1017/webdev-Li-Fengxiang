@@ -22,7 +22,7 @@ export  class WidgetService {
     new Widget('789', 'IMAGE', '100', '2', '<p>Lorem ipsum</p>' ,'100%' , 'http://lorempixel.com/400/200/'),
   ];
   initialWidget() {
-    return new Widget(undefined, undefined, undefined);
+    return new Widget(undefined, undefined, undefined, undefined);
   }
 
   createWidget(pageId: String, widget: Widget) {

@@ -1,4 +1,7 @@
-module.exports = function (app, models) {
+module.exports = function (app) {
+
+  var pageModel = require("../model/page/page.model.server");
+
   app.post("/api/website/:websiteId/page", createPage);
   app.get("/api/website/:websiteId/page", findAllPagesForWebsite);
   app.get("/api/page/:pageId", findPageById);
@@ -9,7 +12,7 @@ module.exports = function (app, models) {
     var websiteId = req.params["websiteId"];
     var page = req.body;
 
-    models.pageModel.createPage(websiteId, page).then(
+    pageModel.createPage(websiteId, page).then(
       function (page){
         res.status(200).json(page);
       },
@@ -22,7 +25,7 @@ module.exports = function (app, models) {
   function findAllPagesForWebsite(req,res) {
     var websiteId = req.params["websiteId"];
 
-    models.pageModel.findAllPagesForWebsite(websiteId).then(
+    pageModel.findAllPagesForWebsite(websiteId).then(
       function (pages){
         res.status(200).json(pages);
       },
@@ -35,7 +38,7 @@ module.exports = function (app, models) {
   function findPageById(req,res) {
     var pageId = req.params["pageId"];
 
-    models.pageModel.findPageById(pageId).then(
+    pageModel.findPageById(pageId).then(
       function (page){
         if(page){
           res.status(200).json(page);
@@ -53,7 +56,7 @@ module.exports = function (app, models) {
     var pid = req.params['pageId'];
     var newPage = req.body;
 
-    models.pageModel.updatePage(pid, newPage).then(
+    pageModel.updatePage(pid, newPage).then(
       function (page){
         if(page){
           res.status(200).json(page);
@@ -70,7 +73,7 @@ module.exports = function (app, models) {
   function deletePage(req, res) {
     var pid = req.params.pageId;
 
-    models.pageModel.deletePage(pid).then(
+    pageModel.deletePage(pid).then(
       function (status){
         res.json(status);
       },

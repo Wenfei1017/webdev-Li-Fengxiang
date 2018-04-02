@@ -1,4 +1,7 @@
 module.exports = function(app, models){
+
+  var websiteModel = require('../model/website/website.model.server');
+
   app.get("/api/user/:userId/website", findWebsiteForUser);
   app.post("/api/user/:userId/website", createWebsite);
   app.delete("/api/user/:userId/website/:websiteId", deleteWebsite);
@@ -8,12 +11,12 @@ module.exports = function(app, models){
   function createWebsite(req, res){
     var userId = req.params['userId'];
     var newWebsite = req.body;
-
-    models.websiteModel.createWebsiteForUser(userId, newWebsite).then(
+    websiteModel.createWebsiteForUser(userId, newWebsite).then(
       function (newWebsite){
         res.status(200).json(newWebsite);
       },
       function (error){
+        // console.log(error);
         res.status(500).send("Website careation failed. " + error);
       }
     );
@@ -21,7 +24,7 @@ module.exports = function(app, models){
 
   function findWebsiteForUser(req, res) {
     var userId = req.params['userId'];
-    models.websiteModel.findAllWebsitesForUser(userId).then(
+    websiteModel.findAllWebsitesForUser(userId).then(
       function successCallback(websites){
         res.status(200).json(websites);
       },
@@ -33,7 +36,7 @@ module.exports = function(app, models){
 
   function findWebsiteById(req, res){
     var websiteId = req.params['websiteId'];
-    models.websiteModel.findWebsiteById(websiteId).then(
+    websiteModel.findWebsiteById(websiteId).then(
       function successCallback(website){
         if(website){
           res.status(200).json(website);
@@ -49,9 +52,9 @@ module.exports = function(app, models){
 
   function updateWebsiteById(req, res){
     var websiteId = req.params['websiteId'];
-    var newWebSite = req.body;
+    var newWebsite = req.body;
 
-    models.websiteModel.updateWebsite(websiteId, newWebsite).then(
+    websiteModel.updateWebsite(websiteId, newWebsite).then(
       function (website){
         if(website){
           res.status(200).json(website);
@@ -67,9 +70,9 @@ module.exports = function(app, models){
 
   function deleteWebsite(req, res){
     var websiteId = req.params['websiteId'];
-    models.websiteModel.deleteWebsite(websiteId).then(
+    websiteModel.deleteWebsite(websiteId).then(
       function (website){
-        res.json(status);
+        res.json(website);
       },
       function (error){
         res.status(500).json(err);

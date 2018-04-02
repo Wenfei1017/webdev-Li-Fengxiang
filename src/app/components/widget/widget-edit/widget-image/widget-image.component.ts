@@ -70,5 +70,6 @@ export class WidgetImageComponent implements OnInit {
         );
       }
     });
+    this.widget = this.widgetService.initialWidget();
   }
 }

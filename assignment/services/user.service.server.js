@@ -1,7 +1,8 @@
-module.exports = function (app, models) {
+module.exports = function (app) {
+
+  var userModel = require("../model/user/user.model.server");
 
   app.put("/api/user/:userId", updateUserById);
-
   app.post("/api/user", createUser);
   app.get("/api/user/hello", helloUser);
   app.get("/api/user/:userId", findUserById);
@@ -13,11 +14,10 @@ module.exports = function (app, models) {
   }
 
   function createUser(req, res) {
-    console.log("testUser");
 
     var createdUser = req.body;
-    console.log(models);
-    models.userModel.createUser(createdUser).then(
+    console.log("testUser");
+    userModel.createUser(createdUser).then(
       function (user){
         res.status(200).json(user);
       },
@@ -29,9 +29,9 @@ module.exports = function (app, models) {
 
   function findUserById(req, res){
     var userId = req.params["userId"];
-    console.log("test");
-    console.log(userId);
-    models.userModel.findUserById(userId).then(
+    // console.log("test");
+    // console.log(userId);
+    userModel.findUserById(userId).then(
       function (user){
         if(user){
           res.status(200).json(user);
@@ -50,10 +50,8 @@ module.exports = function (app, models) {
     var password = req.query["password"];
 
     var user = null;
-    console.log("test");
-    console.log(models);
     if (username && password){
-      models.userModel.findUserByCredentials(username, password).then(
+      userModel.findUserByCredentials(username, password).then(
         function (user){
           if(user){
             res.status(200).json(user);
@@ -66,7 +64,7 @@ module.exports = function (app, models) {
         }
       );
     } else {
-      models.userModel.findUserByUsername(username).then(
+      userModel.findUserByUsername(username).then(
         function successCallback(user){
           if(user){
             res.status(200).json(user);
@@ -84,7 +82,7 @@ module.exports = function (app, models) {
   function updateUserById(req, res){
     var userId = req.params['userId'];
     var newUser = req.body;
-    models.userModel.updateUser(userId, newUser).then(
+    userModel.updateUser(userId, newUser).then(
       function successCallback(user){
         if(user){
           res.status(200).json(user);
@@ -102,7 +100,7 @@ module.exports = function (app, models) {
   function deleteUser(req, res) {
     var userId = req.params["userId"];
     if(userId){
-      model.userModel.deleteUser(uid).then(
+      userModel.deleteUser(userId).then(
           function (status){
             res.status(200);
           },

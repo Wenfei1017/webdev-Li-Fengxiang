@@ -47,7 +47,6 @@ export class WidgetTextComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("text INIT!!");
     this.activatedRoute.params.subscribe((params: any) => {
       this.widgetId = params['wgid'];
       this.pageId = params['pid'];
@@ -62,5 +61,6 @@ export class WidgetTextComponent implements OnInit {
         );
       }
     });
+    this.widget = this.widgetService.initialWidget();
   }
 }

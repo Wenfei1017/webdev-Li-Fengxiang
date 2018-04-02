@@ -13,7 +13,7 @@ export class PageEditComponent implements OnInit {
 
   userId: String;
   pageId: String;
-  updatedPage: Page = { _id: "", name: "", websiteId: "", title: "" };
+  updatedPage: Page;
   name: String;
   websiteId: String;
   description: String;
@@ -50,10 +50,8 @@ export class PageEditComponent implements OnInit {
   }
 
   deletePage() {
-    console.log(this.pageId);
     this.pageService.deletePage(this.pageId).subscribe(
       () => {
-        console.log("testDelete");
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});
       }
     );

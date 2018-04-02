@@ -64,6 +64,6 @@ export class WidgetYoutubeComponent implements OnInit {
         );
       }
     });
+    this.widget = this.widgetService.initialWidget();
   }
-
 }

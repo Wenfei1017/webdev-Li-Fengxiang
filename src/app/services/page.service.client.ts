@@ -13,6 +13,11 @@ export class PageService {
 
   baseUrl = environment.baseUrl;
 
+
+  initialPage() {
+    return new Page(undefined, undefined, undefined, undefined);
+  }
+
   findPagesByWebsiteId(websiteId: String) {
     const url = this.baseUrl + '/api/website/' + websiteId + '/page';
     return this.http.get(url)
@@ -41,14 +46,12 @@ export class PageService {
     const url = this.baseUrl + '/api/page/' + pageId;
     return this.http.delete(url)
       .map((res: Response) => {
-        console.log("deleteService");
         return res.json();
       });
   }
 
   createPage(websiteId: String, page: Page) {
     const url = this.baseUrl + '/api/website/' + websiteId + '/page';
-    console.log(url);
     return this.http.post(url, page)
       .map((res: Response) => {
         return res.json();

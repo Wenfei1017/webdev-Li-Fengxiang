@@ -18,7 +18,7 @@ export class WidgetEditComponent implements OnInit {
   constructor(
     private widgetService: WidgetService,
     private activatedRoute: ActivatedRoute
-  ) { }å
+  ) { }
 
 
   ngOnInit() {
@@ -27,28 +27,38 @@ export class WidgetEditComponent implements OnInit {
 
       // new
       this.widget = this.widgetService.initialWidget();
+
       console.log("pppppp!!");
       console.log(this.widgetId);
-      if (this.widgetId === 'heading') {
-        this.widget.widgetType = 'HEADING';
-      } else if (this.widgetId === 'image') {
-        this.widget.widgetType = 'IMAGE';
-      } else if (this.widgetId === 'youtube') {
-        this.widget.widgetType = 'YOUTUBE';
-      } else if (this.widgetId === 'text') {
-        this.widget.widgetType = 'TEXT';
-      } else if (this.widgetId === 'html') {
-        this.widget.widgetType = 'HTML';
-        // update
-      } else {
-        console.log("sdfas");
-        this.widgetService.findWidgetById(this.widgetId).subscribe(
-          (widget: Widget) => {
-            console.log(this.widget);
-            this.widget = widget;
-          }
-        );
-      }
+
+      this.widgetService.findWidgetById(this.widgetId).subscribe(
+        (widget: Widget) => {
+          console.log("222222");
+          console.log(this.widget);
+          this.widget = widget;
+        }
+      );
+
+      // if (this.widgetId === 'heading') {
+      //   this.widget.widgetType = 'HEADING';
+      // } else if (this.widgetId === 'image') {
+      //   this.widget.widgetType = 'IMAGE';
+      // } else if (this.widgetId === 'youtube') {
+      //   this.widget.widgetType = 'YOUTUBE';
+      // } else if (this.widgetId === 'text') {
+      //   this.widget.widgetType = 'TEXT';
+      // } else if (this.widgetId === 'html') {
+      //   this.widget.widgetType = 'HTML';
+      //   // update
+      // } else {
+      //   this.widgetService.findWidgetById(this.widgetId).subscribe(
+      //     (widget: Widget) => {
+      //       console.log(this.widget);
+      //       this.widget = widget;
+      //     }
+      //   );
+      // }
+
     });
   }
 

@@ -34,6 +34,7 @@ app.set('port', port);
 // Create HTTP server
 const server = http.createServer(app);
 
+module.exports = app;
 require("./assignment/app")(app);
 
 // For Build: Catch all other routes and return the index file -- BUILDING

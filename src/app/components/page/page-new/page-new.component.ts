@@ -14,7 +14,7 @@ export class PageNewComponent implements OnInit {
 
   userId: String;
   websiteId: String;
-  newPage: Page = {_id: "", name: "", websiteId: "", title: ""};
+  newPage: Page;
 
   constructor(
     private pageService: PageService,
@@ -29,6 +29,7 @@ export class PageNewComponent implements OnInit {
         this.websiteId = params['wid'];
       }
     );
+    this.newPage = this.pageService.initialPage();
   }
 
   createPage() {
@@ -41,5 +42,4 @@ export class PageNewComponent implements OnInit {
       );
     }
   }
-
 }

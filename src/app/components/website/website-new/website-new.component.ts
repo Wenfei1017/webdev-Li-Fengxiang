@@ -12,8 +12,8 @@ import { Website } from '../../../models/website.model.client';
 export class WebsiteNewComponent implements OnInit {
 
   userId: String;
-  websites: any[] = [{ _id: "", name: "", developerId: "", description: "" }];
-  newWebsite: Website = { _id: "", name: "", developId: "", description: "" };
+  websites: Website[] = [];
+  newWebsite: Website ;
 
   constructor(private websiteService: WebsiteService,
               private activatedRoute: ActivatedRoute,
@@ -25,12 +25,16 @@ export class WebsiteNewComponent implements OnInit {
         this.userId = params['uid'];
       }
     );
-
-
-    this.websiteService.findWebsitesById(this.userId);
+    this.newWebsite = this.websiteService.initialWebsite();
+    this.websiteService.findWebsitesById(this.userId).subscribe(
+      (websites: Website[]) => {
+        this.websites = websites;
+      }
+    );
   }
 
   createWebsite() {
+    console.log(this.newWebsite);
     this.websiteService.createWebsiteForUser(this.userId, this.newWebsite).subscribe(
       (website: Website) => {
         const url: any = '/user/' + this.userId + '/website';
