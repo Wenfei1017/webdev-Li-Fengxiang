@@ -28,7 +28,6 @@ export class WidgetEditComponent implements OnInit {
       // new
       this.widget = this.widgetService.initialWidget();
 
-
       this.widgetService.findWidgetById(this.widgetId).subscribe(
         (widget: Widget) => {
           this.widget = widget;

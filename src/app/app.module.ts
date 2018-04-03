@@ -34,6 +34,8 @@ import { WidgetService } from './services/widget.service.client';
 import { Routing } from './app.routing';
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { SortableDirective } from '../../assignment/directives/sortable.directive';
+import { OrderPipe } from '../../assignment/pipes/order/order.pipe';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     WidgetYoutubeComponent,
     WidgetTextComponent,
     WidgetHtmlComponent,
+    SortableDirective,
+    OrderPipe,
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,17 @@ export class WidgetListComponent implements OnInit {
     public sanitizer: DomSanitizer
   ) { }
 
+  // receiving the emitted event
+  sortWidgets(indexes) {
+    // call widget service function to update widget as per index
+    // console.log(indexes);
+    this.widgetService.sortWidgets(indexes.startIndex, indexes.endIndex, this.pageId)
+      .subscribe(
+        function (data) {
+              console.log(data);
+      });
+  }
+
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: any) => {
       this.pageId = params['pid'];

@@ -25,6 +25,15 @@ export  class WidgetService {
     return new Widget(undefined, undefined, undefined, undefined);
   }
 
+  sortWidgets(startIndex, endIndex, pageId) {
+    return this.http.put(this.baseUrl + '/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex, '')
+      .map(
+        (res: Response) => {
+          return res.json();
+        }
+      );
+  }
+
   createWidget(pageId: String, widget: Widget) {
     return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', widget)
       .map((res: Response) => {
