@@ -31,7 +31,10 @@ function createWidget(pageId, widget) {
 }
 
 function findAllWidgetsForPage(pageId) {
-  return widgetModel.find({_page: pageId});
+  return pageModel.findPageById(pageId)
+    .then(function(page) {
+      return page.widgets;
+    });
 }
 
 function findWidgetById(widgetId) {
@@ -72,14 +75,11 @@ function deleteWidget(widgetId) {
 function sortWidgets(pageId, start, end) {
   return pageModel.findPageById(pageId)
     .then(function(page) {
-      console.log(page.widgets);
-      console.log("======");
-      console.log(start);
-      console.log(end);
-      console.log(page.widgets.length);
       const widgetToModify = page.widgets[start];
       page.widgets.splice(start, 1);
       page.widgets.splice(end, 0, widgetToModify);
       return page.save();
     });
 }
+
+

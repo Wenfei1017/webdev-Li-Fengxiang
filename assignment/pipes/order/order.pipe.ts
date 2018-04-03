@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class OrderPipe implements PipeTransform {
   transform(array: Array<string>, args: string): Array<string> {
-    console.log("pipe works!!");
     array.sort((a: any, b: any) => {
       if (a.position < b.position) {
         return -1;

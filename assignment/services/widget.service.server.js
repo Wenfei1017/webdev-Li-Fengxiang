@@ -125,8 +125,8 @@ module.exports = function (app, models) {
     var endIndex = parseInt(req.query.end);
 
     widgetModel.sortWidgets(pageId, startIndex, endIndex).then(
-      function (status) {
-        res.status(200).json(status);
+      function (page) {
+        res.status(200).json(page);
       },
       function (err) {
         res.status(400).json(err);

@@ -82,8 +82,6 @@ module.exports = function (app) {
     userModel.updateUser(userId, newUser).then(
       function (user){
         if(user){
-          console.log("testUser");
-          console.log(user);
           res.status(200).json(user);
         } else{
           res.status(404).send("User not found when update.");
@@ -93,7 +91,6 @@ module.exports = function (app) {
         res.status(400).send(error);
       }
     );
-
   }
 
   function deleteUser(req, res) {

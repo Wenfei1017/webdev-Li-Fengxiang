@@ -19,7 +19,7 @@
 </nav>
 
 
-<div class="container" appSortable (newIndexes)="sortWidgets($event)">
+<div class="container container cl-container-padding" appSortable (newIndexes)="sortWidgets($event)">
 
   <div *ngFor="let widget of widgets | order" class="list-group-item cl-list-item-borderless">
     <br/>
@@ -93,7 +93,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid row">
     <div class="pull-right navbar-text">
-      <a routerLink="../../../../.." class="cl-icon-padding">
+      <a routerLink="/user/{{userId}}" class="cl-icon-padding">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </div>
