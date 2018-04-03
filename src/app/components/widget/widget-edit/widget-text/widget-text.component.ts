@@ -26,7 +26,6 @@ export class WidgetTextComponent implements OnInit {
         (widget: Widget) => {
           this.widget = widget;
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-          console.log(this.widget);
         }
       );
     } else {

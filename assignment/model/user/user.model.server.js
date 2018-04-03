@@ -54,27 +54,3 @@ function deleteUser(userId) {
   return userModel.deleteOne({_id: userId});
 }
 
-// function addWebsiteToUser(userId, websiteId) {
-//   userModel.findById(userId).then(
-//     function (user) {
-//       user.websites.push(websiteId);
-//       user.save();
-//     },
-//     function (error) {
-//       console.log(error);
-//     }
-//   );
-// }
-//
-// function removeWebsiteFromUser(userId, websiteId) {
-//   userModel.findById(userId).then(
-//     function (user) {
-//       user.websites.pull(websiteId);
-//       user.save();
-//     },
-//     function (error) {
-//       console.log(error);
-//     }
-//   );
-// }
-

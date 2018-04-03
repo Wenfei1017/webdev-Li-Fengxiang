@@ -31,7 +31,6 @@ export class WidgetImageComponent implements OnInit {
         (widget: Widget) => {
           this.widget = widget;
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-          console.log(this.widget);
         }
       );
     } else {
@@ -52,7 +51,6 @@ export class WidgetImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("hereInit");
     this.baseUrl = environment.baseUrl;
     this.activatedRoute.params.subscribe((params: any) => {
       this.widgetId = params['wgid'];

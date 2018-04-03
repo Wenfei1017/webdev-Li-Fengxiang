@@ -41,15 +41,11 @@ export class WidgetChooserComponent implements OnInit {
       newWidget.url = "http://lorempixel.com/400/200/";
     }
     newWidget.widgetType = widgetType;
-    console.log("newWidget!!");
 
     this.widgetService.createWidget(this.pageId, newWidget).subscribe(
       (widget: Widget) => {
 
         const url: any = '/user/' + this.userId + '/website/' + this.websiteId + '/page/' + this.pageId + '/widget/' + widget._id;
-        console.log("jump url");
-        console.log(url);
-        console.log(widget);
         this.router.navigate([url]);
       }
     );

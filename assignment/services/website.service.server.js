@@ -16,7 +16,6 @@ module.exports = function(app, models){
         res.status(200).json(newWebsite);
       },
       function (error){
-        // console.log(error);
         res.status(500).send("Website careation failed. " + error);
       }
     );

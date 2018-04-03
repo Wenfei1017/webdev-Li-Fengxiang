@@ -34,7 +34,6 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   createWebsite() {
-    console.log(this.newWebsite);
     this.websiteService.createWebsiteForUser(this.userId, this.newWebsite).subscribe(
       (website: Website) => {
         const url: any = '/user/' + this.userId + '/website';

@@ -16,7 +16,6 @@ module.exports = function (app) {
   function createUser(req, res) {
 
     var createdUser = req.body;
-    console.log("testUser");
     userModel.createUser(createdUser).then(
       function (user){
         res.status(200).json(user);
@@ -29,8 +28,6 @@ module.exports = function (app) {
 
   function findUserById(req, res){
     var userId = req.params["userId"];
-    // console.log("test");
-    // console.log(userId);
     userModel.findUserById(userId).then(
       function (user){
         if(user){
@@ -65,14 +62,14 @@ module.exports = function (app) {
       );
     } else {
       userModel.findUserByUsername(username).then(
-        function successCallback(user){
+        function (user){
           if(user){
             res.status(200).json(user);
           } else{
             res.status(404).send("User not found by username.");
           }
         },
-        function errorCallback(error){
+        function (error){
           res.status(400).send(error);
         }
       );
@@ -83,14 +80,16 @@ module.exports = function (app) {
     var userId = req.params['userId'];
     var newUser = req.body;
     userModel.updateUser(userId, newUser).then(
-      function successCallback(user){
+      function (user){
         if(user){
+          console.log("testUser");
+          console.log(user);
           res.status(200).json(user);
         } else{
           res.status(404).send("User not found when update.");
         }
       },
-      function errorCallback(error){
+      function (error){
         res.status(400).send(error);
       }
     );

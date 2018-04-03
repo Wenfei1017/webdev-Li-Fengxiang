@@ -45,7 +45,7 @@ export class WebsiteService {
 
   deleteWebsite(userId: String,  websiteId: String) {
     const url = this.baseUrl + '/api/user/' + userId + '/website/' + websiteId;
-    console.log(url);
+
     return this.http.delete(url).map((response: Response) => {
     });
   }

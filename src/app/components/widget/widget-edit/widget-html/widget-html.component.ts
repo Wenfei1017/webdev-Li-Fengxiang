@@ -26,7 +26,6 @@ export class WidgetHtmlComponent implements OnInit {
         (widget: Widget) => {
           this.widget = widget;
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-          console.log(this.widget);
         }
       );
     } else {
@@ -58,7 +57,6 @@ export class WidgetHtmlComponent implements OnInit {
         this.widgetService.findWidgetById(this.widgetId).subscribe(
           (widget: Widget) => {
             this.widget = widget;
-            console.log(this.widget);
           }
         );
       }

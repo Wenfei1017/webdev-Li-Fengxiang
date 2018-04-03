@@ -24,8 +24,6 @@ function createWidget(pageId, widget) {
           return page.save();
         }
       )
-      console.log("resWidget");
-      console.log(resWidget);
       return resWidget;
     }
   );
@@ -36,8 +34,6 @@ function findAllWidgetsForPage(pageId) {
 }
 
 function findWidgetById(widgetId) {
-  console.log("widget!!!");
-  console.log(widgetId);
   return widgetModel.findById(widgetId);
 }
 
@@ -69,8 +65,6 @@ function deleteWidget(widgetId) {
         })
     }
   );
-  console.log("indelete!!");
-  console.log(widgetId);
   return widgetModel.remove({_id: widgetId});
 }
 

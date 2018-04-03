@@ -43,7 +43,6 @@ module.exports = function (app, models) {
       });
       foundWidget.url = "/uploads/" + filename;
     }
-    console.log("test");
     res.redirect("http://localhost:4201/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
   }
 
@@ -75,8 +74,6 @@ module.exports = function (app, models) {
 
   function findWidgetById(req,res) {
     var widgetId = req.params["widgetId"];
-    console.log("findWidget");
-    console.log(widgetId);
     widgetModel.findWidgetById(widgetId).then(
       function (widget) {
         if(widget){

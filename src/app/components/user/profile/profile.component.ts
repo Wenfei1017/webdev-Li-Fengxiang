@@ -33,11 +33,9 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(this.user).subscribe(
       (user: User) => {
         this.errorFlag = false;
-        this.user = user;
-        const url: any = '/user/' + this.userId;
-        this.router.navigate([url]);
         this.updateFlag = true;
         this.updateMsg = "Update Success!!";
+        this.refreshData();
       }, (error: any) => {
         this.errorFlag = true;
         this.errorMsg = error._body;
@@ -45,13 +43,14 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
       this.userId = params['uid'];
     });
+    this.refreshData();
+  }
 
+  refreshData() {
     this.userService.findUserById(this.userId)
       .subscribe(
         (user: User) => {
@@ -64,5 +63,6 @@ export class ProfileComponent implements OnInit {
     this.userService.deleteUser(this.user._id).subscribe();
   }
 }
+
 
 

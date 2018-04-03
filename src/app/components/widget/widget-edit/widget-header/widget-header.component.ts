@@ -27,7 +27,6 @@ export class WidgetHeaderComponent implements OnInit {
         (widget: Widget) => {
           this.widget = widget;
           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-          console.log(this.widget);
         }
       );
     } else {
@@ -41,12 +40,8 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
   deleteWidget() {
-    console.log("delete");
-    console.log(this.widget);
     this.widgetService.deleteWidget(this.widget._id).subscribe(
       () => {
-        console.log("testDDD");
-        console.log(this.activatedRoute);
         this.router.navigate(['../'], {relativeTo: this.activatedRoute});
       }
     );
@@ -63,7 +58,6 @@ export class WidgetHeaderComponent implements OnInit {
         this.widgetService.findWidgetById(this.widgetId).subscribe(
           (widget: Widget) => {
             this.widget = widget;
-            console.log(this.widget);
           },
           (error: any) => {
             console.log("error");

@@ -14,7 +14,6 @@ module.exports = websiteModel;
 
 function createWebsiteForUser(userId, website) {
   website._user = userId;
-  console.log(website);
   return websiteModel.create(website).then(
     function (resWebsite) {
       userModel.findUserById(resWebsite._user).then(
