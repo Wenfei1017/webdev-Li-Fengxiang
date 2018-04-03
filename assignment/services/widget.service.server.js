@@ -113,7 +113,7 @@ module.exports = function (app, models) {
     var widgetId = req.params['widgetId'];
     widgetModel.deleteWidget(widgetId).then(
       function (status) {
-        res.status(status);
+        res.status(200).json(status);
       },
       function (err) {
         res.status(400).json(error);

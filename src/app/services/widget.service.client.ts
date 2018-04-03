@@ -53,7 +53,10 @@ export  class WidgetService {
   }
 
   deleteWidget(widgetId: String) {
-    return this.http.delete(this.baseUrl + '/api/widget/' + widgetId);
+    return this.http.delete(this.baseUrl + '/api/widget/' + widgetId)
+      .map((res: Response) => {
+      return res.json();
+      });
   }
 }
 

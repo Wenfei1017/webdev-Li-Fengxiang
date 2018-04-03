@@ -69,7 +69,8 @@ function deleteWidget(widgetId) {
         })
     }
   );
-
+  console.log("indelete!!");
+  console.log(widgetId);
   return widgetModel.remove({_id: widgetId});
 }
 
