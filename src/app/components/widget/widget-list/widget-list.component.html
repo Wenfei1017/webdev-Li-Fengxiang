@@ -21,7 +21,7 @@
 
 <div class="container container cl-container-padding" appSortable (newIndexes)="sortWidgets($event)">
 
-  <div *ngFor="let widget of widgets | order" class="list-group-item cl-list-item-borderless">
+  <div *ngFor="let widget of widgets" class="list-group-item cl-list-item-borderless">
     <br/>
 
     <div class="pull-right">

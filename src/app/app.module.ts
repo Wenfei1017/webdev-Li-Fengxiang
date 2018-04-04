@@ -35,7 +35,6 @@ import { Routing } from './app.routing';
 import { QuillEditorModule } from 'ngx-quill-editor';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { SortableDirective } from '../../assignment/directives/sortable.directive';
-import { OrderPipe } from '../../assignment/pipes/order/order.pipe';
 import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
 import { FlickrService } from './services/flickr.service.client';
 
@@ -64,7 +63,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     WidgetTextComponent,
     WidgetHtmlComponent,
     SortableDirective,
-    OrderPipe,
     FlickrImageSearchComponent,
   ],
   imports: [
