@@ -39,6 +39,7 @@ import { OrderPipe } from '../../assignment/pipes/order/order.pipe';
 import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
 import { FlickrService } from './services/flickr.service.client';
 
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   // Declare components here
@@ -74,6 +75,7 @@ import { FlickrService } from './services/flickr.service.client';
     QuillEditorModule,
     BsDropdownModule,
     BsDropdownModule.forRoot(),
+    MatGridListModule,
   ],
   // Client Side services here
   providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService],
