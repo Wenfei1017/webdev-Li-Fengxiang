@@ -36,6 +36,8 @@ import { QuillEditorModule } from 'ngx-quill-editor';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { SortableDirective } from '../../assignment/directives/sortable.directive';
 import { OrderPipe } from '../../assignment/pipes/order/order.pipe';
+import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
+import { FlickrService } from './services/flickr.service.client';
 
 
 @NgModule({
@@ -62,6 +64,7 @@ import { OrderPipe } from '../../assignment/pipes/order/order.pipe';
     WidgetHtmlComponent,
     SortableDirective,
     OrderPipe,
+    FlickrImageSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,7 @@ import { OrderPipe } from '../../assignment/pipes/order/order.pipe';
     BsDropdownModule.forRoot(),
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, WidgetService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

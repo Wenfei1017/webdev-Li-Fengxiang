@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid row">
+    <div class="navbar-text pull-left">
+      <a routerLink="../../../" class="cl-text-black cl-icon-padding">
+        <span class="glyphicon glyphicon-chevron-left">
+        </span>
+      </a>
+    </div>
+    <div class="navbar-text pull-right">
+      <a routerLink="./new" class="cl-icon-padding cl-text-black">
+        <span class="glyphicon glyphicon-plus">
+        </span>
+      </a>
+    </div>
+    <a class="navbar-brand cl-text-white cl-text-bold" routerLink=".">
+      Widgets
+    </a>
+  </div>
+</nav>
+
+
+
+<div class="list-group-item">
+  <div class="caption">
+    Search Flickr:
+  </div>
+  <div class="input-group">
+    <input [(ngModel)]="searchText" type="text" class="form-control">
+    <span class="input-group-btn">
+      <a (click)="searchPhotos()" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+      </a>
+    </span>
+  </div>
+
+  <div class="row">
+    <div *ngFor = "let photo of photos['photo']"
+         class="col-xs-4">
+      <img    (click)="selectPhoto(photo)"
+              width="100%"
+              [src] = "['https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_s.jpg']"/>
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid row">
+    <div class="pull-right navbar-text">
+      <a routerLink="../../../../../../.." class="cl-icon-padding">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</nav>
