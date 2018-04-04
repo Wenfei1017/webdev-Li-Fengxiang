@@ -38,8 +38,6 @@ import { SortableDirective } from '../../assignment/directives/sortable.directiv
 import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
 import { FlickrService } from './services/flickr.service.client';
 
-import {MatGridListModule} from '@angular/material/grid-list';
-
 @NgModule({
   // Declare components here
   declarations: [
@@ -73,7 +71,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     QuillEditorModule,
     BsDropdownModule,
     BsDropdownModule.forRoot(),
-    MatGridListModule,
   ],
   // Client Side services here
   providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService],
