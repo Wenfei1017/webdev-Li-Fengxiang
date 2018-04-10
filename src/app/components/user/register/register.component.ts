@@ -32,14 +32,11 @@ export class RegisterComponent implements OnInit {
       this.errorMsg = 'Password and Verify Password do not match.';
       this.errorFlag = true;
     } else {
-      this.userService.createUser(this.user).subscribe(
-        (user: User) => {
-          this.user = user;
-          this.router.navigate(['/user', user._id]);
-        },(error: any) => {
-          this.errorFlag = true;
-          this.errorMsg = error._body;
-        }
+      this.userService.register(this.user.username, this.user.password) .subscribe(
+        (data: any) => { this.router.navigate(['/profile']);
+        },
+        (error: any) => {
+          this.errorMsg = error._body; }
       );
     }
   }

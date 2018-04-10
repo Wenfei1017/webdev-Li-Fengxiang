@@ -29,6 +29,7 @@ import { UserService } from './services/user.service.client';
 import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
+import { SharedService } from './services/shared.service';
 
 
 import { Routing } from './app.routing';
@@ -37,6 +38,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { SortableDirective } from '../../assignment/directives/sortable.directive';
 import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
 import { FlickrService } from './services/flickr.service.client';
+
 
 @NgModule({
   // Declare components here
@@ -73,7 +75,7 @@ import { FlickrService } from './services/flickr.service.client';
     BsDropdownModule.forRoot(),
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

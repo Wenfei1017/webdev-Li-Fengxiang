@@ -4,6 +4,7 @@ import {UserService} from '../../../services/user.service.client';
 import {User} from '../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
 import {Website} from '../../../models/website.model.client';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
   selector: 'app-profile',
@@ -26,6 +27,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService,
     private router: Router
   ) { }
 
@@ -42,6 +44,16 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  logout() { this.userService.logout()
+    .subscribe(
+      (data: any) => {
+        // this.sharedService.user = null;
+        this.router.navigate(['/login']);
+      }
+    );
+  }
+
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {

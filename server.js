@@ -4,14 +4,24 @@
 
 // Get the dependencies
 const express = require('express');
+var cookieParser = require('cookie-parser');
+var session      = require('express-session');
+var passport      = require('passport');
 
 // parse info when receive
 // parse JSON file from HTTP response
 const bodyParser = require('body-parser');
 const app = express();
 
+
 const path = require('path');
 const http = require('http');
+
+app.use(cookieParser());
+app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
