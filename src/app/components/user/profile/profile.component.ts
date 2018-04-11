@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
   // }
 
   deleteUser() {
-    this.userService.deleteUser(this.user._id).subscribe();
+    this.userService.deleteUser(this.user._id).subscribe(() => {});
   }
 }
 

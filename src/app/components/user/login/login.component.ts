@@ -7,6 +7,8 @@ import { ViewChild } from '@angular/core';
 import { SharedService } from '../../../services/shared.service';
 import {environment} from '../../../../environments/environment';
 
+import { DOCUMENT } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   baseUrl = environment.baseUrl;
 
-  constructor(private userService: UserService, private router: Router, private sharedService: SharedService) {}
+  constructor(private userService: UserService, private router: Router, private sharedService: SharedService
+  ) {}
 
 
   login() {
@@ -55,7 +58,8 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToFacebook() {
-    this.router.navigate([this.baseUrl + '/facebook/login']);
+    // this.router.navigate([this.baseUrl + '/facebook/login']);
+    window.open(this.baseUrl + '/facebook/login');
   }
 
   ngOnInit() {
