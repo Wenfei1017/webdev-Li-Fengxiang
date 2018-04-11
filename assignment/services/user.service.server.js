@@ -126,7 +126,7 @@ module.exports = function (app) {
 
   function facebookStrategy(token, refreshToken, profile, done) {
     userModel
-      .findFacebookUser(profile.id)
+      .findUserByFacebookId(profile.id)
       .then(
         function(user) {
 
