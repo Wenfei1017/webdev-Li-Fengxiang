@@ -76,7 +76,6 @@ export class FlickrImageSearchComponent implements OnInit {
         this.widgetService.findWidgetById(this.widgetId).subscribe(
           (widget: Widget) => {
             this.widget = widget;
-            console.log(this.widget);
           }
         );
       }

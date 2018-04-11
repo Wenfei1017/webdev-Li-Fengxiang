@@ -59,8 +59,6 @@ module.exports = function (app) {
     pageModel.updatePage(pid, newPage).then(
       function (page){
         if(page){
-          console.log("testPage");
-          console.log(page);
           res.status(200).json(page);
         } else{
           res.status(404).send("Page not found when update.");

@@ -46,8 +46,6 @@ export class UserService {
   }
 
   register(username: String, password: String) {
-    console.log(username);
-    console.log(password);
     this.options.withCredentials = true;
     const user = {
       username : username,
@@ -56,7 +54,6 @@ export class UserService {
     console.log(this.options);
     return this.http.post(this.baseUrl + '/api/register', user, this.options).map(
       (res: Response) => {
-        console.log("Response Come back");
         const data = res.json();
         return data;
       } );

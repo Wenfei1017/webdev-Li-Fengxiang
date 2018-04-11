@@ -83,7 +83,6 @@ module.exports = function (app) {
   }
 
   function login(req, res) {
-    console.log("loginFrom");
     var user = req.user;
     res.json(user);
   }
@@ -95,24 +94,14 @@ module.exports = function (app) {
 
 
   function register (req, res) {
-    console.log("userHere");
     var user = req.body;
-    console.log(user);
     userModel.createUser(user).then(
       function (user) {
-        console.log(user);
-        console.log("success Create");
         if(user){
-          console.log("success User is");
-          console.log(req.login);
             req.login(user, function(err) {
               if(err) {
-                console.log(user);
-                console.log("falseReq");
                 res.status(400).send(err);
               } else {
-                console.log(user);
-                console.log("trueReq");
                 res.json(user);
               }
           });
@@ -167,7 +156,6 @@ module.exports = function (app) {
   }
 
   function loggedin(req, res) {
-    // console.log("isloggedin?");
     res.send(req.isAuthenticated()?req.user : '0');
   }
 

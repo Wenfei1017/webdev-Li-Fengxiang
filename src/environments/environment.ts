@@ -5,7 +5,5 @@
 export const environment = {
   production: false,
   // baseUrl : 'http://localhost:3200',
-  // baseUrl : "",
-  // baseUrl : '',
   baseUrl: 'https://webdev-fengxiang-li.herokuapp.com'
 };

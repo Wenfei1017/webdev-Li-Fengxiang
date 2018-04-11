@@ -23,7 +23,7 @@ module.exports = function (app, models) {
     var pageId = req.body.pageId;
 
     if(myFile == null) {
-      res.redirect("http://localhost:4201/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+      res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
       return;
     }
 
@@ -44,7 +44,7 @@ module.exports = function (app, models) {
       });
       foundWidget.url = "/uploads/" + filename;
     }
-    res.redirect("http://localhost:4201/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+    res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
   }
 
   function createWidget(req,res) {
