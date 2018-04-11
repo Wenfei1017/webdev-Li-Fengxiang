@@ -13,15 +13,15 @@ var passport      = require('passport');
 const bodyParser = require('body-parser');
 const app = express();
 
-
 const path = require('path');
 const http = require('http');
 
-app.use(cookieParser());
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(cookieParser('your secret here'));
+// console.log(process.env.SESSION_SECRET);
+app.use(session({ secret: process.env.SESSION_SECRET}));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,9 +32,10 @@ app.use(express.static(path.join(__dirname, 'src/assets/vendors')));
 
 // CORS
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
 
@@ -44,7 +45,6 @@ app.set('port', port);
 // Create HTTP server
 const server = http.createServer(app);
 
-module.exports = app;
 require("./assignment/app")(app);
 
 // For Build: Catch all other routes and return the index file -- BUILDING
@@ -56,6 +56,9 @@ app.get('*', function (req, res) {
 server.listen( port , function() {
   console.log('Node app is running on port', app.get('port'))
 });
+
+
+
 
 
 

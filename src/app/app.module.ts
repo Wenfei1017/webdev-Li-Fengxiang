@@ -38,6 +38,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { SortableDirective } from '../../assignment/directives/sortable.directive';
 import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
 import { FlickrService } from './services/flickr.service.client';
+import { AuthGuard } from './services/auth-guard.service';
 
 
 @NgModule({
@@ -75,7 +76,7 @@ import { FlickrService } from './services/flickr.service.client';
     BsDropdownModule.forRoot(),
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

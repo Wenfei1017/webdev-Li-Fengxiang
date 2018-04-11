@@ -2,8 +2,8 @@ import { User } from '../models/user.model.client';
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/Rx';
-import {environment} from '../../environments/environment';
-import {SharedService} from './shared.service';
+import { environment } from '../../environments/environment';
+import { SharedService } from './shared.service';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -46,14 +46,19 @@ export class UserService {
   }
 
   register(username: String, password: String) {
+    console.log(username);
+    console.log(password);
     this.options.withCredentials = true;
     const user = {
       username : username,
       password : password
     };
-    return this.http.post(this.baseUrl + '/api/register', user, this.options) .map(
+    console.log(this.options);
+    return this.http.post(this.baseUrl + '/api/register', user, this.options).map(
       (res: Response) => {
-        const data = res.json(); return data;
+        console.log("Response Come back");
+        const data = res.json();
+        return data;
       } );
   }
 
