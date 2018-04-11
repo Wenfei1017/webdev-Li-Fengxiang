@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
     // this.router.navigate([this.baseUrl + '/facebook/login']);
     // window.open(this.baseUrl + '/facebook/login');
     this.router.ngOnDestroy();
+    console.log("navigateFacebook");
     window.open(this.baseUrl + '/facebook/login',"_blank");
   }
 
