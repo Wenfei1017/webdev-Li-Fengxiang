@@ -54,13 +54,15 @@ export class LoginComponent implements OnInit {
           console.log(error);
         }
       );
-
   }
 
   navigateToFacebook() {
     // this.router.navigate([this.baseUrl + '/facebook/login']);
-    window.open(this.baseUrl + '/facebook/login');
+    // window.open(this.baseUrl + '/facebook/login');
+    this.router.ngOnDestroy();
+    window.location.href = this.baseUrl + '/facebook/login;
   }
+
 
   ngOnInit() {
   }
