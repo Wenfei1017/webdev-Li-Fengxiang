@@ -17,7 +17,6 @@ module.exports = function (app) {
     // callbackURL : 'https://valeryfardeli-webdev.herokuapp.com/auth/facebook/callback',
     // callbackURL : 'https://localhost:3200/auth/facebook/callback',
     callbackURL : 'https://webdev-fengxiang-li.herokuapp.com/auth/facebook/callback',
-
   };
 
   app.put("/api/user/:userId", updateUserById);
@@ -36,13 +35,12 @@ module.exports = function (app) {
 
   app.get("/facebook/login", passport.authenticate('facebook', { scope: 'email' }));
 
-  app.get("/auth/facebook/callback",
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
-    function (req, res) {
-      const url = 'https://webdev-fengxiang-li.herokuapp.com/user/' + req.user._id;
-      res.redirect(url);
-    }
-  );
+  // auth with Facebook
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+      successRedirect: '/user',
+      failureRedirect: '/login'
+    }));
 
   passport.use(new LocalStrategy(localStrategy));
   passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -127,45 +125,43 @@ module.exports = function (app) {
   }
 
   function facebookStrategy(token, refreshToken, profile, done) {
-    console.log("tests");
-    model
-      .userModel
-      .findUserByGoogleId(profile.id)
+    userModel
+      .findFacebookUser(profile.id)
       .then(
-        function (user) {
-          if (user) {
+        function(user) {
+
+          // check if user corresponding to this fb account exist
+          if(user) {
             return done(null, user);
-          } else {
-            var email = profile.emails[0].value;
-            var emailParts = email.split("@");
+          }
+
+          // create a new one if do not exist
+          else {
+            var names = profile.displayName.split(" ");
             var newFacebookUser = {
-              username: emailParts[0],
-              firstName: profile.name.givenName,
-              lastName: profile.name.familyName,
-              email: email,
-              websites: [],
-              google: {
-                id: profile.id,
-                token: token
+              username: 'username',
+              lastName:  names[1],
+              firstName: names[0],
+              email:     profile.emails ? profile.emails[0].value : "",
+              facebook: {
+                id:    profile.id,
+                token: token,
+                displayName: names[0] + ' ' + names[1]
               }
             };
-            return model.userModel.createUser(newFacebookUser);
+            return userModel.createUser(newFacebookUser);
           }
         },
-        function (err) {
-          if (err) {
-            return done(err);
-          }
+        function(err) {
+          if (err) { return done(err); }
         }
       )
       .then(
-        function (user) {
+        function(user){
           return done(null, user);
         },
-        function (err) {
-          if (err) {
-            return done(err);
-          }
+        function(err){
+          if (err) { return done(err); }
         }
       );
   }

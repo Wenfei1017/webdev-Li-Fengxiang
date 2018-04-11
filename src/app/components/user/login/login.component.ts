@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.sharedService.user = data;
-          this.router.navigate(['/profile'])},
+          this.errorFlag = false;
+          this.router.navigate(['/user'])},
         (error: any) => {
           console.log(error);
         }

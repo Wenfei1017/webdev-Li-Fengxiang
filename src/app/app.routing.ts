@@ -22,6 +22,7 @@ const APP_ROUTES: Routes = [
   { path : 'login' , component: LoginComponent},
   { path : 'register' , component: RegisterComponent },
 
+  { path : 'user' , component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid/website' , component: WebsiteListComponent},
   { path : 'user/:uid/website/new' , component: WebsiteNewComponent},

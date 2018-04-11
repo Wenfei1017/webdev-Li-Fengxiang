@@ -16,7 +16,6 @@ export class ProfileComponent implements OnInit {
   @ViewChild('f') profileForm: NgForm;
 
   user: User;
-  userId: string;
 
   errorFlag: boolean;
   errorMsg: String;
@@ -37,7 +36,7 @@ export class ProfileComponent implements OnInit {
         this.errorFlag = false;
         this.updateFlag = true;
         this.updateMsg = "Update Success!!";
-        this.refreshData();
+        // this.refreshData();
       }, (error: any) => {
         this.errorFlag = true;
         this.errorMsg = error._body;
@@ -56,20 +55,21 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      this.userId = params['uid'];
-    });
-    this.refreshData();
+    // this.activatedRoute.params.subscribe(params => {
+    //   this.userId = params['uid'];
+    // });
+    // this.refreshData();
+    this.user = this.sharedService.user;
   }
 
-  refreshData() {
-    this.userService.findUserById(this.userId)
-      .subscribe(
-        (user: User) => {
-          this.user = user;
-        }
-      );
-  }
+  // refreshData() {
+  //   this.userService.findUserById(this.userId)
+  //     .subscribe(
+  //       (user: User) => {
+  //         this.user = user;
+  //       }
+  //     );
+  // }
 
   deleteUser() {
     this.userService.deleteUser(this.user._id).subscribe();

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   errorFlag: boolean;
   errorMsg: String;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
     this.user = this.userService.initialUser();
