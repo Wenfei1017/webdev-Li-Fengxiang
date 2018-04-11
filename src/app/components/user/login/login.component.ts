@@ -46,12 +46,16 @@ export class LoginComponent implements OnInit {
         (data: any) => {
           this.sharedService.user = data;
           this.errorFlag = false;
-          this.router.navigate(['/user'])},
+          this.router.navigate(['/use'])},
         (error: any) => {
           console.log(error);
         }
       );
 
+  }
+
+  navigateToFacebook() {
+    this.router.navigate(['/facebook/login']);
   }
 
   ngOnInit() {
