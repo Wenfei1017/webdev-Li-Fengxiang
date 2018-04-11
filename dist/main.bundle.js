@@ -337,6 +337,7 @@ var APP_ROUTES = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_3__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_3__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
+    { path: 'user', component: __WEBPACK_IMPORTED_MODULE_1__components_user_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_13__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'user/:uid', component: __WEBPACK_IMPORTED_MODULE_1__components_user_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_13__services_auth_guard_service__["a" /* AuthGuard */]] },
     { path: 'user/:uid/website', component: __WEBPACK_IMPORTED_MODULE_2__components_website_website_list_website_list_component__["a" /* WebsiteListComponent */] },
     { path: 'user/:uid/website/new', component: __WEBPACK_IMPORTED_MODULE_5__components_website_website_new_website_new_component__["a" /* WebsiteNewComponent */] },
@@ -679,7 +680,8 @@ var LoginComponent = (function () {
         this.userService.login(this.username, this.password)
             .subscribe(function (data) {
             _this.sharedService.user = data;
-            _this.router.navigate(['/profile']);
+            _this.errorFlag = false;
+            _this.router.navigate(['/user']);
         }, function (error) {
             console.log(error);
         });
@@ -727,7 +729,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/user/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container cl-body-padding\">\n\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\n  {{errorMsg}}\n  </div>\n\n  <div *ngIf=\"updateFlag\" class=\"alert alert-info\">\n    {{updateMsg}}\n  </div>\n\n    <form (ngSubmit)=\"updateUser()\" #f=\"ngForm\">\n\n    <div class=\"form-group\">\n      <label >Username</label>\n      <input [(ngModel)]=\"user.username\" type=\"text\" name=\"username\" placeholder=\"jannunzi\" class=\"form-control\">\n    </div>\n\n    <div class=\"form-group\">\n      <label >First Name</label>\n      <input [(ngModel)]=\"user.firstName\" type=\"text\" name=\"firstName\" placeholder=\"Jose\" class=\"form-control\">\n    </div>\n\n    <div class=\"form-group\">\n      <label >Last Name</label>\n      <input [(ngModel)]=\"user.lastName\" type=\"text\" name=\"lastName\" placeholder=\"Annunziato\" class=\"form-control\">\n    </div>\n\n      <div class=\"form-group\">\n      <button  class=\"btn btn-primary btn-block\" type=\"submit\">Update</button>\n    </div>\n\n      <div class=\"form-group\">\n        <button routerLink=\"/login\" (click)=\"deleteUser()\" class=\"btn btn-danger btn-block\">Delete</button>\n      </div>\n\n    <div class=\"form-group\">\n      <a routerLink=\"/login\" class=\"btn btn-danger btn-block\">Logout</a>\n    </div>\n\n    </form>\n  <div >\n      <button routerLink=\"/user/{{userId}}/website\"  class=\"btn btn-primary btn-block\">Websites</button>\n    </div>\n</div>\n\n<nav class=\"navbar navbar-fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fluid\">\n    <a routerLink=\"/profile/{{user._id}}\" class=\"navbar-link navbar-text pull-right cl-text-white cl-icon-padding\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
+module.exports = "<div class=\"container cl-body-padding\">\n\n  <div *ngIf=\"errorFlag\" class=\"alert alert-danger\">\n  {{errorMsg}}\n  </div>\n\n  <div *ngIf=\"updateFlag\" class=\"alert alert-info\">\n    {{updateMsg}}\n  </div>\n\n    <form (ngSubmit)=\"updateUser()\" #f=\"ngForm\">\n\n    <div class=\"form-group\">\n      <label >Username</label>\n      <input [(ngModel)]=\"user.username\" type=\"text\" name=\"username\" placeholder=\"jannunzi\" class=\"form-control\">\n    </div>\n\n    <div class=\"form-group\">\n      <label >First Name</label>\n      <input [(ngModel)]=\"user.firstName\" type=\"text\" name=\"firstName\" placeholder=\"Jose\" class=\"form-control\">\n    </div>\n\n    <div class=\"form-group\">\n      <label >Last Name</label>\n      <input [(ngModel)]=\"user.lastName\" type=\"text\" name=\"lastName\" placeholder=\"Annunziato\" class=\"form-control\">\n    </div>\n\n      <div class=\"form-group\">\n      <button  class=\"btn btn-primary btn-block\" type=\"submit\">Update</button>\n    </div>\n\n      <div class=\"form-group\">\n        <button routerLink=\"/login\" (click)=\"deleteUser()\" class=\"btn btn-danger btn-block\">Delete</button>\n      </div>\n\n    <div class=\"form-group\">\n      <a routerLink=\"/login\" class=\"btn btn-danger btn-block\">Logout</a>\n    </div>\n\n    </form>\n  <div >\n      <button routerLink=\"/user/{{user._id}}/website\"  class=\"btn btn-primary btn-block\">Websites</button>\n    </div>\n</div>\n\n<nav class=\"navbar navbar-fixed-bottom cl-blue-navbar\">\n  <div class=\"container-fluid\">\n    <a routerLink=\"/profile/{{user._id}}\" class=\"navbar-link navbar-text pull-right cl-text-white cl-icon-padding\">\n      <span class=\"glyphicon glyphicon-user\"></span>\n    </a>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -768,7 +770,7 @@ var ProfileComponent = (function () {
             _this.errorFlag = false;
             _this.updateFlag = true;
             _this.updateMsg = "Update Success!!";
-            _this.refreshData();
+            // this.refreshData();
         }, function (error) {
             _this.errorFlag = true;
             _this.errorMsg = error._body;
@@ -783,19 +785,20 @@ var ProfileComponent = (function () {
         });
     };
     ProfileComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.activatedRoute.params.subscribe(function (params) {
-            _this.userId = params['uid'];
-        });
-        this.refreshData();
+        // this.activatedRoute.params.subscribe(params => {
+        //   this.userId = params['uid'];
+        // });
+        // this.refreshData();
+        this.user = this.sharedService.user;
     };
-    ProfileComponent.prototype.refreshData = function () {
-        var _this = this;
-        this.userService.findUserById(this.userId)
-            .subscribe(function (user) {
-            _this.user = user;
-        });
-    };
+    // refreshData() {
+    //   this.userService.findUserById(this.userId)
+    //     .subscribe(
+    //       (user: User) => {
+    //         this.user = user;
+    //       }
+    //     );
+    // }
     ProfileComponent.prototype.deleteUser = function () {
         this.userService.deleteUser(this.user._id).subscribe();
     };
@@ -852,6 +855,7 @@ module.exports = "<div class=\"container-fluid cl-body-padding\">\n  <div *ngIf=
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__ = __webpack_require__("../../../../../src/app/services/user.service.client.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_shared_service__ = __webpack_require__("../../../../../src/app/services/shared.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -866,10 +870,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RegisterComponent = (function () {
-    function RegisterComponent(userService, router) {
+    function RegisterComponent(userService, router, sharedService) {
         this.userService = userService;
         this.router = router;
+        this.sharedService = sharedService;
     }
     RegisterComponent.prototype.ngOnInit = function () {
         this.user = this.userService.initialUser();
@@ -902,10 +908,10 @@ RegisterComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/user/register/register.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/user/register/register.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_user_service_client__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_shared_service__["a" /* SharedService */]) === "function" && _d || Object])
 ], RegisterComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=register.component.js.map
 
 /***/ }),
@@ -2329,7 +2335,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var SharedService = (function () {
     function SharedService() {
-        this.user = '';
     }
     return SharedService;
 }());
