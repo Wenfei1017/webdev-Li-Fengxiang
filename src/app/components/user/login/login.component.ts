@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToFacebook() {
-    this.router.navigate(['/facebook/login']);
+    this.router.navigate([this.baseUrl + '/facebook/login']);
   }
 
   ngOnInit() {
