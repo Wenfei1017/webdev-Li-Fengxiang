@@ -16,7 +16,12 @@ var userSchema = mongoose.Schema({
   dateCreated: {
     type: Date,
     default: Date.now()
-  }
+  },
+  userType: {
+    type: String,
+    enum: ['user', 'seller', 'admin', 'advertiser'],
+    default: 'user'
+  },
 }, {collection: 'user'});
 
 

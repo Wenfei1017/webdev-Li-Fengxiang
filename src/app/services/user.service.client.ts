@@ -45,11 +45,12 @@ export class UserService {
       });
   }
 
-  register(username: String, password: String) {
+  register(username: String, password: String, userType: String) {
     this.options.withCredentials = true;
     const user = {
       username : username,
-      password : password
+      password : password,
+      userType : userType,
     };
     console.log(this.options);
     return this.http.post(this.baseUrl + '/api/register', user, this.options).map(

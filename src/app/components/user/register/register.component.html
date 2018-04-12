@@ -2,7 +2,7 @@
   <div *ngIf="errorFlag" class="alert alert-danger">
     {{errorMsg}}
   </div>
-  <h1>Register</h1>
+  <h1>{{userType}} Register</h1>
   <form>
     <label for="username">Username</label>
     <input [(ngModel)]="user.username" type="text" class="form-control" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>

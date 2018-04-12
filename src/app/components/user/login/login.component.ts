@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
 import { NgForm } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { SharedService } from '../../../services/shared.service';
 import {environment} from '../../../../environments/environment';
+import enumerate = Reflect.enumerate;
 
-import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,9 @@ export class LoginComponent implements OnInit {
 
   baseUrl = environment.baseUrl;
 
-  constructor(private userService: UserService, private router: Router, private sharedService: SharedService
+  userType: string;
+
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private sharedService: SharedService
   ) {}
 
 
@@ -48,8 +50,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.sharedService.user = data;
+          console.log(this.sharedService.user);
           this.errorFlag = false;
-          this.router.navigate(['/use'])},
+          this.router.navigate(['/user'])},
         (error: any) => {
           console.log(error);
         }
@@ -62,6 +65,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        this.userType = params['type'];
+        console.log(this.userType);
+      }
+    );
   }
 
 }

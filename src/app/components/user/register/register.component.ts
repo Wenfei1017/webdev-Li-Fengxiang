@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { UserService } from '../../../services/user.service.client';
 import { User } from '../../../models/user.model.client';
@@ -20,10 +20,16 @@ export class RegisterComponent implements OnInit {
   errorFlag: boolean;
   errorMsg: String;
 
-  constructor(private userService: UserService, private router: Router, private sharedService: SharedService) { }
+  userType: String;
+
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute ,private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
     this.user = this.userService.initialUser();
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        this.userType = params['type'];
+      });
   }
 
   register() {
@@ -33,9 +39,10 @@ export class RegisterComponent implements OnInit {
       this.errorMsg = 'Password and Verify Password do not match.';
       this.errorFlag = true;
     } else {
-      this.userService.register(this.user.username, this.user.password) .subscribe(
+      this.userService.register(this.user.username, this.user.password, this.userType) .subscribe(
         (data: any) => {
           this.user = data;
+          console.log(this.user);
           this.router.navigate(['/user/' + this.user._id]);
 
         },

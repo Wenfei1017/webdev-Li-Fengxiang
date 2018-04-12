@@ -684,12 +684,13 @@ var LoginComponent = (function () {
             .subscribe(function (data) {
             _this.sharedService.user = data;
             _this.errorFlag = false;
-            _this.router.navigate(['/use']);
+            _this.router.navigate(['/user']);
         }, function (error) {
             console.log(error);
         });
     };
     LoginComponent.prototype.navigateToFacebook = function () {
+        this.errorFlag = false;
         window.location.href = this.baseUrl + '/facebook/login';
     };
     LoginComponent.prototype.ngOnInit = function () {
