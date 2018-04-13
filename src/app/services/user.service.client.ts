@@ -16,14 +16,14 @@ export class UserService {
   options = new RequestOptions();
 
   users: User[] = [
-    new User('123', 'alice',     'alice',     'Alice',   'Wonder'),
-    new User( '234',  'bob',       'bob',       'Bob',     'Marley'),
-    new User( '345',  'charly',    'charly',    'Charly',  'Garcia'),
-    new User( '456',  'jannunzi',  'jannunzi',  'Jose',    'Annunzi' ),
+    new User('123', 'alice',     'alice',     'Alice',   'Wonder', 'buyer'),
+    new User( '234',  'bob',       'bob',       'Bob',     'Marley', 'seller'),
+    new User( '345',  'charly',    'charly',    'Charly',  'Garcia', 'advertise'),
+    new User( '456',  'jannunzi',  'jannunzi',  'Jose',    'Annunzi', 'buyer' ),
   ];
 
   initialUser() {
-    return new User(undefined, undefined, undefined, undefined, undefined);
+    return new User(undefined, undefined, undefined, undefined, undefined, undefined);
   }
 
 

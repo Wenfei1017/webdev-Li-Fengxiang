@@ -30,6 +30,8 @@ import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import { SharedService } from './services/shared.service';
+import { CartService} from './services/cart.service';
+import { ProductService} from './services/products.service';
 
 
 import { Routing } from './app.routing';
@@ -39,6 +41,10 @@ import { SortableDirective } from '../../assignment/directives/sortable.directiv
 import { FlickrImageSearchComponent } from './components/widget/widget-list/flickr-image-search//flickr-image-search.component';
 import { FlickrService } from './services/flickr.service.client';
 import { AuthGuard } from './services/auth-guard.service';
+import { CategoryComponent } from './components/category/category.component';
+import { CartPageComponent } from './components/cart/cart-page.component';
+import { CartPopupComponent} from './components/cart/cart-popup/cart-popup.component';
+import { ProfileSellerComponent } from './components/user/profile/profile-seller/profile-seller.component';
 
 
 @NgModule({
@@ -65,6 +71,10 @@ import { AuthGuard } from './services/auth-guard.service';
     WidgetHtmlComponent,
     SortableDirective,
     FlickrImageSearchComponent,
+    CategoryComponent,
+    CartPageComponent,
+    CartPopupComponent,
+    ProfileSellerComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +86,7 @@ import { AuthGuard } from './services/auth-guard.service';
     BsDropdownModule.forRoot(),
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService, AuthGuard],
+  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService, AuthGuard, CartService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

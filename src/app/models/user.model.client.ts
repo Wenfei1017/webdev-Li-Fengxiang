@@ -5,6 +5,7 @@ export class User {
 
   firstName: String;
   lastName: String;
+  type: String;
 
   // type : ColorEnum = { RED : 0, GREEN : 1, BLUE : 2 };
   widgetType: {
@@ -13,11 +14,12 @@ export class User {
     default: 'User'
   };
 
-  constructor(_id, username, password, firstName, lastName) {
+  constructor(_id, username, password, firstName, lastName, type) {
     this._id = _id;
     this.username = username;
     this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.type = type;
   }
 }

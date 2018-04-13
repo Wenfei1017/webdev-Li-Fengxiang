@@ -26,6 +26,11 @@
     </div>
 
       <div class="form-group">
+        <label >Type</label>
+        <input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato" class="form-control">
+      </div>
+
+      <div class="form-group">
       <button  class="btn btn-primary btn-block" type="submit">Update</button>
     </div>
 
@@ -39,7 +44,7 @@
 
     </form>
   <div >
-      <button routerLink="/user/{{user._id}}/website"  class="btn btn-primary btn-block">Websites</button>
+      <button routerLink="/user/{{user._id}}/cart"  class="btn btn-primary btn-block">My shopping cart</button>
     </div>
 </div>
 

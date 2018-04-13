@@ -14,6 +14,8 @@ import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.c
 import {WebsiteEditComponent} from './components/website/website-edit/website-edit.component';
 
 import {AuthGuard} from './services/auth-guard.service';
+import {CartPageComponent} from './components/cart/cart-page.component';
+import {CategoryComponent} from './components/category/category.component';
 
 // Import all other components here
 
@@ -39,6 +41,9 @@ const APP_ROUTES: Routes = [
   { path : 'user/:uid/website/:wid/page/:pid/widget/new' , component: WidgetChooserComponent},
   { path : 'user/:uid/website/:wid/page/:pid/widget/:wgid' , component: WidgetEditComponent},
   // so on
+
+  { path : 'user/:uid/cart', component: CartPageComponent},
+  { path: 'category', component: CategoryComponent},
 ];
 
 // Export the routes as module providers
