@@ -1,0 +1,45 @@
+<div class="page_admin-add">
+  <h1 class="page_admin-add-title"> Adding new computer</h1>
+
+  <!--We have nothing to update because we create a new one-->
+  <!--<computer-form [action]="'create'" [itemToUpdate]="null" (formSubmit)="createComputer($event)"></computer-form>-->
+</div>
+
+<div class="container">
+  <div *ngIf="errorFlag" class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+  <form (ngSubmit)="login()" #f="ngForm">
+
+    <div class="form-group">
+      <input type="text" name="title" placeholder="title" class="form-control" ngModel required #username="ngModel">
+    </div>
+
+    <div class="form-group">
+      <input type="text" name="brand" placeholder="brand" class="form-control" ngModel required #password="ngModel">
+    </div>
+
+    <div class="form-group">
+      <input type="number" name="price" placeholder="price" class="form-control" ngModel required #username="ngModel">
+    </div>
+
+    <div class="form-group">
+      <input type="text" name="description" placeholder="description" class="form-control" ngModel required #password="ngModel">
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-info" (click)="createWidget('IMAGE')">Add Computer Image</button>
+    </div>
+
+    <div class="form-group">
+      <a routerLink="./register" class="btn btn-success btn-block">add</a>
+    </div>
+
+  </form>
+
+</div>
+
+
+
+
+

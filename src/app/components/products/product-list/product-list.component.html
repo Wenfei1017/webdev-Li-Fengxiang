@@ -1,0 +1,47 @@
+<!--<div class="page_admin">-->
+<!--<h1 class="page_admin-title">All computers in store:</h1>-->
+<!--<div class="page_admin-computers-list">-->
+<!--<div class="page_admin-computers-list-header flex-container flex-justify-space-around" *ngIf="!isEmptyStore()">-->
+<!--<div class="page_admin-computers-list-item&#45;&#45;title  flex-grid-2">Title</div>-->
+<!--<div class="page_admin-computers-list-item&#45;&#45;price  flex-grid-1">Price $</div>-->
+<!--<div class="page_admin-computers-list-item&#45;&#45;date   flex-grid-1">Added</div>-->
+<!--<div class="page_admin-computers-list-item&#45;&#45;edit   flex-grid-1">Edit computer</div>-->
+<!--<div class="page_admin-computers-list-item&#45;&#45;remove flex-grid-1">Remove computer</div>-->
+<!--</div>-->
+<!--<div>-->
+<!--<h1 *ngIf="isEmptyStore()">There are no computers in the store!</h1>-->
+<!--&lt;!&ndash;<store-item *ngFor="let storeItem of storeItems" (remove)="removeFromStore($event)" [item]="storeItem"></store-item>&ndash;&gt;-->
+<!--</div>-->
+<!--<button class="page_admin&#45;&#45;add-new-button ui button" routerLink="seller/{{user._id}}/products/new"><i class="fa fa-plus"></i> Add new</button>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="header-image">
+  <div class="header-block">
+    <div class="header-text">
+      <div class="header-text-title">Plates</div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec mollis sem. Etiam id luctus libero.
+        Vivamus vulputate urna eget velit iaculis, et interdum elit pellentesque. Duis porta nunc neque, nec volutpat erat lacinia a.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="layout-container">
+  <div class="product-grid">
+    <div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">
+      <div class="image-container">
+        <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/imgs/' + product.image + ')'}"></div>
+        <div class="overlay">
+          <div class="button button-primary" [routerLink]="['../product',i+1]">Edit Details</div>
+          <!--<div class="button button-primary" (click)="addToCart(product)">Add To Cart</div>-->
+        </div>
+      </div>
+      <div class="product-details">
+        <div class="product-brand">{{product.brand}}</div>
+        <div class="product-title">{{product.title}}</div>
+        <div class="product-price">{{product.price | currency :'USD':true }}</div>
+      </div>
+    </div>
+  </div>
+</div>

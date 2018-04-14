@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../../services/products.service";
-import {Product} from "../../models/product";
+import {ProductsService} from "../../services/products.service";
+import {Product} from "../../models/product.client";
 import {CartService} from "../../services/cart.service";
 import {Router} from "@angular/router";
 
@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
   public products:Array<Product>;
   private sub;
   constructor(
-    private productService: ProductService,
+    private productsService: ProductsService,
     private cartService: CartService,
     private router: Router
   ) { }
@@ -22,13 +22,13 @@ export class CategoryComponent implements OnInit {
     this.load();
   }
   load = () => {
-    this.sub = this.productService.getProducts('./assets/mock-data/products.json')
+    this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
       .subscribe(res => {
         this.products = res;
       })
   };
   addToCart = (product) => {
-    this.cartService.addToCart({product,quantity:1})
+    this.cartService.addToCart({product, quantity:1})
   };
   ngOnDestroy() {
     this.sub.unsubscribe();

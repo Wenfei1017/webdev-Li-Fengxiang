@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   @ViewChild('f') profileForm: NgForm;
 
   user: User;
+  userId: String;
 
   errorFlag: boolean;
   errorMsg: String;

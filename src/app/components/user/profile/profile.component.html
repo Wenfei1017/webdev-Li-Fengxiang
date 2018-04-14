@@ -1,57 +1,187 @@
-<div class="container cl-body-padding">
+<!--<div class="container cl-body-padding">-->
 
-  <div *ngIf="errorFlag" class="alert alert-danger">
-  {{errorMsg}}
+  <!--<div *ngIf="errorFlag" class="alert alert-danger">-->
+  <!--{{errorMsg}}-->
+  <!--</div>-->
+
+  <!--<div *ngIf="updateFlag" class="alert alert-info">-->
+    <!--{{updateMsg}}-->
+  <!--</div>-->
+
+    <!--<form (ngSubmit)="updateUser()" #f="ngForm">-->
+
+    <!--<div class="form-group">-->
+      <!--<label >Username</label>-->
+      <!--<input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi" class="form-control">-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+      <!--<label >First Name</label>-->
+      <!--<input [(ngModel)]="user.firstName" type="text" name="firstName" placeholder="Jose" class="form-control">-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+      <!--<label >Last Name</label>-->
+      <!--<input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato" class="form-control">-->
+    <!--</div>-->
+
+      <!--<div class="form-group">-->
+        <!--<label >Type</label>-->
+        <!--<input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato" class="form-control">-->
+      <!--</div>-->
+
+      <!--<div class="form-group">-->
+      <!--<button  class="btn btn-primary btn-block" type="submit">Update</button>-->
+    <!--</div>-->
+
+      <!--<div class="form-group">-->
+        <!--<button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete</button>-->
+      <!--</div>-->
+
+    <!--<div class="form-group">-->
+      <!--<a routerLink="/login" class="btn btn-danger btn-block">Logout</a>-->
+    <!--</div>-->
+
+    <!--</form>-->
+  <!--<div >-->
+      <!--<button routerLink="/user/{{user._id}}/cart"  class="btn btn-primary btn-block">My shopping cart</button>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<nav class="navbar navbar-fixed-bottom cl-blue-navbar">-->
+  <!--<div class="container-fluid">-->
+    <!--<a routerLink="/profile/{{user._id}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">-->
+      <!--<span class="glyphicon glyphicon-user"></span>-->
+    <!--</a>-->
+  <!--</div>-->
+<!--</nav>-->
+
+
+<div class="cart-page-container">
+  <div class="cart-page-header">
+    <h1>My profile</h1>
   </div>
+  <div class="cart-page-content" >
+    <!--<div class="cart-item-header cart-item-row">-->
+      <!--<div class="cart-item-cell cart-item-product"><span>Product</span></div>-->
+      <!--<div class="cart-item-cell cart-item-quantity"><span>Quantity</span></div>-->
+      <!--<div class="cart-item-cell cart-item-total"><span>Total</span></div>-->
+      <!--<div class="cart-item-cell cart-item-action"><span>Action</span></div>-->
+    <!--</div>-->
+    <!--<div class="cart-item-row" *ngFor="let cart of cartList;let i = index">-->
+      <!--<div class="cart-item-cell cart-item-product">-->
+        <!--<div class="cart-item-thumbnail" [ngStyle]="{'background-image': 'url(./assets/imgs/' + cart.product.image + ')'}">-->
+        <!--</div>-->
+        <!--<div class="cart-item-info">-->
+          <!--<div class="cart-item-brand">{{cart.product.brand}}</div>-->
+          <!--<div class="cart-item-title">{{cart.product.title}}</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="cart-item-cell cart-item-quantity">-->
+        <!--&lt;!&ndash;<quantity-control [quantity]="cart.quantity" (onChange)="changeQuantity(cart,$event)"></quantity-control>&ndash;&gt;-->
+      <!--</div>-->
+      <!--<div class="cart-item-cell cart-item-total">-->
+        <!--<div class="item-price">-->
+          <!--{{cart.quantity*cart.product.price | currency :'USD':true }}-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="cart-item-cell cart-item-action">-->
+        <!--<div class="item-remove" (click)="removeFromCart(i)">X</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="row cart-total">
+      <div class="col-lg-offset-6">
+        <!--<div class="cart-total-row row">-->
+          <!--<div class="col-md-6 cart-total-label">-->
+            <!--Cart overview-->
+          <!--</div>-->
+          <!--<div class="col-md-6 cart-total-value"></div>-->
+        <!--</div>-->
+        <!--<div class="cart-total-row row">-->
+          <!--<div class="col-md-6 cart-total-label">-->
+            <!--subtotal-->
+          <!--</div>-->
+          <!--<div class="col-md-6 cart-total-value">-->
+            <!--{{totalPrice | currency :'USD':true}}-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="cart-total-row row">-->
+          <!--<div class="col-md-6 cart-total-label">-->
+            <!--total-->
+          <!--</div>-->
+          <!--<div class="col-md-6 cart-total-value cart-total-price">-->
+            <!--{{totalPrice | currency :'USD':true}} AUD-->
+          <!--</div></div>-->
+      <!--</div>-->
+    <!--</div>-->
 
-  <div *ngIf="updateFlag" class="alert alert-info">
-    {{updateMsg}}
-  </div>
+        <div class="container-fluid">
 
-    <form (ngSubmit)="updateUser()" #f="ngForm">
+        <div *ngIf="errorFlag" class="alert alert-danger">
+        {{errorMsg}}
+        </div>
 
-    <div class="form-group">
-      <label >Username</label>
-      <input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi" class="form-control">
-    </div>
+        <div *ngIf="updateFlag" class="alert alert-info">
+        {{updateMsg}}
+        </div>
 
-    <div class="form-group">
-      <label >First Name</label>
-      <input [(ngModel)]="user.firstName" type="text" name="firstName" placeholder="Jose" class="form-control">
-    </div>
+        <form (ngSubmit)="updateUser()" #f="ngForm">
 
-    <div class="form-group">
-      <label >Last Name</label>
-      <input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato" class="form-control">
-    </div>
+        <div class="form-group">
+        <label >Username</label>
+        <input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi">
+        </div>
 
-      <div class="form-group">
+        <div class="form-group">
+        <label >First Name</label>
+        <input [(ngModel)]="user.email" type="text" name="firstName" placeholder="Jose">
+        </div>
+
+        <!--<div class="form-group">-->
+        <!--<label >Last Name</label>-->
+        <!--<input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato">-->
+        <!--</div>-->
+
+        <div class="form-group">
         <label >Type</label>
-        <input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato" class="form-control">
-      </div>
+        <input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato">
+        </div>
 
-      <div class="form-group">
-      <button  class="btn btn-primary btn-block" type="submit">Update</button>
+        <div class="form-group">
+        <button  type="submit">Update</button>
+        </div>
+
+        <div class="form-group">
+        <button routerLink="/login" (click)="deleteUser()">Delete</button>
+        </div>
+
+        <div class="form-group">
+        <button routerLink="/login">Logout</button>
+        </div>
+
+        </form>
+        <div >
+        <button routerLink="/user/{{user._id}}/cart">My shopping cart</button>
+        </div>
+        </div>
+
+        <!--<nav class="navbar navbar-fixed-bottom cl-blue-navbar">-->
+        <!--<div class="container-fluid">-->
+        <!--<a routerLink="/profile/{{user._id}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">-->
+        <!--<span class="glyphicon glyphicon-user"></span>-->
+        <!--</a>-->
+        <!--</div>-->
+        <!--</nav>-->
+
+    <div class="cart-buttons">
+      <div class="continue-shopping"><a routerLink="/category">continue shopping</a></div>
+      <div class="checkout-button button button-primary button-large"> <a routerLink="/user/{{user._id}}/cart"> Checkout</a></div>
     </div>
-
-      <div class="form-group">
-        <button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete</button>
-      </div>
-
-    <div class="form-group">
-      <a routerLink="/login" class="btn btn-danger btn-block">Logout</a>
-    </div>
-
-    </form>
-  <div >
-      <button routerLink="/user/{{user._id}}/cart"  class="btn btn-primary btn-block">My shopping cart</button>
-    </div>
-</div>
-
-<nav class="navbar navbar-fixed-bottom cl-blue-navbar">
-  <div class="container-fluid">
-    <a routerLink="/profile/{{user._id}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">
-      <span class="glyphicon glyphicon-user"></span>
-    </a>
   </div>
-</nav>
+  <div class="cart-page-content">
+    <!--<h4>Your cart is empty.</h4>-->
+    <!--<a routerLink="/category">Go shopping</a>-->
+  </div>
+</div>
+  </div>
+</div>

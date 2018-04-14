@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoryComponent } from './category.component';
-import {Product} from '../../models/product';
+import {Product} from '../../models/product.client';
 import {Cart} from '../../models/cart';
 import {CartComponent} from '../cart/cart-page.component';
 import {SharedModule} from '../../shared/shared.module';

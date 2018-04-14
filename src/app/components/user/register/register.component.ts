@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.errorFlag = false;
-
     if (this.user.password !== this.verifyPassword) {
       this.errorMsg = 'Password and Verify Password do not match.';
       this.errorFlag = true;
@@ -43,7 +42,12 @@ export class RegisterComponent implements OnInit {
         (data: any) => {
           this.user = data;
           console.log(this.user);
-          this.router.navigate(['/user/' + this.user._id]);
+          if (this.userType === 'user') {
+            this.router.navigate(['/user/' + this.user._id]);
+          }
+          if (this.userType === 'seller') {
+            this.router.navigate(['/seller/' + this.user._id]);
+          }
 
         },
         (error: any) => {
