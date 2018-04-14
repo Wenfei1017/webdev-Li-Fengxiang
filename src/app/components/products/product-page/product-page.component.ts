@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ProductsService} from "../../services/products.service";
-import {Product} from "../../models/product.client";
-import {CartService} from "../../services/cart.service";
+import {ProductsService} from "../../../services/products.service";
+import {Product} from "../../../models/product.client";
+import {CartService} from "../../../services/cart.service";
 
 @Component({
     selector: 'app-product',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css']
+    templateUrl: './product-page.component.html',
+    styleUrls: ['./product-page.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductPageComponent implements OnInit {
     private sub;
     public product:Product;
     quantity: number = 1;
     constructor(private route: ActivatedRoute,
-                private productService:ProductsService,
-                private cartService:CartService
+                private productService: ProductsService,
+                private cartService: CartService
     ) { }
 
     ngOnInit() {

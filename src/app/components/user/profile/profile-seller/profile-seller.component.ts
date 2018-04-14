@@ -3,8 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../../../services/user.service.client';
 import {User} from '../../../../models/user.model.client';
 import {NgForm} from '@angular/forms';
-import {Website} from '../../../../models/website.model.client';
 import { SharedService } from '../../../../services/shared.service';
+
 @Component({
   selector: 'app-profile-seller',
   templateUrl: './profile-seller.component.html',

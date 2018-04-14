@@ -1,19 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ProductComponent } from './product.component';
-import {SharedModule} from "../../shared/shared.module";
-import {ProductService} from "../../services/products.service";
-import {CartService} from "../../services/cart.service";
-import {HttpModule} from "@angular/http";
-import {FormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
-import {RouterTestingModule} from "@angular/router/testing";
-import {CartPageComponent} from "../cart/cart-page.component";
-import {Product} from "../../model/product";
+import { ProductPageComponent } from './product-page.component';
+import {SharedModule} from '../../../shared/shared.module';
+import {ProductsService} from '../../../services/products.service';
+import {CartService} from '../../../services/cart.service';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
+import {CartPageComponent} from '../../cart/cart-page.component';
+import {Product} from '../../../models/product.client';
 
 describe('Product Page, test add to cart button', () => {
-  let component: ProductComponent;
-  let fixture: ComponentFixture<ProductComponent>;
+  let component: ProductPageComponent;
+  let fixture: ComponentFixture<ProductPageComponent>;
   let cartPageComponent: CartPageComponent;
   let products: Product[];
 
@@ -27,15 +26,15 @@ describe('Product Page, test add to cart button', () => {
         RouterTestingModule
       ],
       declarations: [
-        ProductComponent,CartPageComponent
+        ProductPageComponent, CartPageComponent
       ],
-      providers: [CartService,ProductService],
+      providers: [CartService, ProductsService],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductComponent);
+    fixture = TestBed.createComponent(ProductPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     let f = TestBed.createComponent(CartPageComponent);
@@ -43,19 +42,19 @@ describe('Product Page, test add to cart button', () => {
     f.detectChanges();
     products = [
       {
-        "title": "1",
-        "price": 40
+        'title': '1',
+        'price': 40
       },
       {
-        "title": "2",
-        "price": 28
+        'title': '2',
+        'price': 28
       }
     ];
   });
 
   it('Add 1 first item.', () => {
     component.addToCart(products[0]);
-    expect(cartPageComponent.cartList).toEqual([{product:products[0],quantity:1}]);
+    expect(cartPageComponent.cartList).toEqual([{product: products[0], quantity:1}]);
     expect(cartPageComponent.totalPrice).toEqual(40);
   });
   it('When quantity is null.', () => {
@@ -67,11 +66,11 @@ describe('Product Page, test add to cart button', () => {
   it('Add duplicate item.', () => {
     component.quantity = 2;
     component.addToCart(products[0]);
-    expect(cartPageComponent.cartList).toEqual([{product:products[0],quantity:2}]);
+    expect(cartPageComponent.cartList).toEqual([{product: products[0], quantity: 2}]);
     expect(cartPageComponent.totalPrice).toEqual(80);
     component.quantity = 3;
     component.addToCart(products[0]);
-    expect(cartPageComponent.cartList).toEqual([{product:products[0],quantity:5}]);
+    expect(cartPageComponent.cartList).toEqual([{product: products[0], quantity: 5}]);
     expect(cartPageComponent.totalPrice).toEqual(200);
   });
 });
