@@ -1,70 +1,9 @@
-<!--<div class="container cl-body-padding">-->
-
-<!--<div *ngIf="errorFlag" class="alert alert-danger">-->
-<!--{{errorMsg}}-->
-<!--</div>-->
-
-<!--<div *ngIf="updateFlag" class="alert alert-info">-->
-<!--{{updateMsg}}-->
-<!--</div>-->
-
-<!--<form (ngSubmit)="updateUser()" #f="ngForm">-->
-
-<!--<div class="form-group">-->
-<!--<label >Username</label>-->
-<!--<input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi" class="form-control">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<label >First Name</label>-->
-<!--<input [(ngModel)]="user.firstName" type="text" name="firstName" placeholder="Jose" class="form-control">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<label >Last Name</label>-->
-<!--<input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato" class="form-control">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<label >Type</label>-->
-<!--<input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato" class="form-control">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<button  class="btn btn-primary btn-block" type="submit">Update</button>-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<button routerLink="/login" (click)="deleteUser()" class="btn btn-danger btn-block">Delete</button>-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<a routerLink="/login" class="btn btn-danger btn-block">Logout</a>-->
-<!--</div>-->
-
-<!--</form>-->
-<!--<div >-->
-<!--<button routerLink="/user/{{user._id}}/cart"  class="btn btn-primary btn-block">My shopping cart</button>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<nav class="navbar navbar-fixed-bottom cl-blue-navbar">-->
-<!--<div class="container-fluid">-->
-<!--<a routerLink="/profile/{{user._id}}" class="navbar-link navbar-text pull-right cl-text-white cl-icon-padding">-->
-<!--<span class="glyphicon glyphicon-user"></span>-->
-<!--</a>-->
-<!--</div>-->
-<!--</nav>-->
-
-
 <div class="cart-page-container">
-  <div class="cart-page-header">
-    <h1>My profile (I'm a seller)</h1>
-  </div>
-  <div class="cart-page-content" >
+  <div class="cart-page-content div1" >
     <div class="row cart-total">
-      <div class="col-lg-offset-6">
-        <div class="container-fluid">
+      <h1>My profile (I'm a seller)</h1>
+      <!--<div class="col-lg-offset-6">-->
+        <div class="cart-page-container">
 
           <div *ngIf="errorFlag" class="alert alert-danger">
             {{errorMsg}}
@@ -78,49 +17,62 @@
 
             <div class="form-group">
               <label >Username</label>
-              <input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi">
+                <input [(ngModel)]="user.username" type="text" class="input-style" name="username" placeholder="jannunzi">
             </div>
 
             <div class="form-group">
               <label >Email</label>
-              <input [(ngModel)]="user.email" type="text" name="firstName" placeholder="Jose">
+                <input [(ngModel)]="user.email" type="text" class="input-style" name="firstName" placeholder="1234@mail.com">
             </div>
-
-            <!--<div class="form-group">-->
-              <!--<label >Last Name</label>-->
-              <!--<input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato">-->
-            <!--</div>-->
 
             <div class="form-group">
               <label >Type</label>
-              <input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato">
+                <input [(ngModel)]="user.type" type="text" class="input-style" name="lastName" placeholder="user">
             </div>
 
-            <div class="form-group">
-              <button  type="submit">Update</button>
-            </div>
+            <div class="quick-cart-footer-pro" style="position: relative; width: 60%; height: 100px; left: 50%; top:20px; margin: 0 0 0 -30%">
+              <div class="quick-cart-footer-cell">
+                <button  type="submit" class="button button-secondary button-wide button-large">Update</button>
+              </div>
 
-            <div class="form-group">
-              <button routerLink="/login" (click)="deleteUser()">Delete</button>
-            </div>
+              <div class="quick-cart-footer-cell">
+                <button class="button button-secondary button-wide button-large" routerLink="/login" (click)="deleteUser()">Delete</button>
+              </div>
 
-            <div class="form-group">
-              <button routerLink="/login">Logout</button>
+              <div class="quick-cart-footer-cell">
+                <button class="button button-secondary button-wide button-large" routerLink="/">Logout</button>
+              </div>
             </div>
 
           </form>
-          <div >
-            <button routerLink="seller/{{user._id}}/products">My Products List</button>
+
+          <p></p>
+          <div class="quick-cart-footer-pro" style="position: relative; width: 100%; height: 20px; left: 50%; top:40px; margin: 0 0 0 -45%">
+            <p></p>
+            <p></p>
+            <strong style="width: 50%; float: left" class="continue-shopping" ><a routerLink="/seller/{{user._id}}/products/new">continue add products</a></strong>
+            <strong class=" button button-primary " style="width: 50%; float: right" > <a routerLink="seller/{{user._id}}/products"> My Product List</a></strong>
+            <br style="clear:both;"/>
           </div>
+
         </div>
 
-        <div class="cart-buttons">
-          <div class="continue-shopping"><a routerLink="/category">continue add products</a></div>
-          <div class="checkout-button button button-primary button-large"> <a routerLink="/user/{{user._id}}/cart"> More</a></div>
-        </div>
-      </div>
-      <div class="cart-page-content">
-      </div>
+      <!--<div >-->
+        <!--<p></p>-->
+        <!--<p></p>-->
+        <!--<button routerLink="seller/{{user._id}}/products">My Products List</button>-->
+      <!--</div>-->
+
+      <!--</div>-->
+      <!--<div class="container-fluid">-->
+        <!--<div class="cart-page-content-pro">-->
+
+          <!--Plate Home-->
+        <!--</div>-->
+      <!--</div>-->
+
     </div>
+
   </div>
 </div>
+

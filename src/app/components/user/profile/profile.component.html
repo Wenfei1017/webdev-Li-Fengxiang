@@ -1,14 +1,11 @@
 
 <div class="cart-page-container">
-  <div class="cart-page-header">
-    <h1>My profile</h1>
-  </div>
-  <div class="cart-page-content" >
+  <div class="cart-page-content div1">
     <div class="row cart-total">
-      <div class="col-lg-offset-6">
-
-        <div class="container-fluid">
-
+    <br/>
+        <div class="cart-page-container">
+          <h1>My profile</h1>
+          <p></p>
         <div *ngIf="errorFlag" class="alert alert-danger">
         {{errorMsg}}
         </div>
@@ -16,56 +13,69 @@
         <div *ngIf="updateFlag" class="alert alert-info">
         {{updateMsg}}
         </div>
-
+          <p></p>
+          <p></p>
         <form (ngSubmit)="updateUser()" #f="ngForm">
 
-        <div class="form-group">
-        <label >Username</label>
-        <input [(ngModel)]="user.username" type="text" name="username" placeholder="jannunzi">
+
+          <!--<div class="form-group">-->
+            <!--<label >Username</label>-->
+            <!--<input [(ngModel)]="user.username" type="text" class="input-style" name="firstName" placeholder="1234@mail.com">-->
+          <!--</div>-->
+<br/>
+          <br/>
+          <div class="form-group">
+            <label >Username</label>
+            <input [(ngModel)]="user.username" type="text" class="input-style" name="username" placeholder="jannunzi">
+          </div>
+
+          <div class="form-group">
+        <label >Email</label>
+        <input [(ngModel)]="user.email" type="text" class="input-style" name="firstName" placeholder="1234@mail.com">
         </div>
 
-        <div class="form-group">
-        <label >First Name</label>
-        <input [(ngModel)]="user.email" type="text" name="firstName" placeholder="Jose">
-        </div>
-
-        <!--<div class="form-group">-->
-        <!--<label >Last Name</label>-->
-        <!--<input [(ngModel)]="user.lastName" type="text" name="lastName" placeholder="Annunziato">-->
-        <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<label >Username</label>-->
+            <!--<input [(ngModel)]="user.username" type="text" class="input-style" name="firstName" placeholder="1234@mail.com">-->
+          <!--</div>-->
 
         <div class="form-group">
-        <label >Type</label>
-        <input [(ngModel)]="user.type" type="text" name="lastName" placeholder="Annunziato">
+        <label >User Type</label>
+        <input [(ngModel)]="user.type" type="text" class="input-style" name="lastName" placeholder="user">
         </div>
 
-        <div class="form-group">
-        <button  type="submit">Update</button>
+      <div class="quick-cart-footer" style="position: relative; width: 60%; height: 100px; left: 50%; top:20px; margin: 0 0 0 -30%">
+        <div class="quick-cart-footer-cell">
+        <button  type="submit" class="button button-secondary button-wide-profile button-large">Update</button>
         </div>
 
-        <div class="form-group">
-        <button routerLink="/login" (click)="deleteUser()">Delete</button>
+        <div class="quick-cart-footer-cell">
+        <button class="button button-secondary button-wide-profile button-large" routerLink="/login" (click)="deleteUser()">Delete</button>
         </div>
 
-        <div class="form-group">
-        <button routerLink="/login">Logout</button>
+        <div class="quick-cart-footer-cell">
+        <button class="button button-secondary button-wide-profile button-large" routerLink="/">Logout</button>
         </div>
+      </div>
+          <div class="quick-cart-footer-cell" style="position: relative; width: 60%; height: 20px; left: 50%; top:40px; margin: 0 0 0 -30%">
+            <strong class="continue-shopping"> <a routerLink="/category">continue shopping</a></strong>
+            <div class="checkout-button button button-primary button-large"> <a routerLink="/user/{{user._id}}/cart"> Checkout</a></div>
+          </div>
+
 
         </form>
-        <div >
-        <button routerLink="/user/{{user._id}}/cart">My shopping cart</button>
+        <div class="quick-cart-footer-cell" style="width: 500px; margin: 0 auto">
+        <button class="cart" style="color: black" routerLink="/user/{{user._id}}/cart">My shopping cart</button>
         </div>
-        </div>
-
-    <div class="cart-buttons">
-      <div class="continue-shopping"><a routerLink="/category">continue shopping</a></div>
-      <div class="checkout-button button button-primary button-large"> <a routerLink="/user/{{user._id}}/cart"> Checkout</a></div>
-    </div>
-  </div>
-  <div class="cart-page-content">
+     </div>
+  <!--</div>-->
+      <div class="container-fluid">
+  <div class="cart-page-content-pro">
     <h4>Your cart is empty.</h4>
     <a routerLink="/category">Go shopping</a>
   </div>
 </div>
+    </div>
   </div>
 </div>
+

@@ -50,14 +50,10 @@ export class ProfileSellerComponent implements OnInit {
       }
     );
   }
-
-
   ngOnInit() {
     this.user = this.sharedService.user2;
     console.log(this.user._id);
   }
-
-
   deleteUser() {
     this.userService.deleteUser(this.user._id).subscribe(() => {});
   }

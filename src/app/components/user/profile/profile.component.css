@@ -17,18 +17,20 @@
   font-family: "Playfair Display";
   margin: 80px 0;
 }
-.cart-page-content {
-  max-width:940px;
-  margin:30px 70px;
-  background-color: white;
-  padding:60px;
+.cart-page-content-pro {
+  max-width:340px;
+  margin:30px 36%;
+  background-color: transparent;
+  padding:20px;
+  height:200px;
+  width:300px;
 }
 .cart-item-cell {
   width: 100%;
 }
 .cart-total,
 .cart-item-row {
-  border-bottom: 1px solid #e4e4e4;
+  /*border-bottom: 1px solid #e4e4e4;*/
 }
 .cart-item-header .cart-item-cell:first-of-type {
   text-align: left;
@@ -102,9 +104,6 @@
   color:black
 }
 
-.cart-buttons {
-  padding:20px 0;
-}
 .continue-shopping a {
   text-transform: uppercase;
   color: black;
@@ -170,4 +169,383 @@
     float: none;
     margin:20px 0 0 0;
   }
+}
+
+.header-image {
+  height: 400px;
+  background: url("../../../../assets/imgs/plates-header.jpg") no-repeat;
+  background-size:cover;
+  background-position: center center;
+}
+.header-block {
+  height: 100%;
+  background-color: #3A3A35;
+  color:white;
+  width: 50%;
+  margin:auto;
+  border-color:white;
+  border-style:solid;
+  border-width: 0 15px;
+  display:table;
+}
+.header-text {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+.header-text-title {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 500;
+  padding-bottom:10px;
+  border-bottom: 1px solid white;
+}
+.header-text p {
+  padding:10px 40px
+}
+.layout-container {
+  max-width: 1140px;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.product-grid {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.product-image {
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.66667%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.image-container {
+  position: relative;
+}
+.image-container:hover .product-image{
+  opacity: 0.3;
+  background-size:120%;
+}
+.image-container:hover .overlay{
+  opacity: 1;
+}
+.overlay {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.overlay .button {
+  width: 160px;
+  line-height: 38px;
+}
+.overlay .button:first-child {
+  margin-bottom: 2em;
+}
+.product-details {
+  padding-top: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.product-brand {
+  display: block;
+  margin: .5em 0;
+  color: #7d7d7d;
+}
+.product-title {
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: 0;
+  margin-bottom: .5em;
+  font-size: 1em;
+  line-height: 1.2;
+  font-weight: 400;
+  font-family: Roboto;
+}
+.product-price {
+  font-size: 1.14286em;
+  color: #9f9f9f;
+  font-family: Playfair Display;
+}
+@media screen and (max-width: 767px) {
+  .header-block {
+    width: 100%;
+  }
+}
+
+/*.button {*/
+/*padding: 0;*/
+/*border: none;*/
+/*background: none;*/
+/*display: inline-block;*/
+/*zoom: 1; !* zoom and *display = ie7 hack for display:inline-block *!*/
+/**display: inline;*/
+/*vertical-align: baseline;*/
+/*margin: 0 2px;*/
+/*outline: none;*/
+/*cursor: pointer;*/
+/*text-align: center;*/
+/*text-decoration: none;*/
+/*font: 14px/100% Arial, Helvetica, sans-serif;*/
+/*!*padding: .5em 2em .55em;*!*/
+/*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+/*-webkit-border-radius: .5em;*/
+/*-moz-border-radius: .5em;*/
+/*border-radius: .5em;*/
+/*-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);*/
+/*-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);*/
+/*box-shadow: 0 1px 2px rgba(0,0,0,.2);*/
+/*}*/
+
+
+/*.button:hover {*/
+/*text-decoration: none;*/
+/*}*/
+/*.button:active {*/
+/*position: relative;*/
+/*top: 1px;*/
+/*}*/
+
+.button {
+  display: inline-block;
+  padding: 0 30px;
+  color: white;
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid #3b3d38;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+/*.button.button-primary {*/
+  /*color: #fff;*/
+  /*background-color: #3b3d38;*/
+  /*border-color: #3b3d38;*/
+/*}*/
+/*.button.button-primary:hover {*/
+  /*color: #fff;*/
+  /*background-color: #52525b;*/
+  /*border-color: #52525b;*/
+/*}*/
+.button.button-secondary {
+  color: #1d1d20;
+  background-color: #fff;
+  border-color: #1d1d20;
+}
+.button.button-secondary:hover {
+  color: #fff;
+  background-color: #8e8e90;
+  border-color: #8e8e90;
+}
+.button.button-wide-profile {
+  width: 40%;
+}
+.button.button-large {
+  padding: 10px 10px;
+}
+
+
+.cart-buttons {
+  padding:20px 0;
+}
+
+.medium {
+  font-size: 12px;
+  padding: .4em 1.5em .42em;
+}
+
+.bigrounded {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+.body {
+  background: #ededed;
+  width: 900px;
+  margin: 30px auto;
+  color: #999;
+}
+.cart-buttons {
+  padding:20px 0;
+}
+.ha_bor{border:0px solid;}
+
+.gray {
+  color: #e9e9e9;
+  border: solid 1px #555;
+  background: #6e6e6e;
+  background: -webkit-gradient(linear, left top, left bottom, from(#888), to(#575757));
+  background: -moz-linear-gradient(top,  #888,  #575757);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#888888', endColorstr='#575757');
+}
+
+.buttonHolder{ position: center; }
+
+.piaochecked {
+  width: 20px;
+  height: 20px;
+  float: left;
+  cursor: pointer;
+  margin-left: 10px;
+  text-align: center;
+  /*background-image: url(images/checkbox_01.gif);*/
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.on_check {
+  background-position: 0 -21px;
+}
+.radioclass {
+  opacity: 0;
+  cursor: pointer;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+
+.input{
+  border: 1px solid #ccc;
+  padding: 7px 0px;
+  border-radius: 3px; /*css3属性IE不支持*/
+  padding-left:5px;
+}
+
+.quick-cart-footer {
+  display: table;
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.text {
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.input1{
+  /*display: inline-block;*/
+  padding: 6px;
+  color: white;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid #3b3d38;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.input-style {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: center;
+  width:150px;
+  line-height: 35px;
+  /*background: #eee;*/
+  color:#7b7b7b;
+  margin: 2px;
+  background: transparent;
+  border: none;
+}
+
+@media screen and (max-width: 820px) {
+  .cart-page-content {
+    margin: 0;
+  }
+
+  .cart-page-header h1 {
+    margin: 30px 0;
+  }
+
+  .cart-item-header {
+    display: none;
+  }
+
+  .cart-item-product {
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    padding-bottom: 15px;
+  }
+
+  .cart-item-quantity {
+    width: 80%;
+    float: left;
+    padding-bottom: 15px;
+    text-align: left;
+  }
+
+  .cart-item-total,
+  .cart-item-action {
+    text-align: right;
+  }
+
+  .cart-total-label {
+    float: left;
+  }
+
+  .continue-shopping a {
+    float: none;
+  }
+
+  .checkout-button {
+    float: none;
+    margin: 20px 0 0 0;
+  }
+}
+
+.cart-item-row {
+  border-bottom: 1px solid #e4e4e4;
+}
+.cart-item-header .cart-item-cell:first-of-type {
+  text-align: left;
+}
+.cart-item-header .cart-item-cell {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .15em;
+  color: #9f9f9f;
+  text-align: right;
+}
+
+.test{
+  width:500px; // this can be what ever unit you want, you just have to define it
+margin-left:auto;
+  margin-right:auto;
+}
+
+.div1{
+  -moz-background-size:auto;
+  -webkit-background-size:auto;
+  -o-background-size:auto;
+  background-size:auto;
+  background-image: url(../../../../assets/imgs/sakura-plate-bowl_1.jpg);
+}
+
+.cart {
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  background-color: transparent;
 }
