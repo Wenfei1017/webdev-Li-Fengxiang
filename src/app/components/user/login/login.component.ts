@@ -7,6 +7,9 @@ import { ViewChild } from '@angular/core';
 import { SharedService } from '../../../services/shared.service';
 import {environment} from '../../../../environments/environment';
 import enumerate = Reflect.enumerate;
+import { CartService } from '../../../services/cart.service';
+import { Product} from '../../../models/product.client';
+import { ProductsService } from '../../../services/products.service';
 
 
 @Component({
@@ -25,8 +28,16 @@ export class LoginComponent implements OnInit {
   baseUrl = environment.baseUrl;
 
   userType: string;
+  user: User;
+  userId: String;
+  public products:Array<Product>;
+  private sub;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private sharedService: SharedService
+  constructor(private userService: UserService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private sharedService: SharedService,
+              private productService: ProductsService,
   ) {}
 
 
@@ -45,6 +56,9 @@ export class LoginComponent implements OnInit {
         }
         if (this.userType === 'seller') {
           this.router.navigate(['/seller', user._id]);
+        }
+        if (this.userType === 'admin') {
+          this.router.navigate(['/admin', user._id]);
         }
         this.router.navigate(['/user', user._id]);
       },
@@ -74,12 +88,21 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.load();
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.userType = params['type'];
         console.log(this.userType);
+        this.user = this.sharedService.user1;
       }
     );
   }
+
+  load = () => {
+    this.sub = this.productService.getProducts('./assets/mock-data/products.json')
+      .subscribe(res => {
+        this.products = res;
+      })
+  };
 
 }

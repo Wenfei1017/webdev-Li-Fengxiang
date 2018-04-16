@@ -44,11 +44,14 @@ export class RegisterComponent implements OnInit {
           console.log(this.user);
           if (this.userType === 'user') {
             this.router.navigate(['/user/' + this.user._id]);
+            console.log(this.user._id);
           }
           if (this.userType === 'seller') {
             this.router.navigate(['/seller/' + this.user._id]);
           }
-
+          if (this.userType === 'admin') {
+            this.router.navigate(['/admin/' + this.user._id]);
+          }
         },
         (error: any) => {
           this.errorMsg = error._body; }

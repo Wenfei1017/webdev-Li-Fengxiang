@@ -30,6 +30,7 @@
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "express-session": "^1.15.6",
+    "font-awesome": "^4.7.0",
     "http": "0.0.0",
     "medium-editor": "^5.23.3",
     "mongoose": "^4.11.4",

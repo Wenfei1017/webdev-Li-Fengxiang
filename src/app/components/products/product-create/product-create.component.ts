@@ -3,10 +3,10 @@ import { Subscription }                                    from 'Rxjs';
 import { Product} from '../../../models/product.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductsService} from '../../../services/products.service';
-import {Widget} from '../../../models/widget.model.client';
-import { WidgetService } from '../../../services/widget.service.client';
+import { ImageService } from '../../../services/image.service.client';
 import { User } from '../../../models/user.model.client';
 import { SharedService } from '../../../services/shared.service';
+import { Image } from '../../../models/image.model.client';
 
 @Component({
   selector: 'app-product-create',
@@ -18,11 +18,13 @@ export class ProductCreateComponent implements OnInit {
   private subscriptions: Array<Subscription> = [];
   uid: String;
   user: User;
+  image: Image;
 
   constructor(
     private productService: ProductsService,
     private router: Router,
-    private widgetService: WidgetService,
+    private activatedRoute: ActivatedRoute,
+    private imageService: ImageService,
     private sharedService: SharedService,
   ) { }
 
@@ -67,6 +69,23 @@ export class ProductCreateComponent implements OnInit {
     //     console.log(error);
     //   }
     // );
+  }
+
+  updateImage() {
+    if (!this.image._id) {
+      this.imageService.createImage(this.uid, this.image).subscribe(
+        (image: Image) => {
+          this.image = image;
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
+      );
+    } else {
+      this.imageService.updateImage(this.image._id, this.image).subscribe(
+        () => {
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
+      );
+    }
   }
 
 }

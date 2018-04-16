@@ -2,9 +2,8 @@ export class User {
   _id: String;
   username: String;
   password: String;
-
-  firstName: String;
-  lastName: String;
+  email: String;
+  // lastName: String;
   type: String;
 
   // type : ColorEnum = { RED : 0, GREEN : 1, BLUE : 2 };
@@ -14,12 +13,12 @@ export class User {
     default: 'User'
   };
 
-  constructor(_id, username, password, firstName, lastName, type) {
+  constructor(_id, username, password, emial, type) {
     this._id = _id;
     this.username = username;
     this.password = password;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.email = emial;
+    // this.lastName = lastName;
     this.type = type;
   }
 }

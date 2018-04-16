@@ -16,6 +16,11 @@ import {WebsiteEditComponent} from './components/website/website-edit/website-ed
 import {AuthGuard} from './services/auth-guard.service';
 import {CartPageComponent} from './components/cart/cart-page.component';
 import {CategoryComponent} from './components/category/category.component';
+import {ProfileSellerComponent} from './components/user/profile/profile-seller/profile-seller.component';
+import {ProductListComponent} from './components/products/product-list/product-list.component';
+import { ProductCreateComponent } from './components/products/product-create/product-create.component';
+import { ProductPageComponent } from './components/products/product-page/product-page.component';
+import {ProfileAdminComponent} from './components/user/profile/profile-admin/profile-admin.component';
 
 // Import all other components here
 
@@ -44,6 +49,15 @@ const APP_ROUTES: Routes = [
 
   { path : 'user/:uid/cart', component: CartPageComponent},
   { path: 'category', component: CategoryComponent},
+  { path: 'seller/:uid', component: ProfileSellerComponent},
+  { path: 'seller/:uid/products', component: ProductListComponent},
+  { path: 'seller/:uid/products/new', component: ProductCreateComponent},
+  { path: 'admin/:uid', component: ProfileAdminComponent},
+
+  {
+    path: 'product',
+    loadChildren: './components/products/product-page/product-page.module#ProductModule'
+  },
 ];
 
 // Export the routes as module providers

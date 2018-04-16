@@ -30,7 +30,7 @@ body {
 }
 .header-nav {
     display: block;
-    margin: 0;
+    margin: 0px;
     text-align: center;
 }
 .header-nav-item:first-child {
@@ -57,9 +57,10 @@ body {
 }
 
 .button {
+    background-color: Transparent;
     display: inline-block;
     padding: 0 30px;
-    color: white;
+    /*color: white;*/
     text-align: center;
     font-size: 0.85em;
     font-weight: 600;
@@ -67,7 +68,7 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
-    background-color: transparent;
+    /*background-color: transparent;*/
     border: 1px solid #3b3d38;
     cursor: pointer;
     box-sizing: border-box;
@@ -99,3 +100,12 @@ body {
     padding: 19px 22px;
 }
 
+.text {
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}

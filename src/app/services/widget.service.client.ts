@@ -34,6 +34,13 @@ export  class WidgetService {
       );
   }
 
+  createImage(newImage) {
+    // return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', widget)
+    //   .map((res: Response) => {
+    //     return res.json();
+    //   });
+  }
+
   createWidget(pageId: String, widget: Widget) {
     return this.http.post(this.baseUrl + '/api/page/' + pageId + '/widget', widget)
       .map((res: Response) => {

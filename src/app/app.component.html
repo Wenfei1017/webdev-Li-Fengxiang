@@ -1,21 +1,44 @@
 
 
-<router-outlet>
-  <br/>
-  <br/>
-  <br/>
-  <div class="container" >
-    <div class="btn-group" dropdown>
-      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-        Login <span class="caret"></span>
-      </button>
-      <ul *dropdownMenu class="dropdown-menu" role="menu">
-        <li role="menuitem"><a class="dropdown-item" href="/login/user">user login</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="/login/admin">admin login</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="/login/seller">seller login</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="/login/advertiser">advertiser login</a></li>
-      </ul>
-    </div>
+<!--&lt;!&ndash;<router-outlet>&ndash;&gt;-->
+  <!--<br/>-->
+  <!--<br/>-->
+  <!--<br/>-->
+  <!--<div class="container" >-->
+    <!--<div class="btn-group" dropdown>-->
+      <!--<button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">-->
+        <!--Login <span class="caret"></span>-->
+      <!--</button>-->
+      <!--<ul *dropdownMenu class="dropdown-menu" role="menu">-->
+        <!--<li role="menuitem"><a class="dropdown-item" href="/login/user">user login</a></li>-->
+        <!--<li role="menuitem"><a class="dropdown-item" href="/login/admin">admin login</a></li>-->
+        <!--<li role="menuitem"><a class="dropdown-item" href="/login/seller">seller login</a></li>-->
+        <!--<li role="menuitem"><a class="dropdown-item" href="/login/advertiser">advertiser login</a></li>-->
+      <!--</ul>-->
+
+      <!--&lt;!&ndash;<div class="wrapper">&ndash;&gt;-->
+        <!--&lt;!&ndash;<top-bar></top-bar>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<div class="main-panel">&ndash;&gt;&ndash;&gt;-->
+        <!--<router-outlet></router-outlet>-->
+        <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+  <!--</div>-->
+  <!--<br/>-->
+
+
+
+<!--</router-outlet>-->
+
+
+<div class="wrapper">
+
+  <top-bar></top-bar>
+  <div class="main-panel">
+    <router-outlet></router-outlet>
   </div>
-  <br/>
-</router-outlet>
+
+</div>
+
+

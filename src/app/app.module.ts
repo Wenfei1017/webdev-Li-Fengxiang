@@ -31,7 +31,8 @@ import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import { SharedService } from './services/shared.service';
 import { CartService} from './services/cart.service';
-import { ProductService} from './services/products.service';
+import { ProductsService} from './services/products.service';
+import { ImageService } from './services/image.service.client';
 
 
 import { Routing } from './app.routing';
@@ -45,7 +46,12 @@ import { CategoryComponent } from './components/category/category.component';
 import { CartPageComponent } from './components/cart/cart-page.component';
 import { CartPopupComponent} from './components/cart/cart-popup/cart-popup.component';
 import { ProfileSellerComponent } from './components/user/profile/profile-seller/profile-seller.component';
-
+import { ProductCreateComponent } from './components/products/product-create/product-create.component';
+import { ProductListComponent} from './components/products/product-list/product-list.component';
+import { ProductPageComponent } from './components/products/product-page/product-page.component';
+import { TopbarComponent } from './component/topbar/topbar.component';
+import { QuantityControlComponent } from './component/quantity-control/quantity-control.component';
+import { ProfileAdminComponent } from './components/user/profile/profile-admin/profile-admin.component';
 
 @NgModule({
   // Declare components here
@@ -74,7 +80,13 @@ import { ProfileSellerComponent } from './components/user/profile/profile-seller
     CategoryComponent,
     CartPageComponent,
     CartPopupComponent,
-    ProfileSellerComponent
+    ProfileSellerComponent,
+    ProductCreateComponent,
+    ProductListComponent,
+    ProductPageComponent,
+    TopbarComponent,
+    QuantityControlComponent,
+    ProfileAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,9 +96,10 @@ import { ProfileSellerComponent } from './components/user/profile/profile-seller
     QuillEditorModule,
     BsDropdownModule,
     BsDropdownModule.forRoot(),
+
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService, AuthGuard, CartService, ProductService],
+  providers: [UserService, WebsiteService, PageService, ImageService, FlickrService, SharedService, AuthGuard, CartService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

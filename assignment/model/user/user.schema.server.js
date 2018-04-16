@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-var websiteSchema = require('../website/website.schema.server')
+var websiteSchema = require('../website/website.schema.server');
+var imageSchema = require('../image/image.schema.server');
 
 var userSchema = mongoose.Schema({
   username: {type: String},
@@ -8,6 +9,7 @@ var userSchema = mongoose.Schema({
   lastName: String,
   email: String,
   phone: String,
+  images: [imageSchema],
   websites: [websiteSchema],
   facebook: {
     id: String,

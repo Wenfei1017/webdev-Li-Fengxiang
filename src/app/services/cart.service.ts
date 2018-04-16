@@ -1,9 +1,6 @@
-/**
- * Created by andrew.yang on 7/28/2017.
- */
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {Product} from "../models/product";
+import {Product} from "../models/product.client";
 import {Cart} from '../models/cart';
 
 @Injectable()

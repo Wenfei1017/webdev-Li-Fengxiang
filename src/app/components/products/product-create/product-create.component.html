@@ -1,39 +1,53 @@
 <div class="page_admin-add">
-  <h1 class="page_admin-add-title"> Adding new computer</h1>
-
-  <!--We have nothing to update because we create a new one-->
-  <!--<computer-form [action]="'create'" [itemToUpdate]="null" (formSubmit)="createComputer($event)"></computer-form>-->
+  <h1 class="page_admin-add-title"> Adding new Item</h1>
 </div>
 
-<div class="container">
+<div class="page_admin-add bg-create">
   <div *ngIf="errorFlag" class="alert alert-danger">
     {{errorMsg}}
   </div>
-  <form (ngSubmit)="login()" #f="ngForm">
+  <form>
 
-    <div class="form-group">
-      <input type="text" name="title" placeholder="title" class="form-control" ngModel required #username="ngModel">
+    <div class="cart-page-content-create">
+    <div style="width: 100%">
+      <div style="float:left; width: 50%">
+
+    <div class="quick-cart-footer-create">
+      <label class = "text-create">Product ID:</label>
+      <input type="text" name="Product ID" placeholder="ID" class="input-style" ngModel required #password="ngModel">
     </div>
 
-    <div class="form-group">
-      <input type="text" name="brand" placeholder="brand" class="form-control" ngModel required #password="ngModel">
+    <div class="quick-cart-footer-create">
+      <label class = "text-create">Title:</label>
+      <input type="text" name="title" placeholder="title" class="input-style" ngModel required #username="ngModel">
     </div>
 
-    <div class="form-group">
-      <input type="number" name="price" placeholder="price" class="form-control" ngModel required #username="ngModel">
+    <div class="quick-cart-footer-create">
+      <label class = "text-create">Brand:</label>
+      <input type="text" name="brand" placeholder="brand" class="input-style" ngModel required #password="ngModel">
     </div>
 
-    <div class="form-group">
-      <input type="text" name="description" placeholder="description" class="form-control" ngModel required #password="ngModel">
+    <div class="quick-cart-footer-create">
+      <label class = "text-create">Price:</label>
+      <input type="number" name="price" placeholder="price" class="input-style" ngModel required #username="ngModel">
+    </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <button class="btn btn-info" (click)="createWidget('IMAGE')">Add Computer Image</button>
+    <div style="float:right; width: 50%">
+      <label class = "text-create">Description:</label>
+      <input type="text" name="description" placeholder="my product description" class="input-style submissionfield" ngModel required #password="ngModel">
+
+      <form ngForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+        <button type="submit" class="button button-secondary  button-large">Upload Image</button>
+      </form>
     </div>
 
-    <div class="form-group">
-      <a routerLink="./register" class="btn btn-success btn-block">add</a>
+      <div class="quick-cart-footer" style="position: relative; width: 60%; height: 200px; left: 50%; top:80px; margin: 0 0 0 -30%">
+        <button class="button button-secondary button-large" routerLink="..">ADD TO MY PRODUCT LIST</button>
+      </div>
     </div>
+
 
   </form>
 
