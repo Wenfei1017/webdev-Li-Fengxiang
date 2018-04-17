@@ -26,10 +26,9 @@ import {ProfileAdminComponent} from './components/user/profile/profile-admin/pro
 
 const APP_ROUTES: Routes = [
   { path : '' , component: LoginComponent},
+  { path : 'login' , component: LoginComponent},
   { path : 'login/:type' , component: LoginComponent},
-  { path : 'login/:type/register' , component: RegisterComponent },
-
-  { path : 'register' , component: RegisterComponent },
+  { path : 'register/:type' , component: RegisterComponent },
 
   { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
@@ -48,7 +47,16 @@ const APP_ROUTES: Routes = [
   // so on
 
   { path : 'user/:uid/cart', component: CartPageComponent},
-  { path: 'category', component: CategoryComponent},
+  { path: 'category',
+    component: CategoryComponent,
+    canActivate: [AuthGuard],
+  },
+
+  { path: 'category/products/:pid',
+    component: ProductPageComponent,
+    canActivate: [AuthGuard],
+  },
+
   { path: 'seller/:uid', component: ProfileSellerComponent},
   { path: 'seller/:uid/products', component: ProductListComponent},
   { path: 'seller/:uid/products/new', component: ProductCreateComponent},

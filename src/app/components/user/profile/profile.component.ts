@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
 
   updateFlag: boolean;
   updateMsg: String;
+  userType: String
 
   constructor(
     private userService: UserService,
@@ -46,7 +47,7 @@ export class ProfileComponent implements OnInit {
   logout() { this.userService.logout()
     .subscribe(
       (data: any) => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login/' + this.userType]);
       }
     );
   }
@@ -54,6 +55,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user;
+    console.log("profile");
+    console.log(this.user);
+    this.userType = this.user.userType;
   }
 
 

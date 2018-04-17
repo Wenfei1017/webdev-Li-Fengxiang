@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, ElementRef} from "@angular/core";
-import {CartService} from "../../../services/cart.service";
+import {CartService} from "../../../services/cart.service.client";
 import {CartBaseComponent} from "../cart-base.component";
 
 @Component({

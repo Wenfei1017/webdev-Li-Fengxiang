@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductPageComponent } from './product-page.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {ProductsService} from '../../../services/products.service';
-import {CartService} from '../../../services/cart.service';
+import {CartService} from '../../../services/cart.service.client';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';

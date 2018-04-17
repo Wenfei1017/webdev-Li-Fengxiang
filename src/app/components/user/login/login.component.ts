@@ -7,7 +7,7 @@ import { ViewChild } from '@angular/core';
 import { SharedService } from '../../../services/shared.service';
 import {environment} from '../../../../environments/environment';
 import enumerate = Reflect.enumerate;
-import { CartService } from '../../../services/cart.service';
+import { CartService } from '../../../services/cart.service.client';
 import { Product} from '../../../models/product.client';
 import { ProductsService } from '../../../services/products.service';
 
@@ -45,37 +45,59 @@ export class LoginComponent implements OnInit {
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
 
-    this.userService.findUserByCredential(this.username, this.password).subscribe(
-      (user: User) => {
-        this.errorFlag = false;
-        if (this.userType === 'user') {
-          this.router.navigate(['/user', user._id]);
-        }
-        if (this.userType === 'admin') {
-          this.router.navigate(['/admin', user._id]);
-        }
-        if (this.userType === 'seller') {
-          this.router.navigate(['/seller', user._id]);
-        }
-        if (this.userType === 'admin') {
-          this.router.navigate(['/admin', user._id]);
-        }
-        this.router.navigate(['/user', user._id]);
-      },
-      (error: any) => {
-        this.errorFlag = true;
-      }
-    );
+    // this.userService.findUserByCredential(this.username, this.password).subscribe(
+    //   (user: User) => {
+    //     this.errorFlag = false;
+    //     this.sharedService.user = user;
+    //     console.log("findUserByCredential");
+    //     console.log("user");
+    //     console.log(user);
+    //     if (this.userType === 'user') {
+    //       this.router.navigate(['/user', user._id]);
+    //     }
+    //     if (this.userType === 'admin') {
+    //       this.router.navigate(['/admin', user._id]);
+    //     }
+    //     if (this.userType === 'seller') {
+    //       this.router.navigate(['/seller', user._id]);
+    //     }
+    //     if (this.userType === 'admin') {
+    //       this.router.navigate(['/admin', user._id]);
+    //     }
+    //     this.router.navigate(['/user', user._id]);
+    //   },
+    //   (error: any) => {
+    //     this.errorFlag = true;
+    //   }
+    // );
 
     // calling client side userservice to send login information
     console.log('data', this.username);
     this.userService.login(this.username, this.password)
       .subscribe(
-        (data: any) => {
-          this.sharedService.user = data;
-          console.log(this.sharedService.user);
+        (user: User) => {
+          this.sharedService.user = user;
+          // console.log(this.sharedService.user);
           this.errorFlag = false;
-          this.router.navigate(['/user'])},
+
+          console.log("loginFinished!!");
+          console.log(user);
+
+          if (user.userType === 'user') {
+            console.log("userTest");
+            this.router.navigate(['/user', user._id]);
+          }
+          if (user.userType === 'admin') {
+            this.router.navigate(['/admin', user._id]);
+          }
+          if (user.userType === 'seller') {
+            this.router.navigate(['/seller', user._id]);
+          }
+          if (user.userType === 'admin') {
+            this.router.navigate(['/admin', user._id]);
+          }
+          this.router.navigate(['/user', user._id]);
+        },
         (error: any) => {
           console.log(error);
         }

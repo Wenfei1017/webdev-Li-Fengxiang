@@ -22,7 +22,7 @@ export class ProductsService {
   //   new Website('234', 'Amazon', '789', 'test' ),
   // ];
 
-  public getProducts(dataURL:string){
+  public getProducts(dataURL:string) {
     return this.http.get(dataURL)
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error || 'Server error'));

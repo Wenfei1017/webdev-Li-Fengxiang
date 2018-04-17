@@ -65,12 +65,15 @@ export class UserService {
   }
 
   login(username: String, password: String) {
+    console.log("testLogin");
     this.options.withCredentials = true; // jga
     const body = { username : username, password : password
     };
     return this.http.post(this.baseUrl + '/api/login', body, this.options)
       .map(
         (res: Response) => {
+          console.log("httpPostBack");
+          console.log(res);
           const data = res.json();
           return data; }
       );

@@ -37,6 +37,7 @@ function findUserById(userId) {
 }
 
 function findUserByUsername(uname) {
+  console.log("testUser!!");
   return userModel.findOne({username: uname})
 }
 

@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {Product} from "../../model/product";
-import {SharedModule} from "../../shared/shared.module";
-import {CartService} from "../../services/cart.service";
-import {ProductService} from "../../services/products.service";
-import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpModule} from "@angular/http";
-import {CartPageComponent} from "./cart-page.component";
+import {Product} from '../../models/product.client';
+import {SharedModule} from '../../shared/shared.module';
+import {CartService} from '../../services/cart.service.client';
+import {ProductsService} from '../../services/products.service';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpModule} from '@angular/http';
+import {CartPageComponent} from './cart-page.component';
 
 describe('Cart Page', () => {
   let component: CartPageComponent;
@@ -27,7 +27,7 @@ describe('Cart Page', () => {
       declarations: [
         CartPageComponent
       ],
-      providers: [CartService,ProductService],
+      providers: [CartService,ProductsService],
     })
     .compileComponents();
   }));

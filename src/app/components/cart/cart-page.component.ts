@@ -3,7 +3,7 @@
  */
 import { Component } from '@angular/core';
 import {CartBaseComponent} from "./cart-base.component";
-import {CartService} from "../../services/cart.service";
+import {CartService} from "../../services/cart.service.client";
 
 @Component({
     selector: 'app-cart-page',

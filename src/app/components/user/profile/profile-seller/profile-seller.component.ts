@@ -46,12 +46,12 @@ export class ProfileSellerComponent implements OnInit {
   logout() { this.userService.logout()
     .subscribe(
       (data: any) => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login', this.user.userType]);
       }
     );
   }
   ngOnInit() {
-    this.user = this.sharedService.user2;
+    this.user = this.sharedService.user;
     console.log(this.user._id);
   }
   deleteUser() {

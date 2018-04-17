@@ -2,12 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoryComponent } from './category.component';
 import {Product} from '../../models/product.client';
-import {Cart} from '../../models/cart';
+import {Cart} from '../../models/cart.model.client';
 import {CartPageComponent} from '../cart/cart-page.component';
 import {SharedModule} from '../../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {categoryRoutes} from './category.routes';
-import {CartService} from '../../services/cart.service';
+import {CartService} from '../../services/cart.service.client';
 import {ProductsService} from '../../services/products.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';

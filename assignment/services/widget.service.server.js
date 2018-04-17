@@ -1,4 +1,4 @@
-module.exports = function (app, models) {
+module.exports = function (app) {
 
   var multer = require('multer'); // npm install multer --save
   var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
@@ -133,4 +133,5 @@ module.exports = function (app, models) {
       }
     )
   }
+
 }

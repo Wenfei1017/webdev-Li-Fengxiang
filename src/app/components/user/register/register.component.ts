@@ -34,15 +34,18 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.errorFlag = false;
+    console.log("hhhh");
     if (this.user.password !== this.verifyPassword) {
+      console.log("hhhh");
       this.errorMsg = 'Password and Verify Password do not match.';
       this.errorFlag = true;
     } else {
       this.userService.register(this.user.username, this.user.password, this.userType) .subscribe(
         (data: any) => {
           this.user = data;
-          console.log(this.user);
+          this.sharedService.user = this.user;
           if (this.userType === 'user') {
+            console.log(this.user);
             this.router.navigate(['/user/' + this.user._id]);
             console.log(this.user._id);
           }

@@ -4,7 +4,7 @@ export class User {
   password: String;
   email: String;
   // lastName: String;
-  type: String;
+  userType: String;
 
   // type : ColorEnum = { RED : 0, GREEN : 1, BLUE : 2 };
   widgetType: {
@@ -19,6 +19,6 @@ export class User {
     this.password = password;
     this.email = emial;
     // this.lastName = lastName;
-    this.type = type;
+    this.userType = type;
   }
 }

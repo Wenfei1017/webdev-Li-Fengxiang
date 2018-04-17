@@ -5,7 +5,7 @@ import { Product} from '../../../models/product.client';
 import { ProductsService } from '../../../services/products.service';
 import { User } from '../../../models/user.model.client';
 import { SharedService } from '../../../services/shared.service';
-import { CartService } from '../../../services/cart.service';
+import { CartService } from '../../../services/cart.service.client';
 
 @Component({
   selector: 'app-product-list',

@@ -5,7 +5,7 @@ import { ProductsService } from '../../../../services/products.service';
 import { User } from '../../../../models/user.model.client';
 import {UserService } from '../../../../services/user.service.client';
 import { SharedService } from '../../../../services/shared.service';
-import { CartService } from '../../../../services/cart.service';
+import { CartService } from '../../../../services/cart.service.client';
 
 @Component({
   selector: 'app-profile-admin',
@@ -55,7 +55,7 @@ export class ProfileAdminComponent implements OnInit {
     this.sub1 = this.productService.getProducts('./assets/mock-data/products.json')
       .subscribe(res => {
         this.products = res;
-      })
+      });
   };
 
   loadSeller = () => {

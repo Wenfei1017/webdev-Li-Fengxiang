@@ -30,7 +30,7 @@ import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import { SharedService } from './services/shared.service';
-import { CartService} from './services/cart.service';
+import { CartService} from './services/cart.service.client';
 import { ProductsService} from './services/products.service';
 import { ImageService } from './services/image.service.client';
 

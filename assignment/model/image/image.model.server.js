@@ -4,16 +4,15 @@ var imageModel = mongoose.model('imageModel', imageSchema);
 
 imageModel.createImage = createImage;
 imageModel.findAllImagesForUser = findAllImagesForUser;
-imageModel.findImageById = findWidgetById;
-imageModel.updateImage = updateWidget;
-imageModel.deleteImage = deleteWidget;
-imageModel.sortImages = sortWidgets;
+imageModel.findImageById = findImageById;
+imageModel.updateImage = updateImage;
+imageModel.deleteImage = deleteImage;
+// imageModel.sortImages = sortImages;
 
 module.exports = imageModel;
 
 function createImage(userId, image) {
   image._user = userId;
-
 
   return imageModel.create(image).then(
     function (resImage) {

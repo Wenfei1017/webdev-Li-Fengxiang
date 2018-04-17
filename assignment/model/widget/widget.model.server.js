@@ -16,7 +16,6 @@ module.exports = widgetModel;
 function createWidget(pageId, widget) {
   widget._page = pageId;
 
-
   return widgetModel.create(widget).then(
     function (resWidget) {
       pageModel.findPageById(resWidget._page).then(

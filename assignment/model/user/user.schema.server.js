@@ -1,6 +1,9 @@
+
 var mongoose = require("mongoose");
 var websiteSchema = require('../website/website.schema.server');
 var imageSchema = require('../image/image.schema.server');
+
+var cartSchema = require('../cart/cart.schema.server');
 
 var userSchema = mongoose.Schema({
   username: {type: String},
@@ -11,6 +14,7 @@ var userSchema = mongoose.Schema({
   phone: String,
   images: [imageSchema],
   websites: [websiteSchema],
+  carts: [cartSchema],
   facebook: {
     id: String,
     token: String

@@ -1,51 +1,13 @@
 
-
-  <!--<div *ngIf="errorFlag" class="alert alert-danger">-->
-    <!--{{errorMsg}}-->
-  <!--</div>-->
-  <!--<h1>{{userType}}</h1>-->
-
-  <!--<form class="cart-page-content" (ngSubmit)="login()" #f="ngForm">-->
-
-    <!--<div style="position: absolute; width: 60%; height: 300px; left: 50%; top:300px; margin: 0 0 0 -20%">-->
-      <!--<label class="text">Username</label>-->
-      <!--<input type="text" name="username" placeholder="username" class="input-style" ngModel required #username="ngModel">-->
-
-      <!--<label class = "text">Password </label>-->
-      <!--<input type="password" name="password" placeholder="password" class="input-style" ngModel required #password="ngModel">-->
-    <!--</div>-->
-
-    <!--<span class="help-block" *ngIf="!password.valid && password.touched">-->
-      <!--Please enter password!-->
-    <!--</span>-->
-
-  <!--<br/>-->
-
-    <!--<div class="quick-cart-footer" style="position: relative; width: 60%; height: 300px; left: 50%; top:300px; margin: 0 0 0 -25%">-->
-
-    <!--<div class="quick-cart-footer-cell">-->
-      <!--<button [disabled]="!f.valid" class="button button-secondary button-wide button-large" type="submit">Login</button>-->
-    <!--</div>-->
-
-    <!--<div class="quick-cart-footer-cell">-->
-      <!--<button routerLink="./register" class="button button-secondary button-wide button-large">Register</button>-->
-    <!--</div>-->
-
-    <!--<div class="quick-cart-footer-cell">-->
-    <!--<button class="button button-secondary button-wide button-large buttonHolder" (click)="navigateToFacebook()">Facebook Login</button>-->
-    <!--</div>-->
-
-    <!--</div>-->
-  <!--</form>-->
-
-
-  <div class="header-image">
+<div class="header-image">
     <div class="header-block">
       <div class="header-text">
         <div class="header-text-title">Plates Shop</div>
         <br/>
         <p></p>
         <p></p>
+        <br/>
+        <br/>
         <form class="cart-page-content" (ngSubmit)="login()" #f="ngForm">
 
             <label class="text">Username</label>
@@ -69,7 +31,7 @@
             </div>
 
             <div class="quick-cart-footer-cell">
-              <button routerLink="./register" class="button button-secondary button-wide-login button-large">Register</button>
+              <button routerLink="/register/{{userType}}" class="button button-secondary button-wide-login button-large">Register</button>
             </div>
 
             <div class="quick-cart-footer-cell">
