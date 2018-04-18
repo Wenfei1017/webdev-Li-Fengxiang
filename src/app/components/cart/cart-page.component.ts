@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 import {CartBaseComponent} from "./cart-base.component";
 import {CartService} from "../../services/cart.service.client";
+import {SharedService} from '../../services/shared.service';
 
 @Component({
     selector: 'app-cart-page',
@@ -11,8 +12,8 @@ import {CartService} from "../../services/cart.service.client";
     templateUrl: 'cart-page.component.html'
 })
 export class CartPageComponent extends CartBaseComponent{
-    constructor(protected cartService: CartService,) {
-        super(cartService);
+    constructor(protected cartService: CartService,protected sharedService: SharedService) {
+        super(cartService,sharedService);
     }
 
     ngOnInit() {

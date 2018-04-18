@@ -40,45 +40,50 @@ import {CartService} from '../../services/cart.service.client';
             <!--<img class="header-logo-image" src="./assets/imgs/sakura-plate-bowl_1.jpg" alt="Hello">-->
           </div>
         </div>
-        <div class="header-cart-wrapper">
-          <div class="header-cart" (click)="toggleCartPopup($event)">
-            <div class="mobil-shopping-cart">
-              <span><i class="fa fa-shopping-cart fa-2x"></i> <span *ngIf="cart_num">( {{cart_num}} )</span></span>
-            </div>
-            <div class="header-cart-item">
-              <a href="">MY CART <span *ngIf="cart_num">( {{cart_num}} )</span><span class="fa fa-caret-down"></span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <ul class="mobile-header-nav" *ngIf="collapse" (click)="collapse = !collapse">
-        <li>
-          <a routerLink="/">HOME</a>
-        </li>
-        <li>
-          <a routerLink="/">SHOP</a>
-        </li>
-        <li>
-          <a routerLink="/">JOURNAL</a>
-        </li>
-        <li>
-          <a routerLink="/">MORE</a>
-        </li>
-      </ul>
+        <!--<div class="header-cart-wrapper">-->
+          <!--<div class="header-cart" (click)="toggleCartPopup($event)">-->
+            <!--<div class="mobil-shopping-cart">-->
+              <!--<span><i class="fa fa-shopping-cart fa-2x"></i> <span *ngIf="cart_num">( {{cart_num}} )</span></span>-->
+            <!--</div>-->
+            <!--<div class="header-cart-item">-->
+              <!--<a href="">MY CART <span *ngIf="cart_num">( {{cart_num}} )</span><span class="fa fa-caret-down"></span></a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      
+      
+      
+      <!--<ul class="mobile-header-nav" *ngIf="collapse" (click)="collapse = !collapse">-->
+        <!--<li>-->
+          <!--<a routerLink="/">HOME</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a routerLink="/">SHOP</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a routerLink="/">JOURNAL</a>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<a routerLink="/">MORE</a>-->
+        <!--</li>-->
+      <!--</ul>-->
       <cart-popup></cart-popup>
     </div>
   `
 })
 export class TopbarComponent implements OnInit {
   public collapse: boolean = false;
-  public cart_num:number;
+  public cart_num: number;
   constructor(
     private cartService: CartService
   ) { }
 
   ngOnInit() {
+    console.log("Testset");
     this.cartService.cartListSubject
       .subscribe(res => {
+        console.log(res);
         this.cart_num = res.length;
       })
   }

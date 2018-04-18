@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, HostListener} from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {Product} from "../../models/product.client";
 import {CartService} from "../../services/cart.service.client";
@@ -6,6 +6,8 @@ import {Router} from "@angular/router";
 import {Cart} from '../../models/cart.model.client';
 import {SharedService} from '../../services/shared.service';
 import {Page} from '../../models/page.model.client';
+import {CartBaseComponent} from '../cart/cart-base.component';
+import {CartBarComponent} from '../../component/topbar/cart-bar.component';
 
 @Component({
   selector: 'app-category',
@@ -13,6 +15,9 @@ import {Page} from '../../models/page.model.client';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
+
+  // @Input() cartBar: CartBarComponent;
+
   public products:Array<Product>;
   private sub;
   constructor(
@@ -21,6 +26,11 @@ export class CategoryComponent implements OnInit {
     private sharedService: SharedService,
     private router: Router
   ) { }
+
+  // @HostListener('click')
+  // click() {
+  //   this.cartBar.refreshCartNumber();
+  // }
 
   ngOnInit() {
     this.load();
@@ -33,9 +43,16 @@ export class CategoryComponent implements OnInit {
   }
   addToCart = (product) => {
     const newCart = new Cart(product, 1);
-    this.cartService.addToCartList(newCart, this.sharedService.user._id).subscribe(
-      () => {}
-    );
+    this.cartService.addToCart(newCart);
+    // this.cartService.addToCartList(newCart, this.sharedService.user._id).subscribe(
+    //   (cart: Cart) => {
+    //     // console.log(this.cartBar);
+    //     // console.log("testAddComponent");
+    //     // this.cartBar.loadCart();
+    //     // console.log("testAddComponent");
+    //     return;
+    //   }
+    // );
   }
 
   ngOnDestroy() {

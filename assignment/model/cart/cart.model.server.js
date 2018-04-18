@@ -16,25 +16,36 @@ function updateCart(cartId, cart) {
 }
 
 function addCartToList(userId,cart){
-  cart._user = userId;
-
   console.log("addCartToList!!!");
   console.log(cart);
-  return cartModel.create(cart).then(
+
+  return cartModel.findOne({
+    _user: userId,
+    title: cart.product.title,
+  }).then(
     function (resCart) {
-      console.log(resCart);
-      userModel.findUserById(resCart._user).then(
-        function (user) {
-          user.carts.push(resCart);
-          return user.save();
-        }
-      )
-      return resCart;
-    },
-    function (error) {
-      console.log(error);
+      if(resCart){
+        resCart.quantity += 1;
+        return cartModel.update({_id: resCart._id}, resCart)
+      }else{
+        return cartModel.create(cart).then(
+          function (resCart) {
+            console.log(resCart);
+            userModel.findUserById(resCart._user).then(
+              function (user) {
+                user.carts.push(resCart);
+                return user.save();
+              }
+            );
+            return resCart;
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
+      }
     }
-    );
+  )
 }
 
 function findAllCarts(userId){

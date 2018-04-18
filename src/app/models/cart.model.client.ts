@@ -4,6 +4,7 @@ import {Product} from "./product.client";
 export class Cart {
   product: Product;
   quantity: number;
+  title?: String;
   _id: String;
 
   constructor(product, quantity = 1, _id = Date.now().toString()) {

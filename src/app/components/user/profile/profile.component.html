@@ -1,6 +1,29 @@
 
-<div class="cart-page-container">
-  <div class="cart-page-content div1">
+<nav class="row cart-total">
+  <div class="container-fluid row">
+    <div class="pull-left">
+      <a routerLink="./"
+         class="navbar-text right-margin">
+        BACK
+      </a>
+    </div>
+    <div class="pull-right button button-secondary">
+      <!--<button routerLink="/register"-->
+              <!--class="btn bordered button-wide">-->
+        <!--Register-->
+      <!--</button>-->
+      <!--<button routerLink="/"-->
+              <!--class="right-margin btn bordered blue-text">-->
+        <!--Visit as Guest-->
+      <!--</button>-->
+    </div>
+  </div>
+</nav>
+
+<br/>
+
+<div class="cart-page-container div1">
+
     <div class="row cart-total">
     <br/>
         <div class="cart-page-container">
@@ -57,25 +80,24 @@
         <button class="button button-secondary button-wide-profile button-large" routerLink="/login/{{userType}}" (click)="logout()"  >Logout</button>
         </div>
       </div>
-          <div class="quick-cart-footer-cell" style="position: relative; width: 60%; height: 20px; left: 50%; top:40px; margin: 0 0 0 -30%">
+
+
+          <div class="container" style="position: relative; width: 60%; height: 20px; left: 50%; top:40px; margin: 0 0 0 -30%">
             <strong class="continue-shopping"> <a routerLink="/category">continue shopping</a></strong>
             <div class="checkout-button button button-primary button-large"> <a routerLink="/user/{{user._id}}/cart"> Checkout</a></div>
           </div>
 
 
         </form>
-        <div class="quick-cart-footer-cell" style="width: 500px; margin: 0 auto">
-        <button class="cart" style="color: black" routerLink="/user/{{user._id}}/cart">My shopping cart</button>
+        <div class="cart-page-content">
+        <button class="cart" style="color: black" routerLink="/user/{{user._id}}/cart">View My cart</button>
         </div>
      </div>
   <!--</div>-->
-      <div class="container-fluid">
-  <div class="cart-page-content-pro">
-    <h4>Your cart is empty.</h4>
-    <a routerLink="/category">Go shopping</a>
+  <div class="cart-page-content">
+    <!--<h4>Your cart is empty.</h4>-->
+    <!--<a routerLink="/category">Go shopping</a>-->
   </div>
-</div>
-    </div>
-  </div>
-</div>
 
+  </div>
+</div>

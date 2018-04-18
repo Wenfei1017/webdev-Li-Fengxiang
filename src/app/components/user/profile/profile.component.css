@@ -316,16 +316,16 @@
 .button {
   display: inline-block;
   padding: 0 30px;
-  color: white;
+  color: transparent;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 1.1em;
   font-weight: 600;
   letter-spacing: .15rem;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
-  border: 1px solid #3b3d38;
+  border: 0;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -341,7 +341,7 @@
 /*}*/
 .button.button-secondary {
   color: #1d1d20;
-  background-color: #fff;
+  background-color: transparent;
   border-color: #1d1d20;
 }
 .button.button-secondary:hover {
@@ -549,3 +549,4 @@ margin-left:auto;
   border: 0;
   background-color: transparent;
 }
+

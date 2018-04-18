@@ -27,7 +27,7 @@ describe('Cart Page', () => {
       declarations: [
         CartPageComponent
       ],
-      providers: [CartService,ProductsService],
+      providers: [CartService, ProductsService],
     })
     .compileComponents();
   }));

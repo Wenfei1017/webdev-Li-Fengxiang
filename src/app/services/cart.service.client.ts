@@ -12,6 +12,7 @@ export class CartService {
     public cartListSubject = new BehaviorSubject([]);
     public toggleCartSubject = new BehaviorSubject(false);
 
+
     baseUrl = environment.baseUrl;
 
     toggleCart = () => {
@@ -26,8 +27,13 @@ export class CartService {
     };
 
     addToCartList(cart: Cart, userId: String) {
-      console.log("cart Added!!!");
-      console.log(userId);
+
+      let current = this.cartListSubject.getValue();
+      let dup = current.find(c=>c.product.title === cart.product.title);
+      if(dup) dup.quantity += cart.quantity;
+      else current.push(cart);
+      this.cartListSubject.next(current);
+
       return this.http.post(this.baseUrl + '/api/user/' + userId + '/cart', cart)
         .map((res: Response) => {
           return res.json();
@@ -50,18 +56,18 @@ export class CartService {
 
     findAllCartsForUser(userId: String) {
       return this.http.get(this.baseUrl + '/api/user/' + userId + '/cart')
-        .map((res: Response) => {
-        return res.json();
-      });
+            .map((res: Response) => {
+            return res.json();
+          });
+        }
+
+        reloadCart = (cartList) => {
+            this.cartListSubject.next(cartList);
+        };
+        removeCart = index => {
+            let current = this.cartListSubject.getValue();
+            current.splice(index,1);
+            this.cartListSubject.next(current);
+        };
+
     }
-
-
-  reloadCart = (cartList) => {
-        this.cartListSubject.next(cartList);
-    };
-    removeCart = index => {
-        let current = this.cartListSubject.getValue();
-        current.splice(index,1);
-        this.cartListSubject.next(current);
-    };
-}

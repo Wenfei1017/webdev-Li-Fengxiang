@@ -50,6 +50,7 @@ import { ProductCreateComponent } from './components/products/product-create/pro
 import { ProductListComponent} from './components/products/product-list/product-list.component';
 import { ProductPageComponent } from './components/products/product-page/product-page.component';
 import { TopbarComponent } from './component/topbar/topbar.component';
+import { CartBarComponent} from './component/topbar/cart-bar.component';
 import { QuantityControlComponent } from './component/quantity-control/quantity-control.component';
 import { ProfileAdminComponent } from './components/user/profile/profile-admin/profile-admin.component';
 
@@ -85,6 +86,7 @@ import { ProfileAdminComponent } from './components/user/profile/profile-admin/p
     ProductListComponent,
     ProductPageComponent,
     TopbarComponent,
+    CartBarComponent,
     QuantityControlComponent,
     ProfileAdminComponent,
   ],

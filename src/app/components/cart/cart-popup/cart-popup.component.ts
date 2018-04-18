@@ -5,6 +5,7 @@
 import {Component, HostBinding, ElementRef} from "@angular/core";
 import {CartService} from "../../../services/cart.service.client";
 import {CartBaseComponent} from "../cart-base.component";
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'cart-popup',
@@ -19,11 +20,14 @@ export class CartPopupComponent extends CartBaseComponent{
 
   constructor(
     protected cartService: CartService,
+    protected sharedService: SharedService,
     private eleref: ElementRef
+
   ) {
-    super(cartService);
+    super(cartService,sharedService);
   }
   ngOnInit() {
+    console.log("popup");
     this.cartService.toggleCartSubject.subscribe(res => {
       this.isVisible = res;
     });

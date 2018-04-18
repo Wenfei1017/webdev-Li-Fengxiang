@@ -167,9 +167,9 @@
   border-color: #52525b;
 }
 .button.button-secondary {
-  color: #1d1d20;
-  background-color: #fff;
-  border-color: #1d1d20;
+  color: white;
+  background-color: #3A3A35;
+  border-color: #3A3A35;
 }
 .button.button-secondary:hover {
   color: #fff;
@@ -383,7 +383,7 @@
   width:150px;
   line-height: 35px;
   /*background: #eee;*/
-  color:#7b7b7b;
+  color:white;
   margin: 2px;
   background: transparent;
   border: none;
@@ -398,4 +398,15 @@
   -o-background-size:auto;
   background-size:auto;
   background-image: url(../../../../assets/imgs/hand-painted-blue-flat-dish.jpg);
+}
+/*input:-webkit-autofill {*/
+  /*-webkit-box-shadow: inset 0 0 0px 9999px #3A3A35;*/
+/*}*/
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  box-shadow:0 0 0 50px white inset;
+  -webkit-text-fill-color: #333;
 }

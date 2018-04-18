@@ -9,6 +9,7 @@ var cartSchema = mongoose.Schema({
     required: true
   },
   product: productSchema,
+  title: String,
   quantity: Number,
   description: String,
   dateCreated: {

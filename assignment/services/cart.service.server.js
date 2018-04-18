@@ -28,6 +28,8 @@ module.exports = function(app){
     console.log("test=======");
     var userId = req.params['userId'];
     var newCart = req.body;
+    newCart.title = newCart.product.title;
+    newCart._user = userId;
 
     cartModel.addCartToList(userId,newCart).then(
       function (newCart) {
