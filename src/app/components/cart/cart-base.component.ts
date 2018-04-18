@@ -22,7 +22,14 @@ export class CartBaseComponent{
           this.totalPrice = total;
         })
     };
+
     removeFromCart = index => {
+        console.log("remove!!");
+        let current = this.cartService.cartListSubject.getValue();
+        let deletedCart = current[index];
         this.cartService.removeCart(index);
+        return this.cartService.deleteCartForUser(deletedCart, this.sharedService.user._id).subscribe(
+          () => {}
+        );
     };
 }

@@ -59,9 +59,10 @@ module.exports = function(app){
 
   function deleteCartForUser(req, res){
     var cartId = req.params['cartId']
+    console.log("deleteServerCast!!");
     cartModel.deleteCart(cartId).then(
-      function (carts) {
-        res.status(200).json(carts);
+      function (status) {
+        res.status(200);
       },
       function (error) {
         res.status(400).send(error);

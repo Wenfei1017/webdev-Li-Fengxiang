@@ -32,11 +32,11 @@
   </div>
   <footer class="quick-cart-footer">
     <div class="quick-cart-footer-cell">
-      <div class="button button-secondary button-wide button-large" [routerLink]="['../cart']" (click)="cartService.toggleCart()">View Cart</div>
+      <div class="button button-secondary button-wide button-large" routerLink="/user/{{userId}}/cart" (click)="cartService.toggleCart()">View Cart</div>
     </div>
 
     <div class="quick-cart-footer-cell">
-      <div class="button button-primary button-wide button-large">Checkout</div>
+      <div class="button button-primary button-wide button-large" routerLink="/user/{{userId}}/cart" >Checkout</div>
     </div>
   </footer>
 </div>

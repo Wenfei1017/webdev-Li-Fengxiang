@@ -4,7 +4,7 @@ import {User} from '../models/user.model.client';
 @Injectable()
 
 export class SharedService {
-  user: User = new User('123', 'alice',     'alice',   'Wonder', 'user');  ;
+  user: User;
   user1 = new User('123', 'alice',     'alice',   'Wonder', 'user');
   user2 = new User('234',  'bob',       'bob',  'Marley', 'seller');
   // users: User[] = [

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from '../../services/cart.service.client';
 import {SharedService} from '../../services/shared.service';
+import {User} from '../../models/user.model.client';
+import {Cart} from '../../models/cart.model.client';
 
 @Component({
   selector: 'cart-bar',
@@ -62,10 +64,15 @@ export class CartBarComponent implements OnInit {
   }
 
   refreshCartNumber() {
-    this.cartService.cartListSubject
-      .subscribe(res => {
-        this.cart_num = res.length;
-      });
+    this.cartService.findAllCartsForUser(this.sharedService.user._id).subscribe(
+      (cart: [Cart]) => {
+        this.cartService.reloadCart(cart);
+        this.cartService.cartListSubject
+          .subscribe(res => {
+            this.cart_num = res.length;
+          });
+      }
+    );
   }
   toggleCartPopup = (event) => {
     event.preventDefault();

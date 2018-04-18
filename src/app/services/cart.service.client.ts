@@ -41,6 +41,8 @@ export class CartService {
     }
 
     deleteCartForUser(cart: Cart, userId: String) {
+      console.log("removeAllCart");
+      console.log(cart);
       return this.http.delete(this.baseUrl + '/api/cart/' + cart._id)
         .map((res: Response) => {
           return res.json();
@@ -55,6 +57,9 @@ export class CartService {
     }
 
     findAllCartsForUser(userId: String) {
+      let current = this.cartListSubject.getValue();
+      console.log("testHereForUs");
+      console.log(current);
       return this.http.get(this.baseUrl + '/api/user/' + userId + '/cart')
             .map((res: Response) => {
             return res.json();
@@ -64,7 +69,7 @@ export class CartService {
         reloadCart = (cartList) => {
             this.cartListSubject.next(cartList);
         };
-        removeCart = index => {
+        removeCart = (index) => {
             let current = this.cartListSubject.getValue();
             current.splice(index,1);
             this.cartListSubject.next(current);

@@ -43,16 +43,13 @@ export class CategoryComponent implements OnInit {
   }
   addToCart = (product) => {
     const newCart = new Cart(product, 1);
-    this.cartService.addToCart(newCart);
-    // this.cartService.addToCartList(newCart, this.sharedService.user._id).subscribe(
-    //   (cart: Cart) => {
-    //     // console.log(this.cartBar);
-    //     // console.log("testAddComponent");
-    //     // this.cartBar.loadCart();
-    //     // console.log("testAddComponent");
-    //     return;
-    //   }
-    // );
+    // this.cartService.addToCart(newCart);
+    this.cartService.addToCartList(newCart, this.sharedService.user._id).subscribe(
+      (cart: Cart) => {
+
+        return;
+      }
+    );
   }
 
   ngOnDestroy() {

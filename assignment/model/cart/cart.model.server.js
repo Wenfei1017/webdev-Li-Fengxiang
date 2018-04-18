@@ -12,7 +12,7 @@ cartModel.deleteCart = deleteCart;
 module.exports = cartModel;
 
 function updateCart(cartId, cart) {
-  return cartModel.update({_id: cartId}, Cart)
+  return cartModel.update({_id: cartId}, cart)
 }
 
 function addCartToList(userId,cart){

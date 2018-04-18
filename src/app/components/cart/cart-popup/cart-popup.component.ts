@@ -18,6 +18,7 @@ import {SharedService} from '../../../services/shared.service';
 export class CartPopupComponent extends CartBaseComponent{
   @HostBinding("class.visible") isVisible:boolean = false;
 
+  userId : String;
   constructor(
     protected cartService: CartService,
     protected sharedService: SharedService,
@@ -27,6 +28,7 @@ export class CartPopupComponent extends CartBaseComponent{
     super(cartService,sharedService);
   }
   ngOnInit() {
+    this.userId = this.sharedService.user._id;
     console.log("popup");
     this.cartService.toggleCartSubject.subscribe(res => {
       this.isVisible = res;
