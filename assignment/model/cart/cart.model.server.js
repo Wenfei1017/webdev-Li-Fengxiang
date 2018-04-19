@@ -28,16 +28,17 @@ function addCartToList(userId,cart){
         resCart.quantity += 1;
         return cartModel.update({_id: resCart._id}, resCart)
       }else{
+        console.log("testCart");
         return cartModel.create(cart).then(
-          function (resCart) {
-            console.log(resCart);
-            userModel.findUserById(resCart._user).then(
+          function (modelResCart) {
+            console.log(modelResCart);
+            userModel.findUserById(modelResCart._user).then(
               function (user) {
-                user.carts.push(resCart);
+                user.carts.push(modelResCart);
                 return user.save();
               }
             );
-            return resCart;
+            return modelResCart;
           },
           function (error) {
             console.log(error);

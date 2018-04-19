@@ -36,24 +36,33 @@ export class ProductListComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.load();
-    // this.activatedRoute.params.subscribe(
-    //   (params: any) => {
-    //     this.userId = params['uid'];
-    //   });
-    this.user = this.sharedService.user2;
-    console.log(this.userId);
-    this.productService.findProductsById(this.userId).subscribe(
-      (products: Product[]) => {
-        this.storeItems = products;
-      }
-    );
+    this.user = this.sharedService.user;
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        this.userId = params['uid'];
+        this.load();
+      });
+
+    //
+    // console.log(this.userId);
+    // this.productService.findAllProductsForUser(this.userId).subscribe(
+    //   (products: Product[]) => {
+    //     this.storeItems = products;
+    //     this.products = products;
+    //   }
+    // );
   }
   load = () => {
-    this.sub = this.productService.getProducts('./assets/mock-data/products.json')
+    // this.sub = this.productService.getProducts('./assets/mock-data/products.json')
+    //   .subscribe(res => {
+    //     this.products = res;
+    //   });
+
+    this.sub = this.productService.findAllProductsForUser(this.userId)
       .subscribe(res => {
         this.products = res;
-      })
+      });
+
   };
 
 }

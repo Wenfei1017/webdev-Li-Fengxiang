@@ -39,6 +39,7 @@ export class CategoryComponent implements OnInit {
     this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
       .subscribe(res => {
         this.products = res;
+        console.log(this.products[0].image);
       });
   }
   addToCart = (product) => {

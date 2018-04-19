@@ -4,6 +4,7 @@ import {ProductsService} from "../../../services/products.service";
 import {Product} from "../../../models/product.client";
 import {CartService} from "../../../services/cart.service.client";
 import {Cart} from '../../../models/cart.model.client';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
     selector: 'app-product',
@@ -16,6 +17,7 @@ export class ProductPageComponent implements OnInit {
     quantity: number = 1;
     constructor(private route: ActivatedRoute,
                 private productService: ProductsService,
+                private sharedService: SharedService,
                 private cartService: CartService
     ) { }
 
@@ -35,13 +37,25 @@ export class ProductPageComponent implements OnInit {
             });
     };
 
-    changeQuantity = (newQuantity:number) => {
-        this.quantity = newQuantity;
+    changeQuantity = (cart,quantity) => {
+      this.quantity = quantity;
+      console.log("hhhh");
+      console.log(cart);
+      cart.quantity = quantity;
+      this.cartService.updateCartForUser(cart, this.sharedService.user._id).subscribe(
+        () => {
+        }
+      );
     };
 
     addToCart = (product) => {
-      console.log("addCart!!!");
-      if (this.quantity) this.cartService.addToCart(new Cart(product, this.quantity));
+      const newCart = new Cart(product, 1);
+      // this.cartService.addToCart(newCart);
+      this.cartService.addToCartList(newCart, this.sharedService.user._id).subscribe(
+        (cart: Cart) => {
+          return;
+        }
+      );
     };
 
     ngOnDestroy() {

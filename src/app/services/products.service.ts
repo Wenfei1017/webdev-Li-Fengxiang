@@ -13,62 +13,69 @@ export class ProductsService {
 
   baseUrl = environment.baseUrl;
 
-  // websites: Product[] = [
-  //   new Product('321', 'Facebook', '123', 'test', 'ww'),
-  //   new Website('111', 'Facebook1', '123', 'test' ),
-  //   new Website('222', 'Facebook2', '123', 'test' ),
-  //   new Website('333', 'Facebook3', '123', 'test' ),
-  //   new Website('432', 'Twitter', '456', 'test' ),
-  //   new Website('234', 'Amazon', '789', 'test' ),
-  // ];
-
-  public getProducts(dataURL:string) {
+  public getProducts(dataURL: string) {
     return this.http.get(dataURL)
-      .map((res:Response) => res.json())
-      .catch((error:any) => Observable.throw(error || 'Server error'));
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error || 'Server error'));
   }
 
-  initialWebsite() {
+  initialProduct() {
     return new Product(undefined, undefined, undefined, undefined, undefined);
   }
 
-  // findAllWebSites() {
-  //   return this.products;
-  // }
-
-  updateProduct(userId: String, newProduct: Product) {
-    const url =  this.baseUrl + '/api/user/' + userId + '/website/' + newProduct._id;
-    return this.http.put(url, newProduct).map((response: Response) => {
+  updateProduct(userId: String, product: Product) {
+    const url =  this.baseUrl + '/api/product/' + product._id;
+    return this.http.put(url, product).map((response: Response) => {
       return response.json();
     });
   }
 
-  findProductById(userId: String, productId: String) {
-    const url = this.baseUrl + '/api/user/' + userId + '/website/' + productId;
+  findProductById(productId: String) {
+    console.log("sdfassdfs");
+    const url = this.baseUrl + '/api/product/' + productId;
     return this.http.get(url).map((response: Response) => {
       return response.json();
     });
   }
 
   deleteProduct(userId: String,  productId: String) {
-    const url = this.baseUrl + '/api/user/' + userId + '/website/' + productId;
-
+    const url = this.baseUrl + '/api/user/' + userId + '/product/' + productId;
     return this.http.delete(url).map((response: Response) => {
     });
   }
 
-  createProductForUser(userId: String, website: Product) {
+  createProductForUser(userId: String, product: Product) {
     const url = this.baseUrl + '/api/user/' + userId + '/product';
-    return this.http.post(url, website).map((response: Response) => {
+    console.log(url);
+    return this.http.post(url, product).map((response: Response) => {
       return response.json();
     });
   }
 
-  findProductsById(userId: String) {
-    const url =  this.baseUrl + '/api/user/' + userId + '/product';
-    return this.http.get(url).map((response: Response) => {
-      return response.json();
-    });
+  findAllProductsForUser(userId: String) {
+    const url = this.baseUrl + '/api/user/' + userId + '/product';
+    return this.http.get(url).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
   }
 
+  findAllProducts() {
+    const url = this.baseUrl + '/api/product';
+    return this.http.get(url).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
+  }
+
+  resetImage() {
+    const url = this.baseUrl + '/api/resetImage';
+    return this.http.get(url).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
+  }
 }

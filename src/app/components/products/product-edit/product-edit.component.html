@@ -1,0 +1,59 @@
+<div class="page_admin-add">
+  <h1 class="page_admin-add-title"> Edding new Item</h1>
+</div>
+
+<div class="page_admin-add bg-create">
+  <div *ngIf="errorFlag" class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+  <form>
+
+    <div class="cart-page-content-create">
+      <div style="width: 100%">
+        <div style="float:left; width: 50%">
+
+          <div class="quick-cart-footer-create">
+            <label class = "text-create"  >Product ID:</label>
+            <input type="text" name="Product ID" placeholder="ID" class="input-style" ngModel required #password="ngModel">
+          </div>
+
+          <div class="quick-cart-footer-create">
+            <label class = "text-create">Title:</label>
+            <input type="text" name="title" [(ngModel)]="product.title" placeholder="title" class="input-style" ngModel required #username="ngModel">
+          </div>
+
+          <div class="quick-cart-footer-create">
+            <label class = "text-create" > Brand:</label>
+            <input type="text" name="brand" [(ngModel)]="product.brand" placeholder="brand" class="input-style" ngModel required #password="ngModel">
+          </div>
+
+          <div class="quick-cart-footer-create">
+            <label class = "text-create">Price:</label>
+            <input type="number" name="price"[(ngModel)]="product.price" placeholder="price" class="input-style" ngModel required #username="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div style="float:right; width: 50%">
+        <label class = "text-create">Description:</label>
+        <input type="text" name="description" [(ngModel)]="product.description" placeholder="my product description" class="input-style submissionfield" ngModel required #password="ngModel">
+
+        <form ngForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+          <!--<input  name="myFile" id="myFile"  type="file" class="form-control form-group"/>-->
+          <!--<input  name="userId" value="{{userId}}" style="display: none"/>-->
+          <button type="submit" class="button button-secondary  button-large">Upload Image</button>
+        </form>
+      </div>
+
+      <div class="quick-cart-footer" style="position: relative; width: 60%; height: 200px; left: 50%; top:80px; margin: 0 0 0 -30%">
+        <button class="button button-secondary button-large" (click)="updateProduct()">Update</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+
+
+

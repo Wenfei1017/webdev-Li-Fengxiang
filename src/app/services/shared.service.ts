@@ -7,6 +7,7 @@ export class SharedService {
   user: User;
   user1 = new User('123', 'alice',     'alice',   'Wonder', 'user');
   user2 = new User('234',  'bob',       'bob',  'Marley', 'seller');
+  user3 = new User('567', 'Amy', 'Amy', '1234', 'admin');
   // users: User[] = [
   //   new User('123', 'alice',     'alice',     'Alice',   'Wonder', 'buyer'),
   //   new User( '234',  'bob',       'bob',       'Bob',     'Marley', 'seller'),

@@ -1,0 +1,206 @@
+.page_admin {
+  text-align: center;
+  color: white;
+}
+.page_admin-title {
+  padding: 15px 0;
+  color: #f0ad4e;
+}
+.page_admin-computers-list {
+  padding: 0 5px;
+}
+
+.page_admin-computers-list-header div:first-child {
+  text-align: left;
+}
+.page_admin-computers-list-item div, .page_admin-computers-list-header div{
+  outline: 1px solid #fff;
+  padding: 15px;
+}
+.page_admin-computers-list-header {
+  background: #1B1C1D;
+}
+.page_admin-computers-list-header div{
+  outline: 2px solid #fff;
+}
+.page_admin-computers-list-item div:first-child {
+  text-align: left;
+}
+.page_admin--add-new-button {
+  margin-top: 30px;
+}
+.page_admin-add,
+.page_admin-edit {
+  text-align: center;
+}
+.page_admin-add-title,
+.page_admin-edit-title {
+  padding: 15px 0;
+  color: #52525b;
+  text-transform: uppercase;
+}
+.page_admin-add--button-confirm,
+.page_admin-edit--button-confirm {
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  background: #f0ad4e;
+  color: #fff;
+  -webkit-box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  transition: 0.3s ease-in;
+  margin: 0 0 25px 10px ;
+  width: 80px;
+  padding: 14px 0;
+  display: inline-block;
+}
+.page_admin-add--button-confirm:active,
+.page_admin-edit--button-confirm:active {
+  box-shadow: none;
+}
+.page_admin-add--button-cancel,
+.page_admin-edit--button-cancel {
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #f0ad4e;
+  color: #fff;
+  -webkit-box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  transition: 0.3s ease-in;
+  margin: 0 0 25px 10px ;
+  width: 50px;
+  display: inline-block;
+}
+.page_admin-add--button-cancel:hover,
+.page_admin-edit--button-cancel:hover {
+  box-shadow: none;
+}
+
+.quick-cart-footer-cell {
+  display: table-cell;
+}
+.button {
+  display: inline-block;
+  padding: 0 30px;
+  color: white;
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid #3b3d38;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.button.button-primary {
+  color: #fff;
+  background-color: #3b3d38;
+  border-color: #3b3d38;
+}
+.button.button-primary:hover {
+  color: #fff;
+  background-color: #52525b;
+  border-color: #52525b;
+}
+.button.button-secondary {
+  color: #1d1d20;
+  background-color: #fff;
+  border-color: #1d1d20;
+}
+.button.button-secondary:hover {
+  color: #fff;
+  background-color: #8e8e90;
+  border-color: #8e8e90;
+}
+.button.button-wide {
+  width: 80%;
+}
+.button.button-large {
+  padding: 10px 10px;
+}
+.quick-cart-footer-cell {
+  display: table-cell;
+}
+.button.button-large {
+  padding: 10px 10px;
+}
+
+.input-style {
+  font-size: 0.85em;
+  font-weight: 600;
+  text-align: center;
+  width:150px;
+  line-height: 35px;
+  /*background: #eee;*/
+  color:#7b7b7b;
+  margin: 2px;
+  background: transparent;
+  border: none;
+}
+.quick-cart-footer-create {
+  position: relative;
+  display: table;
+  width: 50%;
+  border-bottom: 1px solid #e4e4e4;
+}
+.input-style-des {
+  font-size: 0.85em;
+  font-weight: 600;
+  text-align: center;
+  width:150px;
+  height: 300px;
+  line-height: 35px;
+  /*background: #eee;*/
+  color:#7b7b7b;
+  margin: 2px;
+  background: transparent;
+  border: none;
+}
+
+.text-create {
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 50%;
+
+}
+.cart-page-content {
+  max-width:940px;
+  margin:30px 70px;
+  background-color: white;
+  padding:60px;
+}
+
+.submissionfield {
+  width: 420px; height: 190px; border: 1px solid #999999; padding: 5px;
+}
+
+.bg-create{
+  /* The image used */
+  background-image: url('../../../../assets/imgs/pastel-mint-green-background-9.jpg');
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cart-page-content-create {
+  max-width:1000px;
+  margin:30px 50px;
+  background-color: transparent;
+  padding:30px;
+}

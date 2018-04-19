@@ -27,7 +27,7 @@
 
             <div class="form-group">
               <label >Type</label>
-                <input [(ngModel)]="user.type" type="text" class="input-style" name="lastName" placeholder="user">
+                <input [(ngModel)]="user.userType" type="text" class="input-style" name="lastName" placeholder="user">
             </div>
 
             <div class="quick-cart-footer-pro" style="position: relative; width: 60%; height: 100px; left: 50%; top:20px; margin: 0 0 0 -30%">
@@ -43,7 +43,6 @@
                 <button class="button button-secondary button-wide button-large" routerLink="/login/{{userType}}" (click)="logout()" >Logout</button>
               </div>
             </div>
-
           </form>
 
           <p></p>
@@ -51,7 +50,7 @@
             <p></p>
             <p></p>
             <strong style="width: 50%; float: left" class="continue-shopping" ><a routerLink="/seller/{{user._id}}/products/new">continue add products</a></strong>
-            <strong class=" button button-primary " style="width: 50%; float: right" > <a routerLink="seller/{{user._id}}/products"> My Product List</a></strong>
+            <strong class=" button button-primary " style="width: 50%; float: right" > <a routerLink="/seller/{{user._id}}/products"> My Product List</a></strong>
             <br style="clear:both;"/>
           </div>
 

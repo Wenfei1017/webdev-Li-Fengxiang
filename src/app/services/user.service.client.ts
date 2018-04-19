@@ -27,7 +27,7 @@ export class UserService {
   }
 
 
-  findAllUser() {
+  findAllUser(userId: String) {
 
   }
 

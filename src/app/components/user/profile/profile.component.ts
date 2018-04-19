@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.user = this.sharedService.user;
     console.log("profile");
-    console.log(this.user);
+    // console.log(this.user);
     this.userType = this.user.userType;
   }
 

@@ -1,0 +1,22 @@
+.alluser-register {
+  /* The image used */
+  background-image: url('../../../../../../assets/imgs/pastel-mint-green-background-9.jpg');
+
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#menu ul{
+  list-style: none;
+}
+#menu li{
+  display: inline;
+}
+
+.head-size{
+  font-size: 1.3em;
+}

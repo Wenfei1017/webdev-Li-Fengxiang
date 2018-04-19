@@ -1,35 +1,90 @@
-<!--<div class="header-image">-->
-<div  class="product-page">
-  <div class="product-page-container">
-      <ol class="product-breadcrumbs" id="menu">
-        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-        <li class="breadcrumb-item"> / <a routerLink="/">Products</a></li>
-        <li class="breadcrumb-item"> / <a routerLink="/">Users</a></li>
+
+<nav class="navbar" style="margin: 0; background-color: lightsteelblue">
+  <div class="container-fluid row" style="margin: 0">
+    <div class="pull-left navbar-text">
+      <ol class="product-breadcrumbs head-size" id="menu" style="margin: 0">
+      <li class="breadcrumb-item"><a routerLink="..">Home</a></li>
+      <li class="breadcrumb-item">  <a routerLink="./allproducts">Products</a></li>
+      <li class="breadcrumb-item">  <a routerLink="./allusers">Users</a></li>
       </ol>
+    </div>
+    <!--<div class="pull-right button button-secondary">-->
+    <!--</div>-->
+  </div>
+</nav>
+
+
+<!--<nav class="navbar" style="margin: 0; background-color: lightsteelblue">-->
+  <!--<div class="container-fluid row">-->
+    <!--<div class="pull-left">-->
+      <!--&lt;!&ndash;<a routerLink=".."&ndash;&gt;-->
+         <!--&lt;!&ndash;class="navbar-text">&ndash;&gt;-->
+        <!--&lt;!&ndash;GO BACK&ndash;&gt;-->
+      <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+      <!--<ol class="product-breadcrumbs head-size" id="menu" >-->
+        <!--<li class="breadcrumb-item"><a routerLink="..">Home</a></li>-->
+        <!--<li class="breadcrumb-item">  <a routerLink="./allproducts">Products</a></li>-->
+        <!--<li class="breadcrumb-item">  <a routerLink="./allusers">Users</a></li>-->
+      <!--</ol>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="pull-right button button-secondary">&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</div>-->
+<!--</nav>-->
+
+
+<!--<div class="header-image">-->
+<div  class="product-page" >
+  <div class="product-page-container">
+      <!--<ol class="product-breadcrumbs head-size" id="menu" style="background-color: gainsboro; height: 50px; align-content: center" >-->
+        <!--<li class="breadcrumb-item"><a routerLink="..">Home</a></li>-->
+        <!--<li class="breadcrumb-item">  <a routerLink="./allproducts">Products</a></li>-->
+        <!--<li class="breadcrumb-item">  <a routerLink="./allusers">Users</a></li>-->
+      <!--</ol>-->
     <!--</div>-->
   <!--</div>-->
 <!--</div>-->
 
 
 
-<div class="layout-container">
-  <div class="product-grid">
-    <div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">
-      <div class="image-container">
-        <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/imgs/' + product.image + ')'}"></div>
-        <div class="overlay">
-          <div class="button button-primary" [routerLink]="['../products',i+1]">View Details</div>
-          <div class="button button-primary" (click)="addToCart(product)">Add To Cart</div>
-        </div>
-      </div>
-      <div class="product-details">
-        <div class="product-brand">{{product.brand}}</div>
-        <div class="product-title">{{product.title}}</div>
-        <div class="product-price">{{product.price | currency :'USD':true }}</div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="layout-container">-->
+  <!--<div class="product-grid">-->
+    <!--<div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">-->
+      <!--<div class="image-container">-->
+        <!--<div class="product-image" [ngStyle]="{'background-image': 'url(./assets/imgs/' + product.image + ')'}"></div>-->
+        <!--<div class="overlay">-->
+          <!--<div class="button button-primary" [routerLink]="['./products',i+1]">View Details</div>-->
+          <!--<div class="button button-primary" (click)="addToCart(product)">Add To Cart</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="product-details">-->
+        <!--<div class="product-brand">{{product.brand}}</div>-->
+        <!--<div class="product-title">{{product.title}}</div>-->
+        <!--<div class="product-price">{{product.price | currency :'USD':true }}</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<br/>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">USERS</th>
+        <th scope="col">PRODUCTS</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">NUMBER</th>
+        <td>100</td>
+        <td>87</td>
+      </tr>
+      </tbody>
+    </table>
 
   </div>
 </div>

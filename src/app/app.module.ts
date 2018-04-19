@@ -53,6 +53,9 @@ import { TopbarComponent } from './component/topbar/topbar.component';
 import { CartBarComponent} from './component/topbar/cart-bar.component';
 import { QuantityControlComponent } from './component/quantity-control/quantity-control.component';
 import { ProfileAdminComponent } from './components/user/profile/profile-admin/profile-admin.component';
+import { AllProductsComponent } from './components/user/profile/profile-admin/all-products/all-products.component';
+import { AllUsersComponent } from './components/user/profile/profile-admin/all-users/all-users.component';
+import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
 
 @NgModule({
   // Declare components here
@@ -89,6 +92,9 @@ import { ProfileAdminComponent } from './components/user/profile/profile-admin/p
     CartBarComponent,
     QuantityControlComponent,
     ProfileAdminComponent,
+    AllProductsComponent,
+    AllUsersComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,

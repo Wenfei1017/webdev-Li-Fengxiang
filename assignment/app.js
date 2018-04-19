@@ -6,6 +6,7 @@ module.exports = function (app){
 
   require("./services/cart.service.server")(app);
   require("./services/image.service.server")(app);
+  require("./services/product.service.server")(app);
 
   var db = require("./model/models.server");
 }

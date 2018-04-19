@@ -723,3 +723,20 @@ margin-left:auto;
 margin-left:auto;
   margin-right:auto;
 }
+
+.bg-register{
+  /* The image used */
+  background-image: url('../../../../assets/imgs/496486190.jpg');
+
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*opacity: 0.3;*/
+}
+
+.register-bg {
+  background-color: #e9e9e9;
+}

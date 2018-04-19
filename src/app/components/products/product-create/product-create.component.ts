@@ -7,6 +7,7 @@ import { ImageService } from '../../../services/image.service.client';
 import { User } from '../../../models/user.model.client';
 import { SharedService } from '../../../services/shared.service';
 import { Image } from '../../../models/image.model.client';
+import {environment} from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'app-product-create',
@@ -19,7 +20,11 @@ export class ProductCreateComponent implements OnInit {
   uid: String;
   user: User;
   image: Image;
+  userId: String;
 
+  product: Product;
+
+  baseUrl = environment.baseUrl;
   constructor(
     private productService: ProductsService,
     private router: Router,
@@ -29,7 +34,20 @@ export class ProductCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.sharedService.user2;
+    this.activatedRoute.params.subscribe(
+      (params: any) => {
+        console.log("params");
+        console.log(params);
+        this.userId = params['uid'];
+        console.log(this.userId);
+        this.user = this.sharedService.user;
+        this.product = this.productService.initialProduct();
+      }
+    );
+
+    this.productService.resetImage().subscribe(
+      () => {},
+    );
   }
 
   private createComputer(product: Product) {
@@ -54,12 +72,33 @@ export class ProductCreateComponent implements OnInit {
   //   this.subscriptions.push(apiServiceSubscription);
   }
 
+  addProduct() {
+    console.log("testsettse");
+    console.log(this.product);
+    console.log(this.userId);
+    this.productService.createProductForUser(this.userId, this.product).subscribe(
+       (resProduct: Product) => {
+        // const url = '/seller/' + this.userId;
+        // console.log("userId");
+        console.log(this.userId);
+        console.log(resProduct);
+        this.productService.findProductById(resProduct._id).subscribe(
+          (nextResproduct: Product) => {
+            console.log("teststes");
+            console.log(nextResproduct);
+          }
+        )
+        this.router.navigate(['/seller/' + this.userId]);
+      }
+    );
+  }
+
   createImage(widgetType: String) {
     const newWidget: any = {
       type: widgetType, name: 'name', size: 1, width: '30%',
       height: '30%', rows: 0, deletable: false, formatted: false, placeholder: '',
       // position: this.widgets.length
-    }
+    };
     // this.widgetService.createImage(newWidget).subscribe(
     //   (widget: any) => {
     //     const url: any = '/seller/' + this.uid + '/products/' + '/new/' + widget._id;
@@ -72,20 +111,21 @@ export class ProductCreateComponent implements OnInit {
   }
 
   updateImage() {
-    if (!this.image._id) {
-      this.imageService.createImage(this.uid, this.image).subscribe(
-        (image: Image) => {
-          this.image = image;
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-        }
-      );
-    } else {
-      this.imageService.updateImage(this.image._id, this.image).subscribe(
-        () => {
-          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-        }
-      );
-    }
+    // if (!this.image._id) {
+    //   this.imageService.createImage(this.uid, this.image).subscribe(
+    //     (image: Image) => {
+    //       this.image = image;
+    //       this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+    //     }
+    //   );
+    // } else {
+    //   this.imageService.updateImage(this.image._id, this.image).subscribe(
+    //     () => {
+    //       this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+    //     }
+    //   );
+    // }
+
   }
 
 }

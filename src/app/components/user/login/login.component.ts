@@ -83,20 +83,19 @@ export class LoginComponent implements OnInit {
           console.log("loginFinished!!");
           console.log(user);
 
-          if (user.userType === 'user') {
-            console.log("userTest");
+          if (user.userType == 'user') {
             this.router.navigate(['/user', user._id]);
           }
-          if (user.userType === 'admin') {
+          if (user.userType == 'admin') {
             this.router.navigate(['/admin', user._id]);
           }
-          if (user.userType === 'seller') {
+          if (user.userType == 'seller') {
+            console.log("sellerTest");
             this.router.navigate(['/seller', user._id]);
           }
-          if (user.userType === 'admin') {
+          if (user.userType == 'admin') {
             this.router.navigate(['/admin', user._id]);
           }
-          this.router.navigate(['/user', user._id]);
         },
         (error: any) => {
           console.log(error);

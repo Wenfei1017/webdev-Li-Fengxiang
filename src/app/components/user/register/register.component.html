@@ -1,3 +1,58 @@
+
+
+<!--<nav class="navbar">-->
+<!--<div class="container-fluid row">-->
+<!--<div class="pull-right" style="position: absolute; right: 20px">-->
+<!--<button type="button" routerLink="" class="btn btn-outline-secondary">HOMEPAGE</button>-->
+<!--<button type="button" routerLink="/" class="btn btn-outline-secondary">GO TO LOGIN</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+
+
+<!--<div class="bg-register body">-->
+<!--<div class="container">-->
+<!--<div *ngIf="errorFlag" class="alert alert-danger">-->
+<!--{{errorMsg}}-->
+<!--</div>-->
+<!--<h1>{{userType}} Register</h1>-->
+
+<!--<div>-->
+<!--<label class = "text" for="username">Username</label>-->
+<!--<input [(ngModel)]="user.username" type="text" class="input-style" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>-->
+<!--<br/>-->
+<!--<label class = "text" for="password">Password</label>-->
+<!--<input [(ngModel)]="user.password" type="password" class="input-style" id="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>-->
+<!--<br/>-->
+<!--<label class = "text" for="verifyPassword">Verify Password</label>-->
+<!--<input [(ngModel)]="verifyPassword" type="password" class="input-style" id="verifyPassword" placeholder="verify password" [ngModelOptions]="{standalone: true}"/>-->
+<!--</div>-->
+<!--<br/>-->
+
+<!--<div class="quick-cart-footer">-->
+
+<!--<button class="button button-secondary button-wide button-large" (click)="register()">Register</button>-->
+<!--<button class="button button-secondary button-wide button-large" routerLink="/login/{{userType}}">Cancel</button>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="bg-register"></div>-->
+
+
+<br/>
+<nav class="navbar" style="margin: 0px">
+  <div class="row container" >
+    <div class="pull-right" style="position: absolute; right: 20px">
+      <button type="button" routerLink="/" class="btn btn-outline-secondary">HOMEPAGE</button>
+      <button type="button" routerLink="/" class="btn btn-outline-secondary">GO TO LOGIN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="bg-register">
 <div class="container">
   <div *ngIf="errorFlag" class="alert alert-danger">
     {{errorMsg}}
@@ -5,24 +60,30 @@
   <h1>{{userType}} Register</h1>
   <form>
 
-    <div style="position: absolute; width: 60%; height: 300px; left: 50%; top:250px; margin: 0 0 0 -25%">
-    <label class = "text" for="username">Username</label>
-    <input [(ngModel)]="user.username" type="text" class="input-style" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>
-<br/>
-    <label class = "text" for="password">Password</label>
-    <input [(ngModel)]="user.password" type="password" class="input-style" id="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
-<br/>
-    <label class = "text" for="verifyPassword">Verify Password</label>
-    <input [(ngModel)]="verifyPassword" type="password" class="input-style" id="verifyPassword" placeholder="verify password" [ngModelOptions]="{standalone: true}"/>
+    <div class="register-bg" style="position: absolute; width: 60%; height: 250px; top: 250px; left: 18%">
+
+      <div class="product-page-container" style="position: relative; left: 25%; top: 15%">
+
+      <label class = "text" for="username">Username</label>
+      <input [(ngModel)]="user.username" type="text" class="input-style" id="username" placeholder="username" [ngModelOptions]="{standalone: true}"/>
+      <br/>
+      <label class = "text" for="password">Password</label>
+      <input [(ngModel)]="user.password" type="password" class="input-style" id="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
+      <br/>
+      <label class = "text" for="verifyPassword">Verify Password</label>
+      <input [(ngModel)]="verifyPassword" type="password" class="input-style" id="verifyPassword" placeholder="verify password" [ngModelOptions]="{standalone: true}"/>
+      <br/>
+        <label class="text">UserType: {{userType}}</label>
+        <br/>
+        <br/>
+      <button class="button btn button-secondary" (click)="register()">Register</button>
+      <button class="button btn button-secondary" routerLink="/login/{{userType}}">Cancel</button>
+
+      </div>
     </div>
     <br/>
 
-    <div class="quick-cart-footer" style="position: absolute; width: 60%; height: 300px; left: 50%; top:400px; margin: 0 0 0 -25%">
 
-    <button class="button button-secondary button-wide button-large" (click)="register()">Register</button>
-    <button class="button button-secondary button-wide button-large" routerLink="/login/{{userType}}">Cancel</button>
-    </div>
   </form>
 </div>
-
-
+</div>

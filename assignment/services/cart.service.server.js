@@ -30,13 +30,14 @@ module.exports = function(app){
     var newCart = req.body;
     newCart.title = newCart.product.title;
     newCart._user = userId;
+    // newCart.product._user
 
     cartModel.addCartToList(userId,newCart).then(
       function (newCart) {
         if(newCart){
           res.status(200).json(newCart);
         } else{
-          res.status(404).send("cart not found when update.");
+          res.status(404).send("added Fail");
         }
       },
       function (error) {

@@ -21,6 +21,10 @@ import {ProductListComponent} from './components/products/product-list/product-l
 import { ProductCreateComponent } from './components/products/product-create/product-create.component';
 import { ProductPageComponent } from './components/products/product-page/product-page.component';
 import {ProfileAdminComponent} from './components/user/profile/profile-admin/profile-admin.component';
+import { AllProductsComponent} from './components/user/profile/profile-admin/all-products/all-products.component';
+import { AllUsersComponent } from './components/user/profile/profile-admin/all-users/all-users.component';
+import {ProductEditComponent} from './components/products/product-edit/product-edit.component';
+
 
 // Import all other components here
 
@@ -61,6 +65,10 @@ const APP_ROUTES: Routes = [
   { path: 'seller/:uid/products', component: ProductListComponent},
   { path: 'seller/:uid/products/new', component: ProductCreateComponent},
   { path: 'admin/:uid', component: ProfileAdminComponent},
+  { path: 'admin/:uid/allproducts', component: AllProductsComponent},
+  { path: 'admin/:uid/allusers', component: AllUsersComponent},
+
+  {path: 'products/product/edit/:prid', component: ProductEditComponent},
 
   {
     path: 'product',

@@ -114,3 +114,7 @@
 #menu li{
   display: inline;
 }
+
+.head-size{
+  font-size: 1.3em;
+}

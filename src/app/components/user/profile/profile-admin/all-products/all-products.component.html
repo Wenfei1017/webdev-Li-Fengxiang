@@ -1,0 +1,33 @@
+
+<nav class="navbar" style="margin: 0; background-color: lightsteelblue">
+  <div class="container-fluid row" style="margin: 0">
+    <div class="pull-left navbar-text">
+      <ol class="product-breadcrumbs head-size" id="menu" style="margin: 0">
+        <li class="breadcrumb-item"><a routerLink="..">Home</a></li>
+        <li class="breadcrumb-item">  <a routerLink="./">Products</a></li>
+        <li class="breadcrumb-item">  <a routerLink="../allusers">Users</a></li>
+      </ol>
+    </div>
+    <!--<div class="pull-right button button-secondary">-->
+    <!--</div>-->
+  </div>
+</nav>
+
+<div class="layout-container" style="background-color: seashell">
+  <div class="product-grid">
+    <div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">
+      <div class="image-container">
+        <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/imgs/' + product.image + ')'}"></div>
+        <div class="overlay">
+          <div class="button button-primary" [routerLink]="['./products',i+1]">View Details</div>
+          <div class="button button-primary" (click)="addToCart(product)">Add To Cart</div>
+        </div>
+      </div>
+      <div class="product-details">
+        <div class="product-brand">{{product.brand}}</div>
+        <div class="product-title">{{product.title}}</div>
+        <div class="product-price">{{product.price | currency :'USD':true }}</div>
+      </div>
+    </div>
+  </div>
+</div>

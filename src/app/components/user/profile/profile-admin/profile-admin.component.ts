@@ -19,9 +19,7 @@ export class ProfileAdminComponent implements OnInit {
   user: User;
   userId: String;
   public products:Array<Product>;
-  public users: Array<User>;
-  private sub1;
-  private sub2;
+  private sub;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,6 +40,7 @@ export class ProfileAdminComponent implements OnInit {
   ngOnInit() {
     this.loadProduct();
     this.loadSeller();
+    this.user = this.sharedService.user3;
 
     // this.user = this.sharedService.user2;
     // console.log(this.userId);
@@ -52,7 +51,7 @@ export class ProfileAdminComponent implements OnInit {
     // );
   }
   loadProduct = () => {
-    this.sub1 = this.productService.getProducts('./assets/mock-data/products.json')
+    this.sub = this.productService.getProducts('./assets/mock-data/products.json')
       .subscribe(res => {
         this.products = res;
       });

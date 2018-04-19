@@ -90,6 +90,6 @@ export class TopbarComponent implements OnInit {
   toggleCartPopup = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    this.cartService.toggleCart()
+    this.cartService.toggleCart();
   }
 }
