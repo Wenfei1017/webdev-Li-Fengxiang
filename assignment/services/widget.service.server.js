@@ -11,7 +11,6 @@ module.exports = function (app) {
   app.put("/api/widget/:widgetId", updateWidget);
   app.delete("/api/widget/:widgetId", deleteWidget);
   app.put("/api/page/:pageId/widget",sortWidgets);
-  app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
   function uploadImage(req, res) {
     console.log("uploadImage");
@@ -37,7 +36,6 @@ module.exports = function (app) {
     if (!widgetId) {
       var tobeCreated = {_id: new Date().getTime().toString(), widgetType: 'IMAGE', pageId: pageId, size: size, text: 'text', width:'100%',
         url:'/uploads/' + filename, formatted: false};
-      WIDGETS.push(tobeCreated);
     } else {
       var foundWidget = WIDGETS.find(function (widget) {
         return widget._id === widgetId;

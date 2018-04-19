@@ -21,6 +21,7 @@ export class ProductCreateComponent implements OnInit {
   user: User;
   image: Image;
   userId: String;
+  imageId: String;
 
   product: Product;
 
@@ -34,14 +35,22 @@ export class ProductCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.baseUrl = environment.baseUrl;
     this.activatedRoute.params.subscribe(
       (params: any) => {
         console.log("params");
         console.log(params);
         this.userId = params['uid'];
+        this.imageId = params['iid'];
         console.log(this.userId);
         this.user = this.sharedService.user;
         this.product = this.productService.initialProduct();
+        this.imageService.findImagetById(this.imageId).subscribe(
+          (widget: any) => {
+            this.image = widget;
+            console.log(this.image);
+          }
+        );
       }
     );
 
@@ -50,27 +59,6 @@ export class ProductCreateComponent implements OnInit {
     );
   }
 
-  private createComputer(product: Product) {
-
-  //   const apiServiceSubscription = this.apiService
-  //     .createNewComputer(product)
-  //     .subscribe(response => {
-  //         if(response.success){
-  //
-  //           // Notifying the users about the action status
-  //           this.notificationService.push(new Notification(
-  //             'The item was successfully created!',
-  //             '',
-  //             'assets/images/notifications/success.png',
-  //             DirOptions.auto
-  //           ));
-  //
-  //           this.router.navigate(['/admin']);
-  //         }
-  //       },
-  //       error => console.error(`An error has occurred! ${error}`));
-  //   this.subscriptions.push(apiServiceSubscription);
-  }
 
   addProduct() {
     console.log("testsettse");
@@ -110,7 +98,12 @@ export class ProductCreateComponent implements OnInit {
     // );
   }
 
-  updateImage() {
+  uploadImage() {
+    console.log("uploadSuccess!!");
+    this.productService.uploadImage().subscribe(
+      () => {}
+    );
+
     // if (!this.image._id) {
     //   this.imageService.createImage(this.uid, this.image).subscribe(
     //     (image: Image) => {

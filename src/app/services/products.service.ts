@@ -54,7 +54,8 @@ export class ProductsService {
   }
 
   findAllProductsForUser(userId: String) {
-    const url = this.baseUrl + '/api/user/' + userId + '/product';
+    console.log("findAllProductsForUser");
+    const url = this.baseUrl + '/api/user/' + userId + '/products';
     return this.http.get(url).map(
       (response: Response) => {
         return response.json();
@@ -73,6 +74,15 @@ export class ProductsService {
 
   resetImage() {
     const url = this.baseUrl + '/api/resetImage';
+    return this.http.get(url).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
+  }
+
+  uploadImage() {
+    const url = this.baseUrl + '/api/upload';
     return this.http.get(url).map(
       (response: Response) => {
         return response.json();

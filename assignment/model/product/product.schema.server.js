@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var productSchema = mongoose.Schema({
   _user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'User',
     required: true,
   },

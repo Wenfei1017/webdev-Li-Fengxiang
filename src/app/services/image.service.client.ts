@@ -46,6 +46,15 @@ export  class ImageService {
         return res.json();
       });
   }
+
+  findImagetById(imageId: String) {
+    const url = this.baseUrl + '/api/image/' + imageId;
+    return this.http.get(url).map(
+      (res: Response) => {
+        return res.json();
+      }
+    );
+  }
 }
 
 

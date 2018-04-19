@@ -36,12 +36,20 @@ export class CategoryComponent implements OnInit {
     this.load();
   }
   load = () => {
-    this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
+    // this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
+    //   .subscribe(res => {
+    //     this.products = res;
+    //     console.log(this.products[0].image);
+    //   });
+
+    this.sub = this.productsService.findAllProducts()
       .subscribe(res => {
         this.products = res;
-        console.log(this.products[0].image);
+        console.log("allCategory");
+        console.log(this.products);
       });
   }
+
   addToCart = (product) => {
     const newCart = new Cart(product, 1);
     // this.cartService.addToCart(newCart);

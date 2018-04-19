@@ -2,7 +2,7 @@ module.exports = function (app) {
 
   var multer = require('multer'); // npm install multer --save
   var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
-
+  var path = require('path');
   var imageModel = require('../model/image/image.model.server');
 
   app.post("/api/page/:pageId/widget", createWidget);
@@ -11,19 +11,20 @@ module.exports = function (app) {
   app.put("/api/widget/:widgetId", updateWidget);
   app.delete("/api/widget/:widgetId", deleteWidget);
   app.put("/api/page/:pageId/widget",sortWidgets);
-  app.post ("/api/upload", upload.single('myFile'), uploadImage);
+  // app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
   function uploadImage(req, res) {
     console.log("uploadImage");
     var widgetId      = req.body.widgetId;
-    var width         = req.body.width;
+    // var width         = req.body.width;
     var myFile        = req.file;
     var userId = req.body.userId;
-    var websiteId = req.body.websiteId;
-    var pageId = req.body.pageId;
+    // var websiteId = req.body.websiteId;
+    // var pageId = req.body.pageId;
 
     if(myFile == null) {
-      res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+      // res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId +  "/widget");
+      res.redirect(baseUrl + "/user/" + userId +  "/widget/" + widgetId);
       return;
     }
 
@@ -34,17 +35,30 @@ module.exports = function (app) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    if (!widgetId) {
-      var tobeCreated = {_id: new Date().getTime().toString(), widgetType: 'IMAGE', pageId: pageId, size: size, text: 'text', width:'100%',
-        url:'/uploads/' + filename, formatted: false};
-      WIDGETS.push(tobeCreated);
-    } else {
-      var foundWidget = WIDGETS.find(function (widget) {
-        return widget._id === widgetId;
-      });
-      foundWidget.url = "/uploads/" + filename;
-    }
-    res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+  //   if (!widgetId) {
+  //     var tobeCreated = {_id: new Date().getTime().toString(), widgetType: 'IMAGE', pageId: pageId, size: size, text: 'text', width:'100%',
+  //       url:'/uploads/' + filename, formatted: false};
+  //     WIDGETS.push(tobeCreated);
+  //   } else {
+  //     var foundWidget = WIDGETS.find(function (widget) {
+  //       return widget._id === widgetId;
+  //     });
+  //     foundWidget.url = "/uploads/" + filename;
+  //   }
+  //   res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+  // }
+  //   var imageUrl = baseUrl + "/api/image/" + filename;
+  //   var image = { url: imageUrl };
+    // imageModel
+    //   .updateImage(userId, image)
+    //   .then(function (stats) {
+    //       res.sendStatus(200);
+    //     },
+    //     function (err) {
+    //       res.sendStatus(404).send(err);
+    //     });
+    //   // res.redirect("https://webdev-fengxiang-li.herokuapp.com/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+    // res.redirect(baseUrl + "/user/" + userId + "/widget/" + widgetId);
   }
 
   function createWidget(req,res) {

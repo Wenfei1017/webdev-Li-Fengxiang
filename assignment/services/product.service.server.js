@@ -1,37 +1,39 @@
 module.exports = function(app) {
   var productModel = require('../model/product/product.model.server');
-  // var productModel = require('../model/product/product.model.server');
+
+  var multer = require('multer'); // npm install multer --save
+  var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
 
   app.put("/api/product/:productId",updateProduct);
   app.get("/api/product/:productId",findProductById);
   app.delete("/api/user/:userId/product/:productId", deleteProduct);
   app.post("/api/user/:userId/product", createProductForUser);
-  app.get("/api/user/:userId/product",findAllProductsForUser);
+  app.get("/api/user/:userId/products",findAllProductsForUser);
   app.get("/api/product", findAllProducts);
   app.get("/api/resetImage", resetImage);
+  app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
   var path = require('path');
-  var multer = require('multer'); // npm install multer --save
-  // var upload = multer({ dest: __dirname + '/../../src/assets/uploads' });
-  var upload = multer({ dest: __dirname + '/../uploads' });
 
   var imageUrl= "";
 
   function uploadImage(req, res) {
+    console.log("uploadImage");
     var width = req.body.width;
     var myFile = req.file;
 
     var userId = req.body.userId;
-
+    console.log("=======");
+    console.log(userId);
+    console.log(myFile);
     // condition when myFile is null
     if (myFile == null) {
-      res.redirect(baseUrl + "/user/" + userId);
+      res.redirect("/seller/" + userId);
       return;
     }
 
     var originalname = myFile.originalname; // file name on user's computer
-    var filename = myFile.filename;
-    filename = Date.now().toString(); // new file name in upload folder
+    var filename = myFile.filename;// new file name in upload folder
     var path = myFile.path; // full path of uploaded file
     var destination = myFile.destination; // folder where file is saved to
     var size = myFile.size;
@@ -39,8 +41,11 @@ module.exports = function(app) {
 
     // find widget by id
     imageUrl = filename;
-
-    res.redirect("/seller/" + userId);
+    baseUrl = "http://localhost:4200";
+    console.log("testRedirect");
+    // res.redirect("http://localhost:4200" + "/seller/" + userId + "/products/new");
+    // res.　
+    res.status(200);
   }
 
   function resetImage(req, res) {
@@ -115,7 +120,9 @@ module.exports = function(app) {
   }
 
   function findAllProductsForUser(req,res) {
+    console.log("findAllProductsForUser");
     const userId = req.params["userId"];
+    console.log(userId);
     productModel.findAllProductsForUser(userId).then(
       function(products){
         res.status(200).json(products);
@@ -127,6 +134,7 @@ module.exports = function(app) {
   }
 
   function findAllProducts(req,res) {
+
     productModel.findAllProducts().then(
       function(products){
         res.status(200).json(products);

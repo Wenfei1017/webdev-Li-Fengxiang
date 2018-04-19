@@ -1,85 +1,139 @@
-<nav class="row cart-total">
-  <div class="container-fluid row">
-    <div class="pull-left">
-      <a routerLink="./"
-         class="navbar-text right-margin">
-        BACK
-      </a>
-    </div>
-    <div class="pull-right button button-secondary">
+<!--<nav class="row cart-total">-->
+  <!--<div class="container-fluid row">-->
+    <!--<div class="pull-left">-->
+      <!--<a routerLink="./"-->
+         <!--class="navbar-text right-margin">-->
+        <!--BACK-->
+      <!--</a>-->
+    <!--</div>-->
+    <!--<div class="pull-right button button-secondary">-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+
+<!--<div class="cart-page-container-pro div1">-->
+
+  <!--<div  style="position: relative; width: 100%">-->
+    <!--<div class="row cart-total cart-page-container" style="position: relative;float: left; width: 60%">-->
+    <!--<br/>-->
+      <!--<h1 >My profile</h1>-->
+        <!--<div *ngIf="errorFlag" class="alert alert-danger">-->
+        <!--{{errorMsg}}-->
+        <!--</div>-->
+
+        <!--<div *ngIf="updateFlag" class="alert alert-info">-->
+        <!--{{updateMsg}}-->
+        <!--</div>-->
+        <!--<form style="position: relative; top: 40px;" (ngSubmit)="updateUser()" #f="ngForm">-->
+       <!--<div class="cart-page-container">-->
+        <!--<div class="form-group">-->
+         <!--<label >Username</label>-->
+         <!--<input [(ngModel)]="user.username" type="text" class="input-style" name="username" placeholder="jannunzi">-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+          <!--<label>Email</label>-->
+          <!--<input [(ngModel)]="user.email" type="text" class="input-style" name="email" placeholder="jannunzi@gmail.com">-->
+        <!--</div>-->
+
+        <!--<div class="form-group">-->
+        <!--<label >User Type</label>-->
+        <!--<input [(ngModel)]="user.userType" type="text" class="input-style" name="lastName" placeholder="user">-->
+        <!--</div>-->
+       <!--</div>-->
+
+
+      <!--<div class="cart-page-container">-->
+        <!--&lt;!&ndash;<div class="quick-cart-footer-cell">&ndash;&gt;-->
+          <!--<button  type="submit" class="button button-secondary button-wide-profile button-large">Update</button>-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+        <!--<div class="quick-cart-footer-cell">-->
+          <!--<button class="button button-secondary button-wide-profile button-large" routerLink="/login" (click)="deleteUser()">Delete</button>-->
+        <!--</div>-->
+
+        <!--<div class="quick-cart-footer-cell">-->
+          <!--<button class="button button-secondary button-wide-profile button-large" routerLink="/login/{{userType}}" (click)="logout()"  >Logout</button>-->
+        <!--</div>-->
+      <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+
+
+
+  <!--<div class="container" style="float:right; width: 40%; margin-top: 40px">-->
+      <!--<div class="cart-page-content" >-->
+        <!--<strong class="continue-shopping"> <a routerLink="/category">continue shopping</a></strong>-->
+      <!--</div>-->
+      <!--<div class="cart-page-content">-->
+        <!--<strong class="checkout-button"> <a routerLink="/user/{{user._id}}/cart">My Cart</a></strong>-->
+      <!--</div>-->
+
+  <!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+<nav class="navbar" style="margin: 0px">
+  <div class="row container" >
+    <div class="pull-right" style="position: absolute; right: 20px">
+      <button type="button" routerLink="/" class="btn btn-outline-secondary">HOMEPAGE</button>
+      <button type="button" routerLink="/" class="btn btn-outline-secondary">GO TO LOGIN</button>
     </div>
   </div>
 </nav>
 
-<br/>
+<div class="bg-profile">
+  <div class="container">
+    <div *ngIf="errorFlag" class="alert alert-danger">
+      {{errorMsg}}
+    </div>
+    <h1 >My profile</h1>
+    <div *ngIf="errorFlag" class="alert alert-danger">
+    {{errorMsg}}
+    </div>
 
-<div class="cart-page-container-pro div1" style="position: relative; top: 0%; padding: 20px; width: 100%">
+    <div *ngIf="updateFlag" class="alert alert-info">
+    {{updateMsg}}
+    </div>
+    <form>
 
-    <div class="row cart-total">
-    <br/>
-      <h1 >My profile</h1>
-        <div class="cart-page-container"  style="float: left; width: 60%" >
+      <div class="register-bg" style="position: absolute; width: 70%; height: 300px; top: 250px; left: 15%">
 
-          <p></p>
-        <div *ngIf="errorFlag" class="alert alert-danger">
-        {{errorMsg}}
-        </div>
+        <div class="product-page-container" style="position: relative; left: 25%; top: 15%; align-items: center">
 
-        <div *ngIf="updateFlag" class="alert alert-info">
-        {{updateMsg}}
-        </div>
-          <p></p>
-          <p></p>
-        <form (ngSubmit)="updateUser()" #f="ngForm">
+          <div class="form-group">
+            <label >Username</label>
+            <input [(ngModel)]="user.username" type="text" class="input-style" name="username" placeholder="jannunzi">
+          </div>
 
-        <div class="form-group">
-         <label >Username</label>
-         <input [(ngModel)]="user.username" type="text" class="input-style" name="username" placeholder="jannunzi">
-        </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input [(ngModel)]="user.email" type="text" class="input-style" name="email" placeholder="jannunzi@gmail.com">
+          </div>
 
-        <div class="form-group">
-        <label >Email</label>
-        <input [(ngModel)]="user.email" type="text" class="input-style" name="firstName" placeholder="1234@mail.com">
-        </div>
+          <div class="form-group">
+            <label >User Type</label>
+            <input [(ngModel)]="user.userType" type="text" class="input-style" name="lastName" placeholder="user">
+          </div>
 
-        <div class="form-group">
-        <label >User Type</label>
-        <input [(ngModel)]="user.type" type="text" class="input-style" name="lastName" placeholder="user">
-        </div>
-
-        <div class="quick-cart-footer">
-        <div class="quick-cart-footer-cell">
-        <button  type="submit" class="button button-secondary button-wide-profile button-large">Update</button>
-        </div>
-
-        <div class="quick-cart-footer-cell">
-        <button class="button button-secondary button-wide-profile button-large" routerLink="/login" (click)="deleteUser()">Delete</button>
-        </div>
-
-        <div class="quick-cart-footer-cell">
-        <button class="button button-secondary button-wide-profile button-large" routerLink="/login/{{userType}}" (click)="logout()"  >Logout</button>
-        </div>
+            <strong class="continue-shopping"> <a routerLink="/category">continue shopping</a></strong>
+          <br/>
+          <br/>
+            <strong class="checkout-button"> <a routerLink="/user/{{user._id}}/cart">My Cart</a></strong>
       </div>
-        </form>
-
-     </div>
-
-      <p></p>
-      <p></p>
       <br/>
-      <div class="container" style="float: right; width: 50%; margin: 0">
-        <strong class="continue-shopping"> <a routerLink="/category">continue shopping</a></strong>
-        <div class="checkout-button"> <a routerLink="/user/{{user._id}}/cart">My Cart</a></div>
       </div>
 
-      <!--<div class="container">-->
-        <!--<button class="cart" style="color: black" routerLink="/user/{{user._id}}/cart">View My cart</button>-->
-      <!--</div>-->
-  <!--</div>-->
-  <div class="cart-page-content">
-    <!--<h4>Your cart is empty.</h4>-->
-    <!--<a routerLink="/category">Go shopping</a>-->
-  </div>
-
+    </form>
   </div>
 </div>
+
+
