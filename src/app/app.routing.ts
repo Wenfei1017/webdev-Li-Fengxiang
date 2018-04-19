@@ -68,7 +68,7 @@ const APP_ROUTES: Routes = [
   { path: 'admin/:uid/allproducts', component: AllProductsComponent},
   { path: 'admin/:uid/allusers', component: AllUsersComponent},
 
-  {path: 'products/product/edit/:prid', component: ProductEditComponent},
+  {path: 'user/:uid/products/product/edit/:prid', component: ProductEditComponent},
 
   {
     path: 'product',

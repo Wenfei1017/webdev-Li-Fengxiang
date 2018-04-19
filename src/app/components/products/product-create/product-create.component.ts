@@ -88,7 +88,7 @@ export class ProductCreateComponent implements OnInit {
             console.log(nextResproduct);
           }
         )
-        this.router.navigate(['/seller/' + this.userId]);
+         this.router.navigate(['/seller/' + this.userId + '/products']);
       }
     );
   }

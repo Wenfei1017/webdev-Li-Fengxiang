@@ -24,13 +24,18 @@ function findProductById(productId){
 function deleteProduct(productId) {
   productModel.findById(productId).then(
     function (product) {
+      console.log("productHere!");
+      console.log(product);
       userModel.findUserById(product._user)
         .then(function (user) {
+          console.log(user);
           user.products.pull({_id: productId});
           user.save();
         })
     });
-
+  console.log("deleteHere!!!");
+  console.log("======");
+  console.log(productId);
   return productModel.remove({
       _id : productId
     }

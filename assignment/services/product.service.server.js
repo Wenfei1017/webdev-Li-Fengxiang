@@ -82,9 +82,10 @@ module.exports = function(app) {
 
   function deleteProduct(req,res) {
     const productId = req.params["productId"];
+    console.log("testDeleteServer");
     productModel.deleteProduct(productId).then(
       function (status) {
-        res.status(200);
+        res.json(status);
       },
       function (error) {
         res.status(400).send(error);

@@ -36,8 +36,7 @@ export class ProductEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: any) => {
         this.productId = params['prid'];
-        this.user = this.sharedService.user;
-        this.userId = this.user._id;
+        this.userId = params['uid'];
         console.log("productId");
         console.log(this.productId);
         this.productService.findProductById(this.productId).subscribe(
@@ -56,9 +55,19 @@ export class ProductEditComponent implements OnInit {
   updateProduct() {
     this.productService.updateProduct(this.userId, this.product).subscribe(
       (resProduct: Product) => {
+        console.log("comebackHere");
         this.product = resProduct;
         this.router.navigate(['/seller/' + this.userId + '/products']);
       }
+    );
+  }
+
+  deleteProduct() {
+    console.log("deleteAllProduct");
+    this.productService.deleteProduct(this.userId, this.productId).subscribe(
+      () => {
+        console.log("comebackHere");
+        this.router.navigate(['/seller/' + this.userId + '/products']);      }
     );
   }
 
