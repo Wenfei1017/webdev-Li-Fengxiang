@@ -61,6 +61,9 @@ export class ProductListComponent implements OnInit {
     this.sub = this.productService.findAllProductsForUser(this.userId)
       .subscribe(res => {
         this.products = res;
+        console.log(this.products.length);
+        console.log(this.products[0]._id);
+        console.log(this.products[0].image);
       });
 
   };

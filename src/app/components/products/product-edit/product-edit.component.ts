@@ -37,6 +37,9 @@ export class ProductEditComponent implements OnInit {
       (params: any) => {
         this.productId = params['prid'];
         this.user = this.sharedService.user;
+        this.userId = this.user._id;
+        console.log("productId");
+        console.log(this.productId);
         this.productService.findProductById(this.productId).subscribe(
           (resProduct: Product) => {
           this.product = resProduct;
