@@ -43,6 +43,8 @@ module.exports = function(app) {
     imageUrl = filename;
     baseUrl = "http://localhost:4200";
     console.log("testRedirect");
+    console.log("========");
+    console.log(filename);
     // res.redirect("http://localhost:4200" + "/seller/" + userId + "/products/new");
     // res.　
     res.status(200);
