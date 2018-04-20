@@ -42,6 +42,7 @@ export class ProductsService {
     console.log("deleteProduct");
     const url = this.baseUrl + '/api/user/' + userId + '/product/' + productId;
     return this.http.delete(url).map((response: Response) => {
+      return response.json();
     });
   }
 

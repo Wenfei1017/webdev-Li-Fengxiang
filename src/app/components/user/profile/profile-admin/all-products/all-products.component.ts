@@ -24,14 +24,20 @@ export class AllProductsComponent implements OnInit {
   }
 
   loadProduct = () => {
-    this.sub1 = this.productsService.getProducts('./assets/mock-data/products.json')
+    this.productsService.findAllProducts()
       .subscribe(res => {
-        this.products = res;
+        this.products = res;;
+        // console.log(this.products[6]);
       });
   };
 
   deleteProduct(i) {
-
+    console.log(this.products[i]);
+    this.productsService.deleteProduct(this.products[i]._user, this.products[i]._id).subscribe(
+      () => {
+        this.products.splice(i, i);
+      }
+    );
   }
   editProduct(i) {
 
