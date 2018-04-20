@@ -26,7 +26,9 @@ export class AllProductsComponent implements OnInit {
   loadProduct = () => {
     this.productsService.findAllProducts()
       .subscribe(res => {
-        this.products = res;;
+
+        this.products = res;
+        console.log(this.products);
         // console.log(this.products[6]);
       });
   };

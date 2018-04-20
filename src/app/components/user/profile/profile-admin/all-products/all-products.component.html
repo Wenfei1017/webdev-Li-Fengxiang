@@ -27,7 +27,6 @@
             <th scope="col">TITLE</th>
             <th scope="col">PRICE</th>
             <th scope="col">DESCRIPTION</th>
-            <th scope="col">USERID</th>
           </tr>
           </thead>
           <tbody>
@@ -38,7 +37,6 @@
             <td>{{product.title}}</td>
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
-            <td>{{product._user}}</td>
             <td>
               <button (click)="deleteProduct(i)" class="btn btn-block btn-danger">Delete</button>
               <button (click)="editProduct(i)" class="btn btn-block btn-primary">Edit</button>
