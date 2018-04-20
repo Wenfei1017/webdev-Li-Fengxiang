@@ -27,10 +27,15 @@ export class UserService {
   }
 
 
-  findAllUser(userId: String) {
-
+  findAllUser() {
+    const url = this.baseUrl + "/api/allUser";
+    return this.http.get(url)
+      .map((res: Response) => {
+        console.log(res);
+          return res.json();
+        }
+      );
   }
-
 
   createUser(user: User) {
     const url = this.baseUrl + '/api/user';
@@ -131,7 +136,11 @@ export class UserService {
 
   deleteUser(userId: String) {
     const url = this.baseUrl + '/api/user/' + userId;
-    return this.http.delete(url);
+    return this.http.delete(url).map(
+      (res: Response) => {
+        return res.json();
+      }
+    );
   }
 
 }

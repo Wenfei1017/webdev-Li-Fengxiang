@@ -29,28 +29,25 @@
               <th scope="col">#</th>
               <th scope="col">ID</th>
               <th scope="col">USERNAME</th>
-              <th scope="col">EMAIL</th>
               <th scope="col">TYPE</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor = "let user of users; let i = index">
+              <th scope="row">i</th>
+              <td>{{user._id}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.userType}}</td>
+              <td>
+                <button (click)="deleteUser(i)" class="btn btn-block btn-danger">Delete</button>
+                <button (click)="editUser(i)" class="btn btn-block btn-primary">Edit</button>
+              </td>
             </tr>
             </tbody>
           </table>
 
 
         </div>
-      <!--</div>-->
-      <div class="product-details">
-        <div class="product-brand">{{user._id}}</div>
-        <div class="product-title">{{user.username}}</div>
-        <div class="product-price">{{user.email | currency :'USD':true }}</div>
-      </div>
     </div>
   </div>
 </div>

@@ -14,19 +14,38 @@
 </nav>
 
 <div class="layout-container" style="background-color: seashell">
-  <div class="product-grid">
-    <div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">
-      <div class="image-container">
-        <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/uploads/' + product.imageUrl + ')'}"></div>
-        <div class="overlay">
-          <div class="button button-primary" [routerLink]="['./products',i+1]">View Details</div>
-          <div class="button button-primary" (click)="addToCart(product)">Add To Cart</div>
-        </div>
-      </div>
-      <div class="product-details">
-        <div class="product-brand">{{product.brand}}</div>
-        <div class="product-title">{{product.title}}</div>
-        <div class="product-price">{{product.price | currency :'USD':true }}</div>
+  <div class="product-image">
+    <!--<div class="col-md-4 col-sm-6" *ngFor="let user of users;let i = index">-->
+    <div class="image-container">
+      <div class="overlay">
+        <table class="table">
+          <caption>List of users</caption>
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">TITLE</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">USERID</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor = "let product of products; let i = index">
+            <th scope="row">i</th>
+            <td>{{product._id}}</td>
+            <td>{{product.title}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product._user}}</td>
+            <td>
+              <button (click)="deleteProduct(i)" class="btn btn-block btn-danger">Delete</button>
+              <button (click)="editProduct(i)" class="btn btn-block btn-primary">Edit</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

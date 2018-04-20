@@ -20,13 +20,34 @@ export class AllUsersComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.sharedService.user3;
-    this.loadSeller();
+    this.loadMember();
   }
 
-  loadSeller = () => {
-    // this.sub = this.userService.findAllUser(this.user._id).subscribe(
-    //   (users: User[]) => {
-    //     this.users = users;
-    //   })
+  loadMember = () => {
+    console.log("here");
+    this.sub = this.userService.findAllUser().subscribe(
+      (users: User[]) => {
+        this.users = users;
+        console.log(this.users);
+      });
   };
+
+  deleteUser(i) {
+    console.log(i);
+    this.userService.deleteUser(this.users[i]._id).subscribe(
+      () => {
+          console.log("estst");
+          this.users.splice(i, 1);
+          // window.location.href = this.baseUrl + '/facebook/login';
+      }
+    );
+  }
+
+  editUser(i) {
+    console.log(i);
+  }
+
+  // function editUser() {
+  //
+  // }
 }

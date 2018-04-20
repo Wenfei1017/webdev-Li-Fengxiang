@@ -10,7 +10,7 @@ export class Product {
     price?: number;
     description?: String;
     imageUrl?: String;
-    _user?: User;
+    _user?: String;
 
   constructor(_id: String, title: String, brand: String, price: number, description: String) {
     this._id = _id;

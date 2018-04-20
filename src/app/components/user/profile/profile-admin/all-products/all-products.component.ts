@@ -29,4 +29,11 @@ export class AllProductsComponent implements OnInit {
         this.products = res;
       });
   };
+
+  deleteProduct(i) {
+
+  }
+  editProduct(i) {
+
+  }
 }

@@ -24,6 +24,7 @@ module.exports = function (app) {
   app.get("/api/user/hello", helloUser);
   app.get("/api/user/:userId", findUserById);
   app.get("/api/user", findUser);
+  app.get("/api/allUser", findAllUser);
   app.delete("/api/user/:userId", deleteUser);
 
   // Passport config
@@ -253,7 +254,7 @@ module.exports = function (app) {
     if(userId){
       userModel.deleteUser(userId).then(
           function (status){
-            res.status(200);
+            res.json(status);
           },
           function (error){
             res.status(400).send(error);
@@ -262,5 +263,18 @@ module.exports = function (app) {
     } else{
       res.status(412);
     }
+  }
+
+  function findAllUser(req, res) {
+    console.log("test");
+    userModel.findAllUser().then(
+      function (users) {
+        console.log(users);
+        res.status(200).json(users);
+      },
+      function (error) {
+        res.status(400).send(error);
+      }
+    )
   }
 }
