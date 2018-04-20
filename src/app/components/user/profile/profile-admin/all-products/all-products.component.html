@@ -17,7 +17,7 @@
   <div class="product-grid">
     <div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">
       <div class="image-container">
-        <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/imgs/' + product.image + ')'}"></div>
+        <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/uploads/' + product.imageUrl + ')'}"></div>
         <div class="overlay">
           <div class="button button-primary" [routerLink]="['./products',i+1]">View Details</div>
           <div class="button button-primary" (click)="addToCart(product)">Add To Cart</div>

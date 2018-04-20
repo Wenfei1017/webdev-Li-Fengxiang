@@ -8,6 +8,7 @@ import {SharedService} from '../../services/shared.service';
 import {Page} from '../../models/page.model.client';
 import {CartBaseComponent} from '../cart/cart-base.component';
 import {CartBarComponent} from '../../component/topbar/cart-bar.component';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-category',
@@ -43,10 +44,12 @@ export class CategoryComponent implements OnInit {
     //   });
 
     this.sub = this.productsService.findAllProducts()
-      .subscribe(res => {
-        this.products = res;
-        console.log("allCategory");
-        console.log(this.products);
+      .subscribe(products => {
+        this.products = products;
+        this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
+          .subscribe(resProducts => {
+            this.products = this.products.concat(resProducts);
+          });
       });
   }
 

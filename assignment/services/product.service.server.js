@@ -18,6 +18,7 @@ module.exports = function(app) {
   var imageUrl= "";
 
   function uploadImage(req, res) {
+    console.log("=======");
     console.log("uploadImage");
     var width = req.body.width;
     var myFile = req.file;

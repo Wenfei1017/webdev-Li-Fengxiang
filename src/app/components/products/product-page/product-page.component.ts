@@ -15,23 +15,36 @@ export class ProductPageComponent implements OnInit {
     private sub;
     public product: Product;
     quantity: number = 1;
+
+    public pid: String
+
     constructor(private route: ActivatedRoute,
+                private activatedRoute: ActivatedRoute,
                 private productService: ProductsService,
                 private sharedService: SharedService,
                 private cartService: CartService
     ) { }
 
     ngOnInit() {
-        this.route.params
-            .subscribe(res => {
-              console.log(res);
-                this.getProduct(res.pid);
-            });
+        this.activatedRoute.params.subscribe(
+          (params: any) => {
+            this.pid = params["pid"];
+            this.sub = this.productService.findProductById(this.pid).subscribe(
+              (resProduct: Product) => {
+                this.product = resProduct;
+                console.log(this.product);
+              }
+            );
+          }
+        );
     }
 
     getProduct = (id) => {
+
         this.sub = this.productService.getProducts('../../../assets/mock-data/products.json')
             .subscribe(res => {
+              console.log(res);
+              console.log(id);
                 this.product = res[id-1];
                 console.log(this.product);
             });

@@ -9,7 +9,7 @@ export class Product {
     brand?: String;
     price?: number;
     description?: String;
-    image?: String;
+    imageUrl?: String;
     _user?: User;
 
   constructor(_id: String, title: String, brand: String, price: number, description: String) {

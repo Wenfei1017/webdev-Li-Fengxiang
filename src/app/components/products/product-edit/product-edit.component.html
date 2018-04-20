@@ -38,10 +38,15 @@
         <label class = "text-create">Description:</label>
         <input type="text" name="description" [(ngModel)]="product.description" placeholder="my product description" class="input-style submissionfield" ngModel required #password="ngModel">
 
-        <form ngForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
-          <!--<input  name="myFile" id="myFile"  type="file" class="form-control form-group"/>-->
+        <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+          <label for="myFile">Upload Image</label>
+          <input  name="myFile" id="myFile"  type="file" class="form-control form-group"/>
+          <!--<input  name="widgetId" value="{{widget._id}}" style="display: none"/>-->
+          <!--<input  name="pageId" value="{{pageId}}" style="display: none"/>-->
+          <!--<input  name="websiteId" value="{{websiteId}}" style="display: none"/>-->
           <!--<input  name="userId" value="{{userId}}" style="display: none"/>-->
-          <button type="submit" class="button button-secondary  button-large">Upload Image</button>
+          <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+          <br/>
         </form>
       </div>
 
