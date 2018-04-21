@@ -19,7 +19,7 @@ export class ProfileAdminComponent implements OnInit {
   user: User;
   userId: String;
   public products:Array<Product>;
-  private sub;
+  public users:Array<User>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -51,17 +51,18 @@ export class ProfileAdminComponent implements OnInit {
     // );
   }
   loadProduct = () => {
-    this.sub = this.productService.getProducts('./assets/mock-data/products.json')
+    this.productService.findAllProducts()
       .subscribe(res => {
         this.products = res;
       });
   };
 
   loadSeller = () => {
-    // this.sub2 = this.userService.findAllUser()
-    //   .subscribe(res => {
-    //     this.users = res;
-    //   })
+    this.userService.findAllUser().subscribe(
+      (res) => {
+        this.users = res;
+      }
+    );
   };
 
 }

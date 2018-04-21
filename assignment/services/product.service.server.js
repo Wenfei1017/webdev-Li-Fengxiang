@@ -57,7 +57,8 @@ module.exports = function(app) {
 
   function updateProduct(req, res) {
     const productId = req.params["productId"];
-    const newProduct= req.body;
+    var newProduct= req.body;
+    newProduct.imageUrl = imageUrl;
     productModel.updateProduct(productId,newProduct).then(
       function (product){
         if(product){

@@ -29,12 +29,9 @@ import {CartService} from '../../services/cart.service.client';
             <li class="header-nav-item">
               <a href="/login/admin">ADMIN</a>
             </li>
-            <li class="header-nav-item">
-              <a href="/login/advertiser">ADVERTISER</a>
-            </li>
-            <li class="header-nav-item">
-              <a routerLink="../">BACK<span class="fa fa-caret-down"></span></a>
-            </li>
+            <!--<li class="header-nav-item">-->
+              <!--<a routerLink="../">BACK<span class="fa fa-caret-down"></span></a>-->
+            <!--</li>-->
           </ul>
           <div class="header-logo-wrapper">
             <!--<img class="header-logo-image" src="./assets/imgs/sakura-plate-bowl_1.jpg" alt="Hello">-->

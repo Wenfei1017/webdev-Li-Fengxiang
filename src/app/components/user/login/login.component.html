@@ -23,12 +23,9 @@
 
 
 <div class="header-image">
-    <div class="header-block">
+  <div class="header-block">
       <div class="header-text">
         <div class="header-text-title">Plates Shop</div>
-        <br/>
-        <p></p>
-        <p></p>
         <br/>
         <br/>
         <!--<form class="cart-page-content" (ngSubmit)="login()" #f="ngForm">-->
@@ -43,12 +40,8 @@
           <span class="help-block" *ngIf="!password.valid && password.touched">
       Please enter password!
           </span>
-
           <br/>
-
-          <p></p>
-          <p></p>
-          <P></P>
+          <br/>
           <div class="quick-cart-footer">
             <div class="quick-cart-footer-cell">
               <button [disabled]="!f.valid" class="button button-secondary button-wide-login button-large" type="submit">Login</button>
@@ -63,9 +56,16 @@
             </div>
           </div>
         </form>
+
+        <div class="search-container navbar" style="margin: 15px">
+          <form method="post" action="/action_page.php">
+            <input type="text" style="color: black" name="search" placeholder="Search..">
+            <button type="submit"><i class="fa fa-search" style="color: black"></i></button>
+          </form>
+        </div>
+
       </div>
     </div>
-
   </div>
 
 

@@ -51,9 +51,7 @@ const APP_ROUTES: Routes = [
   // so on
 
   { path : 'user/:uid/cart', component: CartPageComponent},
-  { path: 'category',
-    component: CategoryComponent,
-    canActivate: [AuthGuard],
+  { path : 'category', component: CategoryComponent, canActivate: [AuthGuard],
   },
 
   { path: 'category/products/:pid',

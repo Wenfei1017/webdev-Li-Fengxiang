@@ -24,9 +24,12 @@ import {Cart} from '../../models/cart.model.client';
             <div class="mobil-shopping-cart">
               <span><i class="fa fa-shopping-cart fa-2x"></i> <span *ngIf="cart_num">( {{cart_num}} )</span></span>
             </div>
-            <div class="header-cart-item">
-              <a href="">MY CART <span *ngIf="cart_num">( {{cart_num}} )</span><span class="fa fa-caret-down"></span></a>
+            <div class="header-cart-item" style="margin: 20px">
+              <a style="font-size: larger;" href="">MY CART <span *ngIf="cart_num">( {{cart_num}} )</span><span class="fa fa-caret-down"></span></a>
             </div>
+          </div>
+          <div class="header-cart-item" style="margin: 20px">
+          <a style="font-size: larger;" href="../">BACK</a>
           </div>
         </div>
       </div>

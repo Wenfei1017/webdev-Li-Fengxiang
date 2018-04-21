@@ -72,6 +72,8 @@ module.exports = function (app) {
       .findUserByUsername(username)
       .then(function (user) {
         if (user && bcrypt.compareSync(password, user.password) ) {
+          console.log("loginUser");
+          console.log(user);
           done(null, user);
         } else {
           done(null, false);
@@ -238,6 +240,9 @@ module.exports = function (app) {
     userModel.updateUser(userId, newUser).then(
       function (user){
         if(user){
+          console.log(newUser);
+          console.log("TTTT");
+          console.log(user);
           res.status(200).json(user);
         } else{
           res.status(404).send("User not found when update.");

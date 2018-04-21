@@ -718,15 +718,18 @@
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
-  border: 1px solid #3b3d38;
+  /*border: 1px solid #3b3d38;*/
+  border: none;
   cursor: pointer;
   box-sizing: border-box;
 }
 .button.button-primary {
   color: #fff;
   background-color: #3b3d38;
-  border-color: #3b3d38;
+  /*border-color: #3b3d38;*/
+  border: none;
 }
+
 .button.button-primary:hover {
   color: #fff;
   background-color: #52525b;
@@ -734,7 +737,7 @@
 }
 .button.button-secondary {
   color: #1d1d20;
-  background-color: #000000;
+  /*background-color: #000000;*/
   border-color: #1d1d20;
 }
 .button.button-secondary:hover {
@@ -745,8 +748,8 @@
 .button.button-wide {
   width: 80%;
 }
-.button.button-large {
-  padding: 10px 10px;
+.button.button-large-pro {
+  padding: 7px 7px;
 }
 
 
@@ -1068,58 +1071,6 @@ margin-left:auto;
 /*}*/
 
 
-/*.button:hover {*/
-/*text-decoration: none;*/
-/*}*/
-/*.button:active {*/
-/*position: relative;*/
-/*top: 1px;*/
-/*}*/
-
-.button {
-  display: inline-block;
-  padding: 0 30px;
-  color: white;
-  text-align: center;
-  font-size: 0.85em;
-  font-weight: 600;
-  letter-spacing: .15rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 1px solid #3b3d38;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-.button.button-primary {
-  color: #fff;
-  background-color: #3b3d38;
-  border-color: #3b3d38;
-}
-.button.button-primary:hover {
-  color: #fff;
-  background-color: #52525b;
-  border-color: #52525b;
-}
-.button.button-secondary {
-  color: #1d1d20;
-  background-color: #fff;
-  border-color: #1d1d20;
-}
-.button.button-secondary:hover {
-  color: #fff;
-  background-color: #8e8e90;
-  border-color: #8e8e90;
-}
-.button.button-wide {
-  width: 80%;
-}
-.button.button-large {
-  padding: 10px 10px;
-}
-
-
 .cart-buttons {
   padding:20px 0;
 }
@@ -1305,4 +1256,19 @@ margin-left:auto;
 
 .register-bg {
   background-color: #c7ddef;
+  height: 100%;
+}
+.button.button-wide-pro {
+  width: 16%;
+}
+
+.register-bg {
+  background-color: #e9e9e9;
+}
+.product-page-container {
+  max-width: 1140px;
+  text-align: center;
+  padding: 0 30px;
+  margin: auto;
+  background-color: #d9edf7;
 }

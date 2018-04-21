@@ -50,7 +50,7 @@ function findUserByCredentials(uname, pswrd) {
 }
 
 function updateUser(userId, user) {
-  return userModel.update({_id: userId}, user)
+  return userModel.update({_id: userId}, user);
 }
 
 function deleteUser(userId) {

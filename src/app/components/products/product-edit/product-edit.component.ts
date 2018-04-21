@@ -18,7 +18,7 @@ export class ProductEditComponent implements OnInit {
 
   private subscriptions: Array<Subscription> = [];
   user: User;
-  productId : String;
+  productId: String;
   userId: String;
 
   product: Product;

@@ -1,3 +1,15 @@
+
+
+<nav class="navbar" style="margin: 0px">
+  <div class="row container" >
+    <div class="pull-right" style="position: absolute; right: 20px">
+      <button type="button" routerLink="../.." class="btn btn-outline-secondary">BACK TO PROFILE</button>
+      <button type="button" routerLink="/" class="btn btn-outline-secondary">HOMEPAGE</button>
+      <button type="button" routerLink="../../../" class="btn btn-outline-secondary">MY PRODUCTS</button>
+    </div>
+  </div>
+</nav>
+
 <div class="page_admin-add">
   <h1 class="page_admin-add-title"> Edding new Item</h1>
 </div>
@@ -19,17 +31,17 @@
 
           <div class="quick-cart-footer-create">
             <label class = "text-create">Title:</label>
-            <input type="text" name="title" [(ngModel)]="product.title" placeholder="title" class="input-style" ngModel required #username="ngModel">
+            <input type="text" name="title" [(ngModel)]="product.title" placeholder="title" class="input-style" [ngModelOptions]="{standalone: true}">
           </div>
 
           <div class="quick-cart-footer-create">
             <label class = "text-create" > Brand:</label>
-            <input type="text" name="brand" [(ngModel)]="product.brand" placeholder="brand" class="input-style" ngModel required #password="ngModel">
+            <input type="text" name="brand" [(ngModel)]="product.brand" placeholder="brand" class="input-style" [ngModelOptions]="{standalone: true}">
           </div>
 
           <div class="quick-cart-footer-create">
             <label class = "text-create">Price:</label>
-            <input type="number" name="price"[(ngModel)]="product.price" placeholder="price" class="input-style" ngModel required #username="ngModel">
+            <input type="number" name="price"[(ngModel)]="product.price" placeholder="price" class="input-style" [ngModelOptions]="{standalone: true}">
           </div>
         </div>
       </div>
@@ -39,7 +51,7 @@
         <input type="text" name="description" [(ngModel)]="product.description" placeholder="my product description" class="input-style submissionfield" ngModel required #password="ngModel">
 
         <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
-          <label for="myFile">Upload Image</label>
+          <label for="myFile">Change Image</label>
           <input  name="myFile" id="myFile"  type="file" class="form-control form-group"/>
           <!--<input  name="widgetId" value="{{widget._id}}" style="display: none"/>-->
           <!--<input  name="pageId" value="{{pageId}}" style="display: none"/>-->
@@ -50,10 +62,10 @@
         </form>
       </div>
 
-      <div class="quick-cart-footer" style="position: relative; width: 60%; height: 200px; left: 50%; top:80px; margin: 0 0 0 -30%">
-        <button class="button button-secondary button-large" (click)="updateProduct()">Update</button>
-        <button class="button button-secondary button-large" (click)="deleteProduct()">Delete</button>
-      </div>
+      <!--<div class="quick-cart-footer" style="position: relative; width: 60%; height: 200px; left: 50%; top:80px; margin: 0 0 0 -30%">-->
+        <button style="position: relative; width: 40%; height: 40px; left: 30%; top:110px; margin: 0 0 0 -30%" class="button button-secondary " (click)="updateProduct()">Update</button>
+        <button style="position: relative; width: 40%; height: 40px; left: 60%; top:110px; margin: 0 0 0 -30%" class="button button-secondary " (click)="deleteProduct()">Delete</button>
+      <!--</div>-->
     </div>
   </form>
 
