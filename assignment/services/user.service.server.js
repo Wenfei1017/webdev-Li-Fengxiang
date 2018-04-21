@@ -16,7 +16,7 @@ module.exports = function (app) {
     // clientSecret: '4afc85323b92bfd913d34abb73a55992',
     // callbackURL : 'https://valeryfardeli-webdev.herokuapp.com/auth/facebook/callback',
     // callbackURL : 'https://localhost:3200/auth/facebook/callback',
-    callbackURL : 'https://webdev-wenfei.herokuapp.com/auth/facebook/callback',
+    callbackURL : 'https://webdevprojectfx.herokuapp.com/auth/facebook/callback',
   };
 
   app.put("/api/user/:userId", updateUserById);

@@ -29,12 +29,12 @@ import {ProductEditComponent} from './components/products/product-edit/product-e
 // Import all other components here
 
 const APP_ROUTES: Routes = [
-  { path : '' , component: LoginComponent},
-  { path : 'login' , component: LoginComponent},
+  { path : '' , redirectTo: 'login/user',  pathMatch: 'full'},
+  { path : 'login' , redirectTo: 'login/user',  pathMatch: 'full'},
   { path : 'login/:type' , component: LoginComponent},
   { path : 'register/:type' , component: RegisterComponent },
   { path : 'user/' , component: ProfileComponent, canActivate: [AuthGuard]},
-  { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
+  { path : 'user/:uid' , compongent: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid/website' , component: WebsiteListComponent},
   { path : 'user/:uid/website/new' , component: WebsiteNewComponent},

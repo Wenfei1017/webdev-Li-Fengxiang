@@ -27874,8 +27874,8 @@ AppModule = __decorate([
 
 // Import all other components here
 var APP_ROUTES = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_3__components_user_login_login_component__["a" /* LoginComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_3__components_user_login_login_component__["a" /* LoginComponent */] },
+    { path: '', redirectTo: 'login/user', pathMatch: 'full' },
+    { path: 'login', redirectTo: 'login/user', pathMatch: 'full' },
     { path: 'login/:type', component: __WEBPACK_IMPORTED_MODULE_3__components_user_login_login_component__["a" /* LoginComponent */] },
     { path: 'register/:type', component: __WEBPACK_IMPORTED_MODULE_4__components_user_register_register_component__["a" /* RegisterComponent */] },
     { path: 'user/', component: __WEBPACK_IMPORTED_MODULE_1__components_user_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_13__services_auth_guard_service__["a" /* AuthGuard */]] },
@@ -28380,32 +28380,19 @@ var CategoryComponent = (function () {
             _this.sub = _this.productsService.findAllProducts()
                 .subscribe(function (products) {
                 _this.products = products;
-                // this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
-                //   .subscribe(resProducts => {
-                //     // this.products = this.products.concat(resProducts);
-                //
-                //       // this.productsService.createProductForUser(this.products[0]._user._id, this.products[0]).subscribe(
-                //       //   () => {}
-                //       // );
-                //       // this.productsService.createProductForUser(this.products[1]._user._id, this.products[1]).subscribe(
-                //       // () => {}
-                //       // );
-                //       // this.productsService.createProductForUser(this.products[2]._user._id, this.products[2]).subscribe(
-                //       // () => {}
-                //       // );
-                //       // this.productsService.createProductForUser(this.products[3]._user._id, this.products[3]).subscribe(
-                //       // () => {}
-                //       // );
-                //       // this.productsService.createProductForUser(this.products[4]._user._id, this.products[4]).subscribe(
-                //       // () => {}
-                //       // );
-                //     // console.log(this.products[5]);
-                //     //   this.productsService.createProductForUser(this.products[5]._user, this.products[5]).subscribe(
-                //     //   () => {
-                //     //     console.log("testes");
-                //     //   }
-                //     //   );
-                //   });
+                _this.sub = _this.productsService.getProducts('./assets/mock-data/products.json')
+                    .subscribe(function (resProducts) {
+                    _this.products = _this.products.concat(resProducts);
+                    _this.productsService.createProductForUser(_this.products[0]._user, _this.products[0]).subscribe(function () { });
+                    _this.productsService.createProductForUser(_this.products[1]._user, _this.products[1]).subscribe(function () { });
+                    _this.productsService.createProductForUser(_this.products[2]._user, _this.products[2]).subscribe(function () { });
+                    _this.productsService.createProductForUser(_this.products[3]._user, _this.products[3]).subscribe(function () { });
+                    _this.productsService.createProductForUser(_this.products[4]._user, _this.products[4]).subscribe(function () { });
+                    console.log(_this.products[5]);
+                    _this.productsService.createProductForUser(_this.products[5]._user, _this.products[5]).subscribe(function () {
+                        console.log("testes");
+                    });
+                });
             });
         };
         this.addToCart = function (product) {

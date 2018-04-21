@@ -46,32 +46,32 @@ export class CategoryComponent implements OnInit {
     this.sub = this.productsService.findAllProducts()
       .subscribe(products => {
         this.products = products;
-        // this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
-        //   .subscribe(resProducts => {
-        //     // this.products = this.products.concat(resProducts);
-        //
-        //       // this.productsService.createProductForUser(this.products[0]._user._id, this.products[0]).subscribe(
-        //       //   () => {}
-        //       // );
-        //       // this.productsService.createProductForUser(this.products[1]._user._id, this.products[1]).subscribe(
-        //       // () => {}
-        //       // );
-        //       // this.productsService.createProductForUser(this.products[2]._user._id, this.products[2]).subscribe(
-        //       // () => {}
-        //       // );
-        //       // this.productsService.createProductForUser(this.products[3]._user._id, this.products[3]).subscribe(
-        //       // () => {}
-        //       // );
-        //       // this.productsService.createProductForUser(this.products[4]._user._id, this.products[4]).subscribe(
-        //       // () => {}
-        //       // );
-        //     // console.log(this.products[5]);
-        //     //   this.productsService.createProductForUser(this.products[5]._user, this.products[5]).subscribe(
-        //     //   () => {
-        //     //     console.log("testes");
-        //     //   }
-        //     //   );
-        //   });
+        this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
+          .subscribe(resProducts => {
+            this.products = this.products.concat(resProducts);
+
+              this.productsService.createProductForUser(this.products[0]._user, this.products[0]).subscribe(
+                () => {}
+              );
+              this.productsService.createProductForUser(this.products[1]._user, this.products[1]).subscribe(
+              () => {}
+              );
+              this.productsService.createProductForUser(this.products[2]._user, this.products[2]).subscribe(
+              () => {}
+              );
+              this.productsService.createProductForUser(this.products[3]._user, this.products[3]).subscribe(
+              () => {}
+              );
+              this.productsService.createProductForUser(this.products[4]._user, this.products[4]).subscribe(
+              () => {}
+              );
+            console.log(this.products[5]);
+              this.productsService.createProductForUser(this.products[5]._user, this.products[5]).subscribe(
+              () => {
+                console.log("testes");
+              }
+              );
+          });
       });
   }
 
