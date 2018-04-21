@@ -28382,16 +28382,31 @@ var CategoryComponent = (function () {
                 _this.products = products;
                 _this.sub = _this.productsService.getProducts('./assets/mock-data/products.json')
                     .subscribe(function (resProducts) {
-                    _this.products = _this.products.concat(resProducts);
-                    _this.productsService.createProductForUser(_this.products[0]._user, _this.products[0]).subscribe(function () { });
-                    _this.productsService.createProductForUser(_this.products[1]._user, _this.products[1]).subscribe(function () { });
-                    _this.productsService.createProductForUser(_this.products[2]._user, _this.products[2]).subscribe(function () { });
-                    _this.productsService.createProductForUser(_this.products[3]._user, _this.products[3]).subscribe(function () { });
-                    _this.productsService.createProductForUser(_this.products[4]._user, _this.products[4]).subscribe(function () { });
-                    console.log(_this.products[5]);
-                    _this.productsService.createProductForUser(_this.products[5]._user, _this.products[5]).subscribe(function () {
-                        console.log("testes");
-                    });
+                    // this.products = this.products.concat(resProducts);
+                    //
+                    //     this.productsService.createProductForUser(resProducts[0]._user, resProducts[0]).subscribe(
+                    //       () => {}
+                    //     );
+                    //     this.productsService.createProductForUser(resProducts[1]._user, resProducts[1]).subscribe(
+                    //     () => {}
+                    //     );
+                    //     this.productsService.createProductForUser(resProducts[2]._user, resProducts[2]).subscribe(
+                    //     () => {}
+                    //     );
+                    //     this.productsService.createProductForUser(resProducts[3]._user, resProducts[3]).subscribe(
+                    //     () => {}
+                    //     );
+                    //     this.productsService.createProductForUser(resProducts[4]._user, resProducts[4]).subscribe(
+                    //     () => {}
+                    //     );
+                    //   //    console.log(this.products[5]);
+                    //   // console.log(this.products);
+                    //   // console.log(resProducts);
+                    //     this.productsService.createProductForUser(resProducts[5]._user, resProducts[5]).subscribe(
+                    //     () => {
+                    //       console.log("testes");
+                    //     }
+                    // );
                 });
             });
         };
