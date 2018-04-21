@@ -64,7 +64,7 @@ export class CategoryComponent implements OnInit {
           //     );
           //     this.productsService.createProductForUser(resProducts[4]._user, resProducts[4]).subscribe(
           //     () => {}
-          //     );
+          //     );x
           //   //    console.log(this.products[5]);
           //   // console.log(this.products);
           //   // console.log(resProducts);

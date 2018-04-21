@@ -33,7 +33,7 @@ const APP_ROUTES: Routes = [
   { path : 'login' , redirectTo: 'login/user',  pathMatch: 'full'},
   { path : 'login/:type' , component: LoginComponent},
   { path : 'register/:type' , component: RegisterComponent },
-  { path : 'user/' , component: ProfileComponent, canActivate: [AuthGuard]},
+  { path : 'user' , component: ProfileComponent},
   { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid' , component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'user/:uid/website' , component: WebsiteListComponent},
