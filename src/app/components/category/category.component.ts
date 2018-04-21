@@ -9,6 +9,7 @@ import {Page} from '../../models/page.model.client';
 import {CartBaseComponent} from '../cart/cart-base.component';
 import {CartBarComponent} from '../../component/topbar/cart-bar.component';
 import {forEach} from '@angular/router/src/utils/collection';
+import {FlickrService} from '../../services/flickr.service.client';
 
 @Component({
   selector: 'app-category',
@@ -21,11 +22,13 @@ export class CategoryComponent implements OnInit {
 
   public products:Array<Product>;
   private sub;
+  searchText: String;
   constructor(
     private productsService: ProductsService,
     private cartService: CartService,
     private sharedService: SharedService,
-    private router: Router
+    private router: Router,
+    private flickrService: FlickrService,
   ) { }
 
   // @HostListener('click')
@@ -90,5 +93,14 @@ export class CategoryComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  searchPhotos () {
+    console.log("testSearch");
+    this.flickrService.searchProducts(this.searchText).subscribe(
+      (products: [Product]) => {
+        this.products = products;
+      }
+    );
   }
 }

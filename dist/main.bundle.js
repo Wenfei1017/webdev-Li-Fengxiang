@@ -28334,7 +28334,7 @@ module.exports = ".header-image {\n  height: 400px;\n  background: url('plates-h
 /***/ "./src/app/components/category/category.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"position: absolute; left: 20%\">\n<cart-bar class=\"pull-right\"></cart-bar>\n</div>\n\n<div class=\"header-image\">\n  <div class=\"header-block\">\n    <div class=\"header-text\">\n      <div class=\"header-text-title\">Plates</div>\n      <p>\n          WELCOME TO OUR PLATE SHOP\n      </p>\n    </div>\n  </div>\n</div>\n<div class=\"layout-container\">\n  <div class=\"product-grid\">\n    <div class=\"col-md-4 col-sm-6\" *ngFor=\"let product of products;let i = index\">\n      <div class=\"image-container\">\n\n        <!--<div *ngSwitchCase=\"'IMAGE'\">-->\n          <!--<img class=\"img-responsive img-rounded cl-widget-images\" src=\"{{widget.url}}\">-->\n        <!--</div>-->\n\n        <div class=\"product-image\" [ngStyle]=\"{'background-image': 'url(./assets/uploads/' + product.imageUrl + ')'}\"></div>\n        <div class=\"overlay\">\n          <div class=\"button button-primary\" [routerLink]=\"['./products',product._id]\">View Details</div>\n          <div class=\"button button-primary\" (click)=\"addToCart(product)\">Add To Cart</div>\n        </div>\n      </div>\n      <div class=\"product-details\">\n        <div class=\"product-brand\">{{product.brand}}</div>\n        <div class=\"product-title\">{{product.title}}</div>\n        <div class=\"product-price\">{{product.price | currency :'USD':true }}</div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"position: absolute; left: 20%\">\n<cart-bar class=\"pull-right\"></cart-bar>\n</div>\n\n<div class=\"header-image\">\n  <div class=\"header-block\">\n    <div class=\"header-text\">\n      <div class=\"header-text-title\">Plates</div>\n      <p>\n          WELCOME TO OUR PLATE SHOP\n      </p>\n    </div>\n  </div>\n</div>\n\n\n<div class=\"layout-container\">\n  <div class=\"caption\">\n    Search Flickr:\n  </div>\n  <div class=\"input-group\">\n    <input [(ngModel)]=\"searchText\" type=\"text\" class=\"form-control\">\n    <span class=\"input-group-btn\">\n      <a (click)=\"searchPhotos()\" class=\"btn btn-default\" type=\"button\">\n          <span class=\"glyphicon glyphicon-search\"></span>\n      </a>\n    </span>\n  </div>\n\n  <div class=\"product-grid\">\n    <div class=\"col-md-4 col-sm-6\" *ngFor=\"let product of products;let i = index\">\n      <div class=\"image-container\">\n\n        <!--<div *ngSwitchCase=\"'IMAGE'\">-->\n          <!--<img class=\"img-responsive img-rounded cl-widget-images\" src=\"{{widget.url}}\">-->\n        <!--</div>-->\n\n        <div class=\"product-image\" [ngStyle]=\"{'background-image': 'url(./assets/uploads/' + product.imageUrl + ')'}\"></div>\n        <div class=\"overlay\">\n          <div class=\"button button-primary\" [routerLink]=\"['./products',product._id]\">View Details</div>\n          <div class=\"button button-primary\" (click)=\"addToCart(product)\">Add To Cart</div>\n        </div>\n      </div>\n      <div class=\"product-details\">\n        <div class=\"product-brand\">{{product.brand}}</div>\n        <div class=\"product-title\">{{product.title}}</div>\n        <div class=\"product-price\">{{product.price | currency :'USD':true }}</div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -28349,6 +28349,7 @@ module.exports = "<div style=\"position: absolute; left: 20%\">\n<cart-bar class
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_cart_model_client__ = __webpack_require__("./src/app/models/cart.model.client.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_shared_service__ = __webpack_require__("./src/app/services/shared.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_flickr_service_client__ = __webpack_require__("./src/app/services/flickr.service.client.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -28364,13 +28365,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CategoryComponent = (function () {
-    function CategoryComponent(productsService, cartService, sharedService, router) {
+    function CategoryComponent(productsService, cartService, sharedService, router, flickrService) {
         var _this = this;
         this.productsService = productsService;
         this.cartService = cartService;
         this.sharedService = sharedService;
         this.router = router;
+        this.flickrService = flickrService;
         this.load = function () {
             // this.sub = this.productsService.getProducts('./assets/mock-data/products.json')
             //   .subscribe(res => {
@@ -28428,6 +28431,13 @@ var CategoryComponent = (function () {
     CategoryComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
     };
+    CategoryComponent.prototype.searchPhotos = function () {
+        var _this = this;
+        console.log("testSearch");
+        this.flickrService.searchProducts(this.searchText).subscribe(function (products) {
+            _this.products = products;
+        });
+    };
     return CategoryComponent;
 }());
 CategoryComponent = __decorate([
@@ -28436,10 +28446,10 @@ CategoryComponent = __decorate([
         template: __webpack_require__("./src/app/components/category/category.component.html"),
         styles: [__webpack_require__("./src/app/components/category/category.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_products_service__["a" /* ProductsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_products_service__["a" /* ProductsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_cart_service_client__["a" /* CartService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_cart_service_client__["a" /* CartService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_shared_service__["a" /* SharedService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_products_service__["a" /* ProductsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_products_service__["a" /* ProductsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_cart_service_client__["a" /* CartService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_cart_service_client__["a" /* CartService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__services_shared_service__["a" /* SharedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_shared_service__["a" /* SharedService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__services_flickr_service_client__["a" /* FlickrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_flickr_service_client__["a" /* FlickrService */]) === "function" && _e || Object])
 ], CategoryComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=category.component.js.map
 
 /***/ }),
@@ -30663,15 +30673,6 @@ var FlickrImageSearchComponent = (function () {
         this.router = router;
     }
     FlickrImageSearchComponent.prototype.searchPhotos = function () {
-        var _this = this;
-        this.flickrService
-            .searchPhotos(this.searchText)
-            .subscribe(function (data) {
-            var val = data._body;
-            val = val.substring('jsonFlickrApi('.length, val.length - 1);
-            val = JSON.parse(val);
-            _this.photos = val.photos;
-        });
     };
     FlickrImageSearchComponent.prototype.selectPhoto = function (photo) {
         var _this = this;
@@ -31098,6 +31099,7 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FlickrService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -31109,18 +31111,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var FlickrService = (function () {
     function FlickrService(http) {
         this.http = http;
         this.key = 'c0c6d322f4f9bac48fa8eaa4bcf95bee';
         this.secret = 'f16fb29025444787';
         this.urlBase = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT';
+        this.baseUrl = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].baseUrl;
     }
-    FlickrService.prototype.searchPhotos = function (searchTerm) {
-        var url = this.urlBase
-            .replace('API_KEY', this.key)
-            .replace('TEXT', searchTerm);
-        return this.http.get(url);
+    FlickrService.prototype.searchProducts = function (searchTerm) {
+        var url = this.baseUrl + "/api/searchProducts/" + searchTerm;
+        return this.http.get(url)
+            .map(function (res) {
+            return res.json();
+        });
     };
     return FlickrService;
 }());
@@ -31770,9 +31775,7 @@ var _a;
 var environment = {
     production: true,
     // baseUrl : "",
-    // baseUrl : 'http://localhost:3200',
-    // baseUrl: 'https://webdev-fengxiang-li.herokuapp.com'
-    baseUrl: 'https://webdevprojectfx.herokuapp.com'
+    baseUrl: 'http://localhost:3200',
 };
 //# sourceMappingURL=environment.prod.js.map
 
@@ -31786,9 +31789,7 @@ var environment = {
 var environment = {
     production: true,
     // baseUrl : "",
-    // baseUrl : 'http://localhost:3200',
-    // baseUrl: 'https://webdev-fengxiang-li.herokuapp.com'
-    baseUrl: 'https://webdevprojectfx.herokuapp.com'
+    baseUrl: 'http://localhost:3200',
 };
 //# sourceMappingURL=environment.js.map
 

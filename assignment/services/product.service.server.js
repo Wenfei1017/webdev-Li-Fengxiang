@@ -13,6 +13,8 @@ module.exports = function(app) {
   app.get("/api/resetImage", resetImage);
   app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
+  app.get("/api/searchProducts/:searchItem", searchProducts);
+
   var path = require('path');
 
   var imageUrl= "";
@@ -49,6 +51,24 @@ module.exports = function(app) {
     // res.redirect("http://localhost:4200" + "/seller/" + userId + "/products/new");
     // res.　
     res.status(200);
+  }
+
+  function searchProducts(req,res) {
+    var searchText = req.params["searchItem"];
+    productModel.findAllProducts().then(
+      function(products){
+        var resProducts = [] ;
+        for (i = 0 ; i< products.length ; i++){
+          if (products[i].title.toUpperCase().indexOf(searchText.toUpperCase()) != -1 || products[i].brand.toUpperCase().indexOf(searchText.toUpperCase()) != -1){
+              resProducts.push(products[i]);
+          }
+        }
+        res.status(200).json(resProducts);
+      },
+      function (error) {
+        res.status(404).send(error);
+      }
+    );
   }
 
   function resetImage(req, res) {

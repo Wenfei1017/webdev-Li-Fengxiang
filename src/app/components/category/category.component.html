@@ -12,7 +12,21 @@
     </div>
   </div>
 </div>
+
+
 <div class="layout-container">
+  <div class="caption">
+    Search Flickr:
+  </div>
+  <div class="input-group">
+    <input [(ngModel)]="searchText" type="text" class="form-control">
+    <span class="input-group-btn">
+      <a (click)="searchPhotos()" class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+      </a>
+    </span>
+  </div>
+
   <div class="product-grid">
     <div class="col-md-4 col-sm-6" *ngFor="let product of products;let i = index">
       <div class="image-container">

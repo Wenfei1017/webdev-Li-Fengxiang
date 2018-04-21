@@ -30,16 +30,6 @@ export class FlickrImageSearchComponent implements OnInit {
   ) { }
 
   searchPhotos() {
-    this.flickrService
-      .searchPhotos(this.searchText)
-      .subscribe(
-        (data: any) => {
-          var val = data._body;
-          val = val.substring('jsonFlickrApi('.length, val.length - 1);
-          val = JSON.parse(val);
-          this.photos = val.photos;
-        }
-      );
   }
 
   selectPhoto(photo) {
