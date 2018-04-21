@@ -129,12 +129,15 @@ module.exports = function (app) {
 
           // check if user corresponding to this fb account exist
           if(user) {
+            console.log("Exist!!");
             return done(null, user);
           }
 
           // create a new one if do not exist
           else {
+            console.log("facebookUserCreate");
             var names = profile.displayName.split(" ");
+            console.log(profile);
             var newFacebookUser = {
               username: 'username',
               lastName:  names[1],
