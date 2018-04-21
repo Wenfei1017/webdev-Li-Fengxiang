@@ -9,14 +9,14 @@ module.exports = function (app) {
   var userModel = require("../model/user/user.model.server");
 
   var facebookConfig = {
-    clientID : 245376276032051,
+    clientID : 789222517955181,
     // 232954744112434
     // clientID : 232954744112434,
-    clientSecret : '59f7031c39559cf1a66ce700d880ec14',
+    clientSecret : '994a779ee2dcd248942a8c06ed36479d',
     // clientSecret: '4afc85323b92bfd913d34abb73a55992',
     // callbackURL : 'https://valeryfardeli-webdev.herokuapp.com/auth/facebook/callback',
     // callbackURL : 'https://localhost:3200/auth/facebook/callback',
-    callbackURL : 'https://webdev-fengxiang-li.herokuapp.com/auth/facebook/callback',
+    callbackURL : 'https://webdev-wenfei.herokuapp.com/auth/facebook/callback',
   };
 
   app.put("/api/user/:userId", updateUserById);
@@ -121,6 +121,7 @@ module.exports = function (app) {
   }
 
   function facebookStrategy(token, refreshToken, profile, done) {
+    console.log("facebookHere!!");
     userModel
       .findUserByFacebookId(profile.id)
       .then(

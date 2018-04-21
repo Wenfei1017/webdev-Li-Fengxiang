@@ -105,6 +105,7 @@ export class LoginComponent implements OnInit {
 
   navigateToFacebook() {
     this.errorFlag = false;
+    console.log("test");
     window.location.href = this.baseUrl + '/facebook/login';
   }
 
