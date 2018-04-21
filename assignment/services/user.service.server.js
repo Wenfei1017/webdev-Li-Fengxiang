@@ -130,6 +130,12 @@ module.exports = function (app) {
           // check if user corresponding to this fb account exist
           if(user) {
             console.log("Exist!!");
+            console.log(user);
+            var names = profile.displayName.split(" ");
+            user.lastName = names[1];
+            user.firstName = names[0];
+            user.email = profile.emails ? profile.emails[0].value : "";
+            user.userType = "user";
             return done(null, user);
           }
 
