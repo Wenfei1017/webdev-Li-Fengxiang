@@ -1,5 +1,5 @@
-My Intro: I am a graduate student at Northeastern University. I am creating this project for webdev
+Intro: Our team (Wenfei Xiang and Fengxiang Li) is creating this project for webdev
 
-Root to the hosted environment on Heroku : https://webdev-fengxiang-li.herokuapp.com/
-Link to your project: https://github.com/FENGXIANGLI/webdev-Li-Fengxiang
-Link to your assignment : https://docs.google.com/document/d/1rxZnIRpwCzqQVJwMm7HLfKHvXiI_GLpcfBjm0ymmWXI/edit#heading=h.lnxbz9
+Root to the hosted environment on Heroku : https://webdevprojectfx.herokuapp.com/
+Link to your project: https://github.com/Wenfei1017/webdev-Li-Fengxiang/tree/project
+
